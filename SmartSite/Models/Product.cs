@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace SmartSite.Models
 {
@@ -19,6 +20,7 @@ namespace SmartSite.Models
         public string Name { get; set; }
 
         [Required]
+        [AllowHtml]
         public string Description { get; set; }
 
         public string Image { get; set; }

@@ -34,6 +34,7 @@ namespace SmartSite.Controllers
             {
                 return HttpNotFound();
             }
+            ViewData["category"] = db.Product.Find(id).ProductType.Category.CategoryName;
             return View(product);
         }
 

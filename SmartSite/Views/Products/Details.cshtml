@@ -3,64 +3,78 @@
 @{
     ViewBag.Title = "Details";
 }
-
-<h2>Details</h2>
-
-<div>
-    <h4>Product</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.ProductType.Type)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ProductType.Type)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Description)
-        </dd>
-
-        <dt>
-            <img src="~/imageUploads/@Model.Image" />
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Image)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.PdfFile)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.PdfFile)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Brand)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Brand)
-        </dd>
-
-    </dl>
+<!-- Breadcrumb -->
+<div class="breadcrumbs overlay" style="background-image:url('../../img/8.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="bread-inner">
+                    <!-- Bread Menu -->
+                    <div class="bread-menu">
+                        <ul>
+                            <li><a href="index">Home  -</a></li>
+                            <li><a href="index">@ViewData["category"]  -</a></li>
+                            <li><a href="index">@Html.DisplayFor(model => model.ProductType.Type)</a></li>
+                        </ul>
+                    </div>
+                    <!-- Bread Title -->
+                    <div class="bread-title"><h2>@Html.DisplayFor(model => model.Name)</h2></div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+<!-- Blog Single -->
+<section class="news-area archive blog-single section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-10 offset-lg-1 col-md-10 offset-md-1 col-12">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="blog-single-main">
+                            <div class="blog-detail">
+                                <!-- News meta -->
+                                <div class="row blog-space">
+                                    <div class="col-lg-4">
+                                        <img src="~/imageUploads/@Model.Image" alt="Image Product" />
+                                    </div>
+                                    <div class="col-lg-8">
+                                        <h2>
+                                            @Html.DisplayFor(model => model.Name)
+                                        </h2>
+                                        <br />
+                                        <p>
+                                            @Html.DisplayFor(model => model.Brand)
+                                        </p>
+                                        <br />
+                                        <h3>
+                                            <a href="#">
+                                                Download The Manual
+                                                @Html.DisplayFor(model => model.PdfFile)
+                                                <i class="fas fa-download"></i>
+                                            </a>
+                                        </h3>
+
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4 teckData">
+                                        <h3>Technical Data</h3>
+                                    </div>
+                                    <div class="col-md-8 spec">
+                                        <h3>Specification Table.</h3>
+                                    </div>
+                                </div>
+                                <h4>PRODUCT SPECIFICATION:</h4>
+                                <p>
+                                    @Html.Raw(HttpUtility.HtmlDecode(@Model.Description));
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--/ End Services -->
