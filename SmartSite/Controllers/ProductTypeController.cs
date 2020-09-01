@@ -21,6 +21,9 @@ namespace SmartSite.Controllers
         //------------------- type details -------------------
         public ActionResult ProductTypeDetails(int id)
         {
+
+            ViewData["product"] = DAL.filterProductsByType(id);
+
             ProductType productType = DAL.GetProductTypeByID(id);
             if (productType != null)
                 return View(productType);
@@ -28,12 +31,30 @@ namespace SmartSite.Controllers
                 return View("~/Views/Shared/Error.cshtml");
         }
 
+        // ------------------ filter products by type -------
+        public ActionResult FilterProductsByType(int id) // id = type ID
+        {
+            IEnumerable<Product> filtereProducts= DAL.filterProductsByType(id); 
+            return View(filtereProducts);
+        }
+
         // ------------------  all products ---------------
         public ActionResult AllProductTypes()
         {
+            ViewData["Category"] = new SelectList(context.Category, "ID", "CategoryName");
             List<ProductType> allProductTypes = DAL.GetAllProductTypes().ToList();
             return View(allProductTypes);
         }
+
+        // ------------------ filter product type by category -----------
+        public ActionResult FilterProductTypeByCategory(int? id) // id = category ID
+        {
+            if (id == null)
+                return View("~/View/Shared/Error.cshtml");
+            IEnumerable<ProductType> filteredTypes = DAL.FilterProductTypeByCategory(id);
+            return View(filteredTypes);
+        }
+
 
         // ---------------- create type ------------------
         public ActionResult CreateProductType()

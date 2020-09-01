@@ -1,0 +1,38 @@
+﻿@model IEnumerable<SmartSite.Models.ProductType>
+@{
+    ViewBag.Title = "FilterProductTypeByCategory";
+}
+
+    <div class="container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Type Name</th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @{
+                    foreach (var type in Model)
+                    {
+                        <tr>
+                            <td>@type.Type</td>
+                            <td>
+                                @Html.ActionLink("Details", "ProductTypeDetails", new { id = type.ID }, new { @class = "btn btn-info" })
+                            </td>
+                            <td>
+                                @Html.ActionLink("Edit", "EditProductType", new { id = type.ID }, new { @class = "btn btn-warning" })
+                            </td>
+                            <td>
+                                @Html.ActionLink("Delete", "DeleteProductType", new { id = type.ID }, new { @class = "btn btn-danger" })
+                            </td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+

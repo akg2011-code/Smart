@@ -28,6 +28,8 @@
                     <li>@Html.ActionLink("Types", "AllProductTypes", "ProductType")</li>
                     <li>@Html.ActionLink("News", "GetAllNews", "News")</li>
                     <li>@Html.ActionLink("Categories", "GetAllCategories", "Category")</li>
+                    <li>@Html.ActionLink("Electical", "FilterProductTypeByCategory", new { id = 2 }, "ProductType")</li>
+                    <li>@Html.ActionLink("Safety", "FilterProductTypeByCategory", new { id = 3 }, "ProductType")</li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>

@@ -19,9 +19,13 @@ namespace SmartSite.DAL_Functionality
             Context.SaveChanges();
         }
 
+        public IEnumerable<Product> filterProductsByType(int productTypeID) => Context.Product.Where(p=>p.ProductTypeID==productTypeID);
+
         public ProductType GetProductTypeByID(int productTypeID) => Context.ProductType.Find(productTypeID);
 
         public IEnumerable<ProductType> GetAllProductTypes() => Context.ProductType.ToList();
+
+        public IEnumerable<ProductType> FilterProductTypeByCategory(int? categoryID) => Context.ProductType.Where(t=>t.CategoryID==categoryID);
 
         public bool CreateProductType(ProductType newProductType)
         {
