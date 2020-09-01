@@ -1,0 +1,26 @@
+﻿@model SmartSite.Models.ProductType
+@{
+    ViewBag.Title = "DeleteProductType";
+}
+
+<br />
+<hr />
+<div class="container">
+    <div class="alert alert-danger" style="font-size:large">
+        <p>Are you sure you want to delete Type <u>[ @Model.Type ]</u> ?</p>
+        <p>This will cause deleting all this type related products .</p>
+    </div>
+    <hr />
+    @using (Html.BeginForm("DeleteProductType", "ProductType", FormMethod.Post))
+    {
+        @Html.HiddenFor(m => m.ID)
+        <div class="row">
+            <div class="col-sm-2">
+                <button type="submit" class="btn btn-danger form-control">Delete</button>
+            </div>
+            <div class="col-sm-2">
+                @Html.ActionLink("Return", "AllProductTypes", null, new { @class = "btn btn-info form-control" })
+            </div>
+        </div>
+    }
+</div>

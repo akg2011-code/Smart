@@ -1,0 +1,26 @@
+﻿@model SmartSite.Models.ProductType
+@{
+    ViewBag.Title = "EditProductType";
+}
+
+    <div class="container">
+        <h2><u>Edit Product Type [@Model.Type]</u></h2>
+        <hr />
+        @using (Html.BeginForm("EditProductType", "ProductType", FormMethod.Post))
+        {
+            @Html.HiddenFor(m=>m.ID)
+            <div class="form-group">
+                @Html.LabelFor(m => m.Type)
+                @Html.TextBoxFor(m => m.Type, new { @class = "form-control", placeholder = "Type Name" })
+                @Html.ValidationMessageFor(m => m.Type, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.CategoryID)
+                @Html.DropDownListFor(s => s.CategoryID, ViewData["Category"] as IEnumerable<SelectListItem>, new { @class = "browser-default custom-select" })
+                @Html.ValidationMessageFor(m => m.CategoryID, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">Save</button>
+            </div>
+        }
+    </div>

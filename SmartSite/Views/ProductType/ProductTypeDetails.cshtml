@@ -1,0 +1,17 @@
+﻿@model SmartSite.Models.ProductType
+@{
+    ViewBag.Title = "ProductTypeDetails";
+}
+
+<div class="container">
+    <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
+        <div class="card-header">Product Type Details</div>
+        <div class="card-body">
+            <h5 class="card-title">Type Name : <u>[ @Model.Type ]</u></h5>
+            <h5 class="card-title">Category : <u>[ @Model.Category.CategoryName ]</u></h5>
+        </div>
+    </div>
+    <div>
+        @Html.ActionLink("Return", "AllProductTypes", null, new { @class = "btn btn-info form-control" })
+    </div>
+</div>

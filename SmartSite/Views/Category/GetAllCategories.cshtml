@@ -1,0 +1,35 @@
+﻿@model IEnumerable<SmartSite.Models.Category>
+@{
+    ViewBag.Title = "GetAllCategories";
+}
+
+<h2>GetAllCategories</h2>
+<div class="container">
+    @Html.ActionLink("Create Category", "CreateCategory",null,new {@class="btn btn-info" })
+    <hr />
+</div>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Catrgory Name</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @{ 
+            foreach (var category in Model)
+            {
+                <tr>
+                    <td>@category.CategoryName</td>
+                    <td>
+                        @Html.ActionLink("Edit", "EditCategory", new { id = category.ID }, new { @class="btn btn-warning"})
+                    </td>
+                    <td>
+                        @Html.ActionLink("Delete", "DeleteCategory", new { id = category.ID }, new { @class = "btn btn-danger" })
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>

@@ -1,0 +1,18 @@
+﻿@model SmartSite.Models.News
+@{
+    ViewBag.Title = "NewsDetails";
+}
+
+    <div class="container">
+        <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
+            <div class="card-header">@Model.Title</div>
+            <img class="card-img-top" src="~/imageUploads/NewsImg/@Model.Image" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">Publish Time : @Model.Date</h5>
+                <p class="card-text">@Model.Details</p>
+            </div>
+        </div>
+        <div>
+            @Html.ActionLink("Return", "GetAllNews", null, new { @class = "btn btn-info form-control" })
+        </div>
+    </div>
