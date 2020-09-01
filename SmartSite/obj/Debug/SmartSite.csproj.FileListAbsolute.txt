@@ -218,6 +218,3 @@ C:\Users\akg20\Desktop\Smart\SmartSite\obj\Debug\SmartSite.csproj.CoreCompileInp
 C:\Users\akg20\Desktop\Smart\SmartSite\obj\Debug\SmartSite.csproj.CopyComplete
 C:\Users\akg20\Desktop\Smart\SmartSite\obj\Debug\SmartSite.dll
 C:\Users\akg20\Desktop\Smart\SmartSite\obj\Debug\SmartSite.pdb
-C:\Users\akg20\Desktop\Smart\SmartSite\obj\Debug\SmartSite.Migrations.akg.resources
-C:\Users\akg20\Desktop\Smart\SmartSite\obj\Debug\SmartSite.csproj.GenerateResource.cache
-C:\Users\akg20\Desktop\Smart\SmartSite\obj\Debug\SmartSite.Migrations.allowHtml.resources
