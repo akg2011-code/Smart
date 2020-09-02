@@ -3,66 +3,6 @@
 @{
     ViewBag.Title = "Index";
 }
-
-<h2>Index</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.ProductType.Type)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Description)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Image)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PdfFile)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Brand)
-        </th>
-        <th></th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.ProductType.Type)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.Raw(HttpUtility.HtmlDecode(@item.Description));
-            </td>
-            <td>
-                <img src="~/imageUploads/@item.Image" height="100rem" width="100%" />
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PdfFile)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Brand)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
-                @Html.ActionLink("Details", "Details", new { id = item.ID }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.ID })
-            </td>
-        </tr>
-    }
-
-</table>
-
 <!-- Breadcrumb -->
 <div class="breadcrumbs overlay" style="background-image:url('../../img/5.jpg')">
     <div class="container">
@@ -105,7 +45,12 @@
                 <div class="portfolio-menu">
                     <!-- Portfolio Nav -->
                     <div class="button" style="text-align:left">
-                        <a href="Products/Create" class="bizwheel-btn theme-1 effect">Add new product <i class="fas fa-plus-circle"></i></a>
+                        @*@Html.ActionLink("Add new product <i class=\"fas fa - plus - circle\"></i>","Create",null,new { @class = "bizwheel-btn theme-1 effect" })*@
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <a href="Create" class="bizwheel-btn theme-1 effect">Add new product <i class="fas fa-plus-circle"></i></a>
+                        }
+
                     </div>
                     <ul id="portfolio-nav" class="portfolio-nav tr-list list-inline cbp-l-filters-work">
                         <li data-filter="*" class="cbp-filter-item active">All</li>
@@ -135,11 +80,15 @@
                                     </p>
                                 </div>
                             </div>
-                            <!--/ End Single Portfolio -->
-                            <div class="button">
-                                <a href="Products/Edit/@item.ID" class="bizwheel-btn theme-1 effect">Edit</a>
-                                <a href="Products/Delete/@item.ID" class="bizwheel-btn theme-2 effect">Delete</a>
-                            </div>
+                            @if (User.IsInRole("Admin"))
+                            {
+                                <!--/ End Single Portfolio -->
+                                <div class="button">
+                                    <a href="Products/Edit/@item.ID" class="bizwheel-btn theme-1 effect">Edit</a>
+                                    <a href="Products/Delete/@item.ID" class="bizwheel-btn theme-2 effect">Delete</a>
+                                </div>
+                            }
+
                         </div>
 
                         }

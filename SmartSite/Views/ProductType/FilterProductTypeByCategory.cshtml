@@ -1,21 +1,9 @@
 ﻿@model IEnumerable<SmartSite.Models.ProductType>
 @{
-    ViewBag.Title = "AllProductTypes";
+    ViewBag.Title = "FilterProductTypeByCategory";
 }
 
-<h2><u>Product Types</u></h2>
-
 <div class="container">
-    @Html.ActionLink("Create new Product Type", "CreateProductType", new { @class = "btn btn-light" })
-    <hr />
-
-    @using (Html.BeginForm("FilterProductTypeByCategory", "ProductType", FormMethod.Get))
-    {
-        @Html.Label("cat", "Search product types by category")
-        @Html.DropDownList("id", ViewData["Category"] as IEnumerable<SelectListItem>, new { id = "cat", @class = "browser-default custom-select" })
-        <input type="submit" value="Search" />
-    }
-    <hr />
     <table>
         <thead>
             <tr>
@@ -51,3 +39,4 @@
         </tbody>
     </table>
 </div>
+
