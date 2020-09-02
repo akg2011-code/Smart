@@ -11,6 +11,14 @@ using SmartSite.Models;
 
 namespace SmartSite.Controllers
 {
+    // class of authodized roles :
+    public class AuthorizedRoles :AuthorizeAttribute
+    {
+        public string roles ="Admin , User";
+    }
+
+    // ----------------------------------------------------
+
     public class ProductsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
@@ -22,14 +30,14 @@ namespace SmartSite.Controllers
             return View(product.ToList());
         }
 
-        [Authorize(Roles = "User")]
-        // GET: Products/Details/5
+        [AuthorizedRoles] // authorized class for both two roles
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+
             Product product = db.Product.Find(id);
             if (product == null)
             {
@@ -54,19 +62,24 @@ namespace SmartSite.Controllers
         {
             if (ModelState.IsValid)
             {
-                // uploading image :
-                string ImgPath = Path.Combine(Server.MapPath("~/imageUploads"), UploadImg.FileName);
-                UploadImg.SaveAs(ImgPath);
-                product.Image = UploadImg.FileName;
+                if (UploadImg != null && UploadPdf != null && UploadImg.ContentLength > 0 && UploadPdf.ContentLength > 0)
+                {
+                    // uploading image :
+                    string ImgPath = Path.Combine(Server.MapPath("~/imageUploads"), UploadImg.FileName);
+                    UploadImg.SaveAs(ImgPath);
+                    product.Image = UploadImg.FileName;
 
-                // uploading PDF :
-                string pdfPath = Path.Combine(Server.MapPath("~/pdfUploads"),UploadPdf.FileName);
-                UploadPdf.SaveAs(pdfPath);
-                product.PdfFile = UploadPdf.FileName;
+                    // uploading PDF :
+                    string pdfPath = Path.Combine(Server.MapPath("~/pdfUploads"), UploadPdf.FileName);
+                    UploadPdf.SaveAs(pdfPath);
+                    product.PdfFile = UploadPdf.FileName;
 
-                db.Product.Add(product);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                    db.Product.Add(product);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+                else
+                    ViewBag.Message = "You have not specified a file yet ...";
             }
 
             ViewBag.ProductTypeID = new SelectList(db.ProductType, "ID", "Type", product.ProductTypeID);
@@ -96,33 +109,68 @@ namespace SmartSite.Controllers
         {
             if (ModelState.IsValid)
             {
-                //string fullPath = Request.MapPath("~/imageUploads" + product.Image);
-                //if (System.IO.File.Exists(fullPath))
-                //{
-                //    System.IO.File.Delete(fullPath);
-                //}
-                // delete file using your filepath (path + filename)
-                var filepath = UploadImg.FileName;
+                if (UploadImg != null && UploadPdf != null && UploadImg.ContentLength > 0 && UploadPdf.ContentLength > 0)
+                {
+                    //string fullPath = Request.MapPath("~/imageUploads" + product.Image);
+                    //if (System.IO.File.Exists(fullPath))
+                    //{
+                    //    System.IO.File.Delete(fullPath);
+                    //}
+                    // delete file using your filepath (path + filename)
+                    var filepath = UploadImg.FileName;
                     System.IO.File.Delete(filepath);
 
-                // uploading image :
-                string ImgPath = Path.Combine(Server.MapPath("~/imageUploads"), UploadImg.FileName);
-                UploadImg.SaveAs(ImgPath);
-                product.Image = UploadImg.FileName;
+                    // uploading image :
+                    string ImgPath = Path.Combine(Server.MapPath("~/imageUploads"), UploadImg.FileName);
+                    UploadImg.SaveAs(ImgPath);
+                    product.Image = UploadImg.FileName;
 
-                // uploading PDF :
-                string pdfPath = Path.Combine(Server.MapPath("~/pdfUploads"), UploadPdf.FileName);
-                UploadPdf.SaveAs(pdfPath);
-                product.PdfFile = UploadPdf.FileName;
+                    // uploading PDF :
+                    string pdfPath = Path.Combine(Server.MapPath("~/pdfUploads"), UploadPdf.FileName);
+                    UploadPdf.SaveAs(pdfPath);
+                    product.PdfFile = UploadPdf.FileName;
 
-                db.Entry(product).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                    db.Entry(product).State = EntityState.Modified;
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
             }
             ViewBag.ProductTypeID = new SelectList(db.ProductType, "ID", "Type", product.ProductTypeID);
             return View(product);
         }
 
+        // ------------- download pdf ----------------
+        public FileResult Download(string fileName)
+        {
+            string fullPath = Path.Combine(Server.MapPath("~/pdfUploads"), fileName);
+            byte[] fileBytes = System.IO.File.ReadAllBytes(fullPath);
+            return File(fileBytes, System.Net.Mime.MediaTypeNames.Application.Octet, fileName);
+        }
+
+        private string GetFileTypeByExtension(string fileExtension)
+        {
+            switch (fileExtension.ToLower())
+            {
+                case ".docx":
+                case ".doc":
+                    return "Microsoft Word Document";
+                case ".xlsx":
+                case ".xls":
+                    return "Microsoft Excel Document";
+                case ".txt":
+                    return "Text Document";
+                case ".jpg":
+                case ".png":
+                    return "Image";
+                case ".pdf":
+                    return "PDF";
+                default:
+                    return "Unknown";
+            }
+        }
+
+
+        // ---------------- delete product --------------
         [Authorize(Roles = "Admin")]
         public ActionResult Delete(int? id)
         {
@@ -157,5 +205,6 @@ namespace SmartSite.Controllers
             }
             base.Dispose(disposing);
         }
+
     }
 }

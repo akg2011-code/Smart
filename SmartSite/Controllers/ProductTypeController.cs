@@ -2,6 +2,7 @@
 using SmartSite.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -68,16 +69,28 @@ namespace SmartSite.Controllers
 
         [Authorize(Roles = "Admin")]
         [HttpPost]
-        public ActionResult CreateProductType(ProductType createdProductType)
+        public ActionResult CreateProductType(ProductType createdProductType, HttpPostedFileBase UploadImg)
         {
             if (ModelState.IsValid)
             {
+                if (UploadImg != null && UploadImg.ContentLength > 0)
+                {
+                    // uploading image :
+                    string ImgPath = Path.Combine(Server.MapPath("~/imageUploads/TypeImg"), UploadImg.FileName);
+                    UploadImg.SaveAs(ImgPath);
+                    createdProductType.Image = UploadImg.FileName;
+                }
+                else
+                    ViewBag.Message = "You have not specified a file yet ...";
+
                 bool successfullyCreatedProductType = DAL.CreateProductType(createdProductType);
                 if (successfullyCreatedProductType)
                     return RedirectToAction("AllProductTypes");
                 else
                     return View(createdProductType);
+
             }
+            ViewData["Category"] = new SelectList(context.Category, "ID", "CategoryName");
             return View(createdProductType);
         }
 
@@ -95,15 +108,28 @@ namespace SmartSite.Controllers
 
         [Authorize(Roles = "Admin")]
         [HttpPost]
-        public ActionResult EditProductType(ProductType modifiedProductType)
+        public ActionResult EditProductType(ProductType modifiedProductType, HttpPostedFileBase UploadImg)
         {
             if (ModelState.IsValid)
             {
-                bool successfullyModofiedProductType = DAL.EditProductType(modifiedProductType.ID, modifiedProductType);
-                if (successfullyModofiedProductType)
-                    return RedirectToAction("AllProductTypes");
+                if (UploadImg != null && UploadImg.ContentLength > 0)
+                {
+                    // uploading image :
+                    string ImgPath = Path.Combine(Server.MapPath("~/imageUploads/TypeImg"), UploadImg.FileName);
+                    UploadImg.SaveAs(ImgPath);
+                    modifiedProductType.Image = UploadImg.FileName;
+
+
+                    bool successfullyModofiedProductType = DAL.EditProductType(modifiedProductType.ID, modifiedProductType);
+                    if (successfullyModofiedProductType)
+                        return RedirectToAction("AllProductTypes");
+                    else
+                        return View(modifiedProductType);
+
+                }
                 else
-                    return View(modifiedProductType);
+                    ViewBag.Message = "You have not specified a file yet ...";
+
             }
             return View(modifiedProductType);
         }

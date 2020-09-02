@@ -12,14 +12,22 @@ namespace SmartSite.Controllers
     public class HomeController : Controller
     {
         CategoryDAL DAL;
+        ApplicationDbContext Context;
         public HomeController()
         {
             DAL = new CategoryDAL();
+            Context = new ApplicationDbContext();
         }
 
         public ActionResult Index()
         {
             IEnumerable<Category> allCategories = DAL.GetAllCategories();
+
+            IEnumerable<News> selectedNews = Context.News.OrderByDescending(n => n.Date);
+            ViewBag.lastNews = selectedNews.FirstOrDefault();
+            ViewBag.secondLastNews = selectedNews.Skip(1).FirstOrDefault();
+
+
             return View(allCategories);
         }
 

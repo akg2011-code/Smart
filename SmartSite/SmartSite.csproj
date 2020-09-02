@@ -188,6 +188,10 @@
     <Compile Include="Migrations\202009020827138_rebuildModels.Designer.cs">
       <DependentUpon>202009020827138_rebuildModels.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202009021524350_editProductTypeAddImage.cs" />
+    <Compile Include="Migrations\202009021524350_editProductTypeAddImage.Designer.cs">
+      <DependentUpon>202009021524350_editProductTypeAddImage.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Category.cs" />
@@ -281,6 +285,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="DatabaseModels\" />
     <Folder Include="imageUploads\NewsImg\" />
+    <Folder Include="imageUploads\TypeImg\" />
     <Folder Include="pdfUploads\" />
   </ItemGroup>
   <ItemGroup>
@@ -299,6 +304,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202009020827138_rebuildModels.resx">
       <DependentUpon>202009020827138_rebuildModels.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009021524350_editProductTypeAddImage.resx">
+      <DependentUpon>202009021524350_editProductTypeAddImage.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
