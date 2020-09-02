@@ -31,11 +31,13 @@ namespace SmartSite.Controllers
                 return View("~/Views/Shared/Error.cshtml");
         }
 
+        [Authorize(Roles = "Admin")]
         public ActionResult CreateNews()
         {
             return View();
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public ActionResult CreateNews(News createdNews, HttpPostedFileBase UploadImg)
         {
@@ -55,7 +57,7 @@ namespace SmartSite.Controllers
             return View(createdNews);
         }
 
-
+        [Authorize(Roles = "Admin")]
         public ActionResult EditNews(int id) // id = news ID
         {
             News modifiedNews = DAL.GetNewsByID(id);
@@ -65,6 +67,7 @@ namespace SmartSite.Controllers
                 return View("~/Views/Shared/Error.cshtml");
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public ActionResult EditNews(News EditedNews, HttpPostedFileBase UploadImg)
         {
@@ -87,6 +90,7 @@ namespace SmartSite.Controllers
             return View(EditedNews);
         }
 
+        [Authorize(Roles = "Admin")]
         public ActionResult DeleteNews(int id) // id = news ID
         {
             News deletedNews = DAL.GetNewsByID(id);
@@ -96,6 +100,7 @@ namespace SmartSite.Controllers
                 return View("~/Views/Shared/Error.cshtml");
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public ActionResult DeleteNews(News deletedNews)
         {

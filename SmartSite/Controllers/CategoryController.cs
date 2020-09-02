@@ -22,10 +22,13 @@ namespace SmartSite.Controllers
             return View(allCategories);
         }
 
+        [Authorize(Roles = "Admin")]
         public ActionResult CreateCategory()
         {
             return View();
         }
+
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public ActionResult CreateCategory(Category newCategory)
         {
@@ -41,6 +44,7 @@ namespace SmartSite.Controllers
                 return View(newCategory);
         }
 
+        [Authorize(Roles = "Admin")]
         public ActionResult EditCategory(int id) // id = category ID
         {
             if (DAL.GetCategoryByID(id) != null)
@@ -48,6 +52,8 @@ namespace SmartSite.Controllers
             else
                 return View("~/View/Shared/Error.cshtml");
         }
+
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public ActionResult EditCategory(Category modifiedCategory)
         {
@@ -63,6 +69,7 @@ namespace SmartSite.Controllers
                 return View(modifiedCategory);
         }
 
+        [Authorize(Roles = "Admin")]
         public ActionResult DeleteCategory(int id) // id = category ID
         {
             if (DAL.GetCategoryByID(id) != null)
@@ -70,6 +77,8 @@ namespace SmartSite.Controllers
             else
                 return View("~/View/Shared/Error.cshtml");
         }
+
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public ActionResult DeleteCategory(Category deletedCategory)
         {

@@ -23,6 +23,11 @@ namespace SmartSite.DAL_Functionality
 
         public Category GetCategoryByID(int categoryID) => Context.Category.Find(categoryID);
 
+        public IEnumerable<Product> GetProductsOfSpecificCategory(int categoryID)
+        {
+            return Context.Product.Where(p=>p.ProductType.Category.ID == categoryID);
+        }
+
         public bool CreateCategory(Category newCategory)
         {
             if(newCategory != null)

@@ -6,9 +6,19 @@
     @Html.AntiForgeryToken()
 
     <ul class="nav navbar-nav navbar-right">
-        <li>
-            @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
-        </li>
+        @if (User.IsInRole("User"))
+        {
+            <li>
+                @Html.ActionLink("Smart welcomes you Mr/Mrs " + User.Identity.GetUserName() + " .", "Index", "Manage", routeValues: null, htmlAttributes: new { style = "color:bleck;font-size:large", title = "Manage", @class = "alert alert-success" })
+            </li>
+        }
+        @if (User.IsInRole("Admin"))
+        {
+            <li>
+                @Html.ActionLink("Admin Smart is loging in now .", "Index", "Manage", routeValues: null, htmlAttributes: new { style = "color:bleck;font-size:large", title = "Manage", @class = "alert alert-success" })
+            </li>
+        }
+        @Html.ActionLink("Settings", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
         <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
     </ul>
     }
