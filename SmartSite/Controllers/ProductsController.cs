@@ -22,6 +22,7 @@ namespace SmartSite.Controllers
             return View(product.ToList());
         }
 
+        [Authorize(Roles = "User")]
         // GET: Products/Details/5
         public ActionResult Details(int? id)
         {
@@ -34,10 +35,11 @@ namespace SmartSite.Controllers
             {
                 return HttpNotFound();
             }
-            ViewData["category"] = db.Product.Find(id).ProductType.Category.CategoryName;
+            ViewData["category"] = db.Product.Find(id).ProductType.Category;
             return View(product);
         }
 
+        [Authorize(Roles = "Admin")]
         // GET: Products/Create
         public ActionResult Create()
         {
@@ -45,9 +47,7 @@ namespace SmartSite.Controllers
             return View();
         }
 
-        // POST: Products/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(Product product ,HttpPostedFileBase UploadImg)
@@ -68,7 +68,7 @@ namespace SmartSite.Controllers
             return View(product);
         }
 
-        // GET: Products/Edit/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -84,6 +84,7 @@ namespace SmartSite.Controllers
             return View(product);
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(Product product, HttpPostedFileBase UploadImg)
@@ -113,7 +114,7 @@ namespace SmartSite.Controllers
             return View(product);
         }
 
-        // GET: Products/Delete/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -128,7 +129,7 @@ namespace SmartSite.Controllers
             return View(product);
         }
 
-        // POST: Products/Delete/5
+        [Authorize(Roles = "Admin")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

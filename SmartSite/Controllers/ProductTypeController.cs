@@ -8,7 +8,6 @@ using System.Web.Mvc;
 
 namespace SmartSite.Controllers
 {
-    [Authorize(Roles = "Admin")]
     public class ProductTypeController : Controller
     {
         ProductTypeDAL DAL;
@@ -32,6 +31,7 @@ namespace SmartSite.Controllers
                 return View("~/Views/Shared/Error.cshtml");
         }
 
+        [Authorize(Roles = "User")]
         // ------------------ filter products by type -------
         public ActionResult FilterProductsByType(int id) // id = type ID
         {
@@ -40,6 +40,7 @@ namespace SmartSite.Controllers
         }
 
         // ------------------  all products ---------------
+        [Authorize(Roles = "User")]
         public ActionResult AllProductTypes()
         {
             ViewData["Category"] = new SelectList(context.Category, "ID", "CategoryName");
@@ -48,21 +49,24 @@ namespace SmartSite.Controllers
         }
 
         // ------------------ filter product type by category -----------
+        [Authorize(Roles = "User")]
         public ActionResult FilterProductTypeByCategory(int? id) // id = category ID
         {
             if (id == null)
-                return View("~/View/Shared/Error.cshtml");
+                return View("~/Views/Shared/Error.cshtml");
             IEnumerable<ProductType> filteredTypes = DAL.FilterProductTypeByCategory(id);
             return View(filteredTypes);
         }
 
-
+        [Authorize(Roles = "Admin")]
         // ---------------- create type ------------------
         public ActionResult CreateProductType()
         {
             ViewData["Category"] = new SelectList(context.Category, "ID", "CategoryName");
             return View();
         }
+
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public ActionResult CreateProductType(ProductType createdProductType)
         {
@@ -77,6 +81,7 @@ namespace SmartSite.Controllers
             return View(createdProductType);
         }
 
+        [Authorize(Roles = "Admin")]
         // --------------------- edit type ----------------------
         public ActionResult EditProductType(int id)
         {
@@ -87,6 +92,8 @@ namespace SmartSite.Controllers
             else
                 return View("~/Views/Shared/Error.cshtml");
         }
+
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public ActionResult EditProductType(ProductType modifiedProductType)
         {
@@ -101,6 +108,7 @@ namespace SmartSite.Controllers
             return View(modifiedProductType);
         }
 
+        [Authorize(Roles = "Admin")]
         // ---------------------- delete Type -------------------
         public ActionResult DeleteProductType(int id)
         {
@@ -110,6 +118,8 @@ namespace SmartSite.Controllers
             else
                 return View("~/Views/Shared/Error.cshtml");
         }
+
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public ActionResult DeleteProductType(ProductType DeletedProductType)
         {

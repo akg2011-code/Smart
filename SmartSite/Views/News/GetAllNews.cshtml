@@ -4,8 +4,13 @@
 }
 
     <div class="container">
-        @Html.ActionLink("Create News", "CreateNews", "News", new { @class = "btn btn-info" })
-        <hr />
+        <br />
+        @if (User.IsInRole("Admin"))
+        {
+            @Html.ActionLink("Create News", "CreateNews", "News", new { @class = "btn btn-info" })
+            <hr />
+        }
+
         <div class="row">
             @{
                 foreach (var news in Model)
@@ -16,8 +21,12 @@
                             <h5 class="card-title"><u>Title</u> : @news.Title</h5> <span class="card-text">@news.Date .</span>
                             <p><u>Details</u> : @news.Details</p>
                             @Html.ActionLink("More Details", "NewsDetails", new { id = news.ID }, new { @class = "btn btn-primary" })
-                            @Html.ActionLink("Edit", "EditNews", new { id = news.ID }, new { @class = "btn btn-warning" })
-                            @Html.ActionLink("Delete", "DeleteNews", new { id = news.ID }, new { @class = "btn btn-danger" })
+                            @if (User.IsInRole("Admin"))
+                            {
+                                @Html.ActionLink("Edit", "EditNews", new { id = news.ID }, new { @class = "btn btn-warning" })
+                                @Html.ActionLink("Delete", "DeleteNews", new { id = news.ID }, new { @class = "btn btn-danger" })
+                            }
+
                         </div>
                     </div>
                 }

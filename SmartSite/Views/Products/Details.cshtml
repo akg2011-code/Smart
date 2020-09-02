@@ -12,8 +12,8 @@
                     <!-- Bread Menu -->
                     <div class="bread-menu">
                         <ul>
-                            <li><a href="index">Home  -</a></li>
-                            <li><a href="">@ViewData["category"]  -</a></li>
+                            <li><a href="@Url.Action("index","Home",null)">Home  -</a></li>
+                            <li><a href="@Url.Action("FilterProductTypeByCategory","ProductType",new { id=@ViewBag.category.ID})">@ViewBag.category.CategoryName -</a></li>
                             <li><a href="index">@Html.DisplayFor(model => model.ProductType.Type)</a></li>
                         </ul>
                     </div>

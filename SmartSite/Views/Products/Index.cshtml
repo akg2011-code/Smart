@@ -70,7 +70,10 @@
                             <div class="single-portfolio">
                                 <div class="portfolio-head overlay">
                                     <img src="~/imageUploads/@item.Image" />
-                                    <a class="more" href="Products/Details/@item.ID"><i class="fas fa-long-arrow-alt-right"></i></a>
+                                    @if (User.IsInRole("User"))
+                                    {
+                                        <a class="more" href="@Url.Action("Details","Products",new { id=item.ID})"><i class="fas fa-long-arrow-alt-right"></i></a>
+                                    }
                                 </div>
                                 <div class="portfolio-content">
                                     <h4><a href="portfolio-single.html">@Html.DisplayFor(modelItem => item.Name)</a></h4>

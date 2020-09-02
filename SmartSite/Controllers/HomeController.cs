@@ -1,16 +1,26 @@
-﻿using System;
+﻿using SmartSite.DAL_Functionality;
+using SmartSite.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
+
 namespace SmartSite.Controllers
 {
     public class HomeController : Controller
     {
+        CategoryDAL DAL;
+        public HomeController()
+        {
+            DAL = new CategoryDAL();
+        }
+
         public ActionResult Index()
         {
-            return View();
+            IEnumerable<Category> allCategories = DAL.GetAllCategories();
+            return View(allCategories);
         }
 
         public ActionResult About()

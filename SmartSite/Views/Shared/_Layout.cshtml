@@ -242,8 +242,8 @@
                                                         <div class="menu-home-menu-container">
                                                             <!-- Naviagiton -->
                                                             <ul id="nav" class="nav main-menu menu navbar-nav">
-                                                                <li><a href="Home/Index">Home</a></li>
-                                                                <li><a href="Home/About">About Us</a></li>
+                                                                <li>@Html.ActionLink("Home","Index","Home",null,null)</li>
+                                                                <li>@Html.ActionLink("About Us", "About", "Home", null, null)</li>
                                                                 <li class="icon-active">
                                                                     <a href="#">
                                                                         Products
@@ -273,11 +273,9 @@
                                                                         <li><a href="blog-single.html">Safety</a></li>
                                                                     </ul>
                                                                 </li>
-                                                                <li><a href="contact.html">Contact Us</a></li>
+                                                                <li>@Html.ActionLink("Contact Us", "Contact", "Home", null, null)</li>
                                                                 <li class="icon-active">
-                                                                    <a href="#">
-                                                                        News
-                                                                    </a>
+                                                                    @Html.ActionLink("News", "GetAllNews", "News", null, null)
                                                                 </li>
                                                             </ul>
                                                             <!--/ End Naviagiton -->
