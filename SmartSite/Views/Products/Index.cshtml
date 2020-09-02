@@ -70,7 +70,7 @@
                             <div class="single-portfolio">
                                 <div class="portfolio-head overlay">
                                     <img src="~/imageUploads/@item.Image" />
-                                    @if (User.IsInRole("User"))
+                                    @if (User.IsInRole("User") && User.IsInRole("Admin"))
                                     {
                                         <a class="more" href="@Url.Action("Details","Products",new { id=item.ID})"><i class="fas fa-long-arrow-alt-right"></i></a>
                                     }
@@ -87,8 +87,8 @@
                             {
                                 <!--/ End Single Portfolio -->
                                 <div class="button">
-                                    <a href="Products/Edit/@item.ID" class="bizwheel-btn theme-1 effect">Edit</a>
-                                    <a href="Products/Delete/@item.ID" class="bizwheel-btn theme-2 effect">Delete</a>
+                                    <a href="@Url.Action("Edit", "Products",new { id= item.ID })" class="bizwheel-btn theme-1 effect">Edit</a>
+                                    <a href="@Url.Action("Delete", "Products",new { id= item.ID })" class="bizwheel-btn theme-2 effect">Delete</a>
                                 </div>
                             }
 

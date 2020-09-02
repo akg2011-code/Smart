@@ -50,14 +50,19 @@ namespace SmartSite.Controllers
         [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Product product ,HttpPostedFileBase UploadImg)
+        public ActionResult Create(Product product ,HttpPostedFileBase UploadImg , HttpPostedFileBase UploadPdf)
         {
             if (ModelState.IsValid)
             {
+                // uploading image :
                 string ImgPath = Path.Combine(Server.MapPath("~/imageUploads"), UploadImg.FileName);
                 UploadImg.SaveAs(ImgPath);
                 product.Image = UploadImg.FileName;
 
+                // uploading PDF :
+                string pdfPath = Path.Combine(Server.MapPath("~/pdfUploads"),UploadPdf.FileName);
+                UploadPdf.SaveAs(pdfPath);
+                product.PdfFile = UploadPdf.FileName;
 
                 db.Product.Add(product);
                 db.SaveChanges();
@@ -87,7 +92,7 @@ namespace SmartSite.Controllers
         [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(Product product, HttpPostedFileBase UploadImg)
+        public ActionResult Edit(Product product, HttpPostedFileBase UploadImg , HttpPostedFileBase UploadPdf)
         {
             if (ModelState.IsValid)
             {
@@ -99,12 +104,16 @@ namespace SmartSite.Controllers
                 // delete file using your filepath (path + filename)
                 var filepath = UploadImg.FileName;
                     System.IO.File.Delete(filepath);
-                
 
-
+                // uploading image :
                 string ImgPath = Path.Combine(Server.MapPath("~/imageUploads"), UploadImg.FileName);
                 UploadImg.SaveAs(ImgPath);
                 product.Image = UploadImg.FileName;
+
+                // uploading PDF :
+                string pdfPath = Path.Combine(Server.MapPath("~/pdfUploads"), UploadPdf.FileName);
+                UploadPdf.SaveAs(pdfPath);
+                product.PdfFile = UploadPdf.FileName;
 
                 db.Entry(product).State = EntityState.Modified;
                 db.SaveChanges();

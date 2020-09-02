@@ -281,6 +281,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="DatabaseModels\" />
     <Folder Include="imageUploads\NewsImg\" />
+    <Folder Include="pdfUploads\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
