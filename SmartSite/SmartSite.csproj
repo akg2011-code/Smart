@@ -184,13 +184,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202009020827138_rebuildModels.cs" />
-    <Compile Include="Migrations\202009020827138_rebuildModels.Designer.cs">
-      <DependentUpon>202009020827138_rebuildModels.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202009021524350_editProductTypeAddImage.cs" />
-    <Compile Include="Migrations\202009021524350_editProductTypeAddImage.Designer.cs">
-      <DependentUpon>202009021524350_editProductTypeAddImage.cs</DependentUpon>
+    <Compile Include="Migrations\202009030849027_akg.cs" />
+    <Compile Include="Migrations\202009030849027_akg.Designer.cs">
+      <DependentUpon>202009030849027_akg.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -280,6 +276,7 @@
     <Content Include="Views\Category\DeleteCategory.cshtml" />
     <Content Include="Views\ProductType\FilterProductTypeByCategory.cshtml" />
     <Content Include="Views\ProductType\FilterProductsByType.cshtml" />
+    <Content Include="Views\ProductType\CreatePT.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -302,11 +299,8 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202009020827138_rebuildModels.resx">
-      <DependentUpon>202009020827138_rebuildModels.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202009021524350_editProductTypeAddImage.resx">
-      <DependentUpon>202009021524350_editProductTypeAddImage.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202009030849027_akg.resx">
+      <DependentUpon>202009030849027_akg.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

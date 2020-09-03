@@ -32,7 +32,7 @@ namespace SmartSite.Controllers
                 return View("~/Views/Shared/Error.cshtml");
         }
 
-        [Authorize(Roles = "User")]
+        //[Authorize(Roles = "User")]
         // ------------------ filter products by type -------
         public ActionResult FilterProductsByType(int id) // id = type ID
         {
@@ -41,7 +41,7 @@ namespace SmartSite.Controllers
         }
 
         // ------------------  all products ---------------
-        [Authorize(Roles = "User")]
+        //[Authorize(Roles = "User")]
         public ActionResult AllProductTypes()
         {
             ViewData["Category"] = new SelectList(context.Category, "ID", "CategoryName");
@@ -50,7 +50,7 @@ namespace SmartSite.Controllers
         }
 
         // ------------------ filter product type by category -----------
-        [Authorize(Roles = "User")]
+        //[Authorize(Roles = "User")]
         public ActionResult FilterProductTypeByCategory(int? id) // id = category ID
         {
             if (id == null)
@@ -63,12 +63,13 @@ namespace SmartSite.Controllers
         // ---------------- create type ------------------
         public ActionResult CreateProductType()
         {
-            ViewData["Category"] = new SelectList(context.Category, "ID", "CategoryName");
+            ViewBag.CategoryID = new SelectList(context.Category, "ID", "CategoryName");
             return View();
         }
 
         [Authorize(Roles = "Admin")]
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult CreateProductType(ProductType createdProductType, HttpPostedFileBase UploadImg)
         {
             if (ModelState.IsValid)
@@ -79,18 +80,24 @@ namespace SmartSite.Controllers
                     string ImgPath = Path.Combine(Server.MapPath("~/imageUploads/TypeImg"), UploadImg.FileName);
                     UploadImg.SaveAs(ImgPath);
                     createdProductType.Image = UploadImg.FileName;
+                    context.ProductType.Add(createdProductType);
+                    context.SaveChanges();
+                    return RedirectToAction("AllProductTypes");
+
                 }
                 else
                     ViewBag.Message = "You have not specified a file yet ...";
 
-                bool successfullyCreatedProductType = DAL.CreateProductType(createdProductType);
-                if (successfullyCreatedProductType)
-                    return RedirectToAction("AllProductTypes");
-                else
-                    return View(createdProductType);
-
+                //bool successfullyCreatedProductType = DAL.CreateProductType(createdProductType);
+                //if (successfullyCreatedProductType)
+                //    return RedirectToAction("AllProductTypes");
+                //else
+                //return View(createdProductType);
             }
-            ViewData["Category"] = new SelectList(context.Category, "ID", "CategoryName");
+
+
+            //ViewData["Category"] = new SelectList(context.Category, "ID", "CategoryName");
+            ViewBag.CategoryID = new SelectList(context.Category, "ID", "CategoryName", createdProductType.CategoryID);
             return View(createdProductType);
         }
 

@@ -48,10 +48,11 @@
                                         </p>
                                         <br />
                                         <h3>
-                                            <a href="#">
+                                            <a href="@Url.Action("Download", "Products", new { fileName = Model.PdfFile })">
                                                 Download The Manual
                                                 @Html.DisplayFor(model => model.PdfFile)
                                                 <i class="fas fa-download"></i>
+                                                @*@Html.ActionLink("Download", "Download", new { fileName = Model.PdfFile })*@
                                             </a>
                                         </h3>
 

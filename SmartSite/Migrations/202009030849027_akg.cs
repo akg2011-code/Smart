@@ -3,7 +3,7 @@ namespace SmartSite.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class editProductTypeAddImage : DbMigration
+    public partial class akg : DbMigration
     {
         public override void Up()
         {

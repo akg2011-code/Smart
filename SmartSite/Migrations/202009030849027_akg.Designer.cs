@@ -7,13 +7,13 @@ namespace SmartSite.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class editProductTypeAddImage : IMigrationMetadata
+    public sealed partial class akg : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(editProductTypeAddImage));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(akg));
         
         string IMigrationMetadata.Id
         {
-            get { return "202009021524350_editProductTypeAddImage"; }
+            get { return "202009030849027_akg"; }
         }
         
         string IMigrationMetadata.Source
