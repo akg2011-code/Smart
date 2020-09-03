@@ -277,10 +277,15 @@
                                                 <!--/ End Search Bar -->
                                                 <!-- Search Form -->
                                                 <div class="search-top">
-                                                    <form action="#" class="search-form" method="get">
+                                                    @using (Html.BeginForm("SearchProductByName", "Products", FormMethod.Get))
+                                                    {
+                                                        @Html.TextBox("productName",null, new { placeholder = "Search here" })
+                                                        <button type="submit" id="searchsubmit"><i class="fa fa-search"></i></button>
+                                                    }
+                                                    @*<form action="#" class="search-form" method="get">
                                                         <input type="text" name="s" value="" placeholder="Search here" />
                                                         <button type="submit" id="searchsubmit"><i class="fa fa-search"></i></button>
-                                                    </form>
+                                                    </form>*@
                                                 </div>
                                                 <!--/ End Search Form -->
                                             </div>
