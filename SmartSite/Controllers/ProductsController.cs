@@ -47,6 +47,22 @@ namespace SmartSite.Controllers
             return View(product);
         }
 
+        // ------------------------ search product bu Name ---------------------------
+        public ActionResult SearchProductByName(string productName)
+        {
+            if (productName==null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            IEnumerable<Product> products = db.Product.Where(p => p.Name.Contains(productName));
+            if (products != null && products.Count() > 0)
+                return View("Index", products);
+            else
+                return View("~/View/Shared/Error.cshtml");
+        }
+
+
         [Authorize(Roles = "Admin")]
         // GET: Products/Create
         public ActionResult Create()
