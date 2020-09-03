@@ -12,12 +12,12 @@
                     <!-- Bread Menu -->
                     <div class="bread-menu">
                         <ul>
-                            <li><a href="@Url.Action("Index","Home")">Home  </a></li>
+                            <li><a href="index.html">Home  -</a></li>
                             <li><a href="portfolio.html">@ViewData["category"] </a></li>
                         </ul>
                     </div>
                     <!-- Bread Title -->
-                    <div class="bread-title"><h2><u>Product Page</u></h2></div>
+                    <div class="bread-title"><h2>CableTie</h2></div>
                 </div>
             </div>
         </div>
@@ -31,7 +31,7 @@
             <div class="col-lg-6 offset-lg-3 col-md-6 offset-md-3 col-12">
                 <div class="section-title default text-center">
                     <div class="section-top">
-                        <h1><span>Our Products <i class="fas fa-spinner"></i></span></h1>
+                        <h1><span>@ViewData["category"] </span><b></b></h1>
                     </div>
                     <div class="section-bottom">
                         <div class="text">
@@ -45,16 +45,16 @@
                 <div class="portfolio-menu">
                     <!-- Portfolio Nav -->
                     <div class="button" style="text-align:left">
-                        
+                        @*@Html.ActionLink("Add new product <i class=\"fas fa - plus - circle\"></i>","Create",null,new { @class = "bizwheel-btn theme-1 effect" })*@
                         @if (User.IsInRole("Admin"))
                         {
                             <a href="Create" class="bizwheel-btn theme-1 effect">Add new product <i class="fas fa-plus-circle"></i></a>
                         }
 
                     </div>
-                    @*<ul id="portfolio-nav" class="portfolio-nav tr-list list-inline cbp-l-filters-work">
+                    <ul id="portfolio-nav" class="portfolio-nav tr-list list-inline cbp-l-filters-work">
                         <li data-filter="*" class="cbp-filter-item active">All</li>
-                    </ul>*@
+                    </ul>
                     <!--/ End Portfolio Nav -->
                 </div>
             </div>
@@ -70,13 +70,10 @@
                             <div class="single-portfolio">
                                 <div class="portfolio-head overlay">
                                     <img src="~/imageUploads/@item.Image" />
-                                    @if (User.IsInRole("User") || User.IsInRole("Admin"))
-                                    {
-                                        <a class="more" href="@Url.Action("Details","Products",new { id=item.ID})"><i class="fas fa-long-arrow-alt-right"></i></a>
-                                    }
+                                    <a class="more" href=" @Url.Action("Details", "Products", new { id = item.ID })"><i class="fas fa-long-arrow-alt-right"></i></a>
                                 </div>
                                 <div class="portfolio-content">
-                                    <h4><a href="@Url.Action("Details","Products",new { id=item.ID})">@Html.DisplayFor(modelItem => item.Name)</a></h4>
+                                    <h4><a href="@Url.Action("Details", "Products", new { id = item.ID })">@Html.DisplayFor(modelItem => item.Name)</a></h4>
                                     <br />
                                     <p>
                                         @Html.DisplayFor(modelItem => item.ProductType.Type)
@@ -87,8 +84,8 @@
                             {
                                 <!--/ End Single Portfolio -->
                                 <div class="button">
-                                    <a href="@Url.Action("Edit", "Products",new { id= item.ID })" class="bizwheel-btn theme-1 effect">Edit</a>
-                                    <a href="@Url.Action("Delete", "Products",new { id= item.ID })" class="bizwheel-btn theme-2 effect">Delete</a>
+                                    <a href="Products/Edit/@item.ID" class="bizwheel-btn theme-1 effect">Edit</a>
+                                    <a href="Products/Delete/@item.ID" class="bizwheel-btn theme-2 effect">Delete</a>
                                 </div>
                             }
 

@@ -2,17 +2,40 @@
 @{
     ViewBag.Title = "NewsDetails";
 }
-
+<!-- Blog Single -->
+<section class="news-area archive blog-single section-padding">
     <div class="container">
-        <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
-            <div class="card-header">@Model.Title</div>
-            <img class="card-img-top" src="~/imageUploads/NewsImg/@Model.Image" alt="Card image cap">
-            <div class="card-body">
-                <h5 class="card-title">Publish Time : @Model.Date</h5>
-                <p class="card-text">@Model.Details</p>
+        <div class="row">
+            <div class="col-lg-10 offset-lg-1 col-md-10 offset-md-1 col-12">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="blog-single-main">
+                            <div class="blog-detail">
+                                <!-- News meta -->
+                                <div class="news-meta">
+                                    <h4><i class="fa fa-pencil"></i> @Model.Date</h4>
+                                </div>
+                                <h2 class="blog-title">@Model.Title</h2>
+                                <div class="row blog-space">
+                                    <div class="col-lg-6">
+                                        <img class="card-img-top" src="~/imageUploads/NewsImg/@Model.Image" alt="Card image cap">
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <p>@Model.Details</p>
+                                    </div>
+                                </div>
+                                <div>
+                                </div>
+                            </div>
+                            <div class="more ">
+                                @Html.ActionLink("Return to all news", "GetAllNews", null, new { @class = "btn btn-info form-control col-4 " })
+                            </div>
+
+                        </div>
+                </div>
             </div>
         </div>
-        <div>
-            @Html.ActionLink("Return", "GetAllNews", null, new { @class = "btn btn-info form-control" })
-        </div>
     </div>
+        </div>
+</section>
+<!--/ End Services -->

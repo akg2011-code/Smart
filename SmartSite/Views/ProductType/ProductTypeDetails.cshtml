@@ -33,11 +33,11 @@
                             <td>@product.ProductType.Type</td>
                             <td>@product.ProductType.Category.CategoryName</td>
                             <td>
-                                <a href="@Url.Action("Details","Products",new { id=product.ID})">Details</a>
+                                @Html.ActionLink("Details", "Details", new { id = product.ID }) |
                                 @if (User.IsInRole("Admin"))
                                 {
-                                    @Html.ActionLink("Edit", "EditProductType", "Products", new { id = product.ID })
-                                    @Html.ActionLink("Delete", "DeleteProductType", "Products", new { id = product.ID })
+                                    @Html.ActionLink("Edit", "Edit", new { id = product.ID })
+                                    @Html.ActionLink("Delete", "Delete", new { id = product.ID })
                                 }
 
                             </td>

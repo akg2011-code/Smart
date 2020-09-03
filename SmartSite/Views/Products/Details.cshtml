@@ -12,8 +12,8 @@
                     <!-- Bread Menu -->
                     <div class="bread-menu">
                         <ul>
-                            <li><a href="@Url.Action("index","Home",null)">Home  -</a></li>
-                            <li><a href="@Url.Action("FilterProductTypeByCategory","ProductType",new { id=@ViewBag.category.ID})">@ViewBag.category.CategoryName -</a></li>
+                            <li><a href="index">Home  -</a></li>
+                            <li><a href="">@ViewData["category"]  -</a></li>
                             <li><a href="index">@Html.DisplayFor(model => model.ProductType.Type)</a></li>
                         </ul>
                     </div>
@@ -48,12 +48,11 @@
                                         </p>
                                         <br />
                                         <h3>
-                                            @*Products/DownloadPdf?file=@Model.PdfFile*@
-                                            @*<a href="">
-            Download The Manual
-            <i class="fas fa-download"></i>
-        </a>*@
-                                            @Html.ActionLink("Download", "Download", new { fileName = Model.PdfFile })
+                                            <a href="#">
+                                                Download The Manual
+                                                @Html.DisplayFor(model => model.PdfFile)
+                                                <i class="fas fa-download"></i>
+                                            </a>
                                         </h3>
 
                                     </div>

@@ -4,69 +4,53 @@
     ViewBag.Title = "Delete";
 }
 
-<h2>Delete</h2>
+    <div class="deletePage">
+        <div class="page-part">
+            <div class="row d-flex justify-content-center">
+                <div class="icon-delete col-12 d-flex justify-content-center">
+                    <i class="far fa-times-circle"></i>
+                </div>
+                <div>
+                    <h2>Are You Sure Delete product <a>@Model.Name</a> ?</h2>
+                    <p>This will cause deleting all data of this product .</p>
+                </div>
+            </div>
+            <div class="row d-flex justify-content-center">
+                <div class="cbp-item business animation">
+                    <!-- Single Portfolio -->
+                    <div class="single-portfolio">
+                        <div class="portfolio-head overlay">
+                            <img src="~/imageUploads/@Model.Image" style="width:350px;height:300px" />
+                            <a class="more" href="Details/@Model.ID"><i class="fas fa-long-arrow-alt-right"></i></a>
+                        </div>
+                        <div class="portfolio-content">
+                            <h4><a href="Details/@Model.ID">@Html.DisplayFor(model => model.Name)</a></h4>
+                            <br />
+                            <p>
+                                @Html.DisplayFor(model => model.ProductType.Type)
+                            </p>
+                        </div>
+                    </div>
 
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <h4>Product</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.ProductType.Type)
-        </dt>
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
 
-        <dd>
-            @Html.DisplayFor(model => model.ProductType.Type)
-        </dd>
+                        @*<div class="form-actions no-color">
+                            <input type="submit" value="Delete" class="btn btn-danger form-control" />
+                            @Html.ActionLink("Cancle", "Index", null, new { @class = "btn btn-info form-control" })
+                        </div>*@
+                        <div class="row d-flex justify-content-center">
+                            <div class="col-sm-4">
+                                <button type="submit" class="btn btn-danger form-control">Delete</button>
+                            </div>
+                            <div class="col-sm-4">
+                                @Html.ActionLink("Cancel", "Index", null, new { @class = "btn btn-info form-control" })
+                            </div>
+                        </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Description)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Image)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Image)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.PdfFile)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.PdfFile)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Brand)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Brand)
-        </dd>
-
-    </dl>
-
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
-
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
+                    }
+                </div>
+            </div>
+            </div>
         </div>
-    }
-</div>

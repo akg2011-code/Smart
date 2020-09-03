@@ -5388,9 +5388,44 @@ p.has-large-font-size {
   End Mail Success CSS
 =========================*/
 /*======================================
-	End facebook chat box
-========================================*/
+        Delete pages
+  ========================================*/
+.deletePage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 3%;
+}
+.icon-delete i {
+    font-size: 100px;
+    color: tomato;
+    padding: 3%;
+}
+.deletePage p {
+    color: #e84f4f;
+    padding: 3%;
+    opacity: 1;
+    text-shadow: 0.5px 0.5px 0.5px;
+    animation-name: alertText;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+}
+.page-part {
+    padding: 10px;
+    border: 1px solid #aac3ea82;
+    box-shadow: 2px 2px 2px #636663;
+}
+@keyframes alertText {
+    from {
+        /*opacity:1;*/
+        text-shadow: 0.5px 0.5px 0.5px;
+    }
 
+    to {
+        /*opacity: 0.3;*/
+        text-shadow: 2px 2px 2px;
+    }
+}
 /*======================================
 	End facebook chat box
 ========================================*/

@@ -3,33 +3,56 @@
     ViewBag.Title = "GetAllNews";
 }
 
+<!-- Blog Layout -->
+<section class="blog-layout news-default section-space">
     <div class="container">
-        <br />
-        @if (User.IsInRole("Admin"))
-        {
-            @Html.ActionLink("Create News", "CreateNews", "News", new { @class = "btn btn-info" })
-            <hr />
-        }
+        @Html.ActionLink("Create News", "CreateNews", "News", new { @class = "btn btn-info" })
+        @{
+            foreach (var news in Model)
+            {
+                <div class="row ">
+                    <div class="col-lg-4 col-md-6 col-12">
+                        <!-- Single Blog -->
+                        <div class="single-news ">
+                            <div class="news-head overlay">
+                                <img class="card-img-top" src="~/imageUploads/NewsImg/@news.Image" alt="productImage">
+                                <ul class="news-meta">
+                                    <li class="date"><i class="fa fa-calendar"></i>@news.Date</li>
+                                </ul>
+                            </div>
+                            <div class="news-body">
+                                <div class="news-content">
+                                    <h3 class="news-title"><a href="@Url.Action("NewsDetails", "News", new { id=news.ID})">@news.Title</a></h3>
 
-        <div class="row">
-            @{
-                foreach (var news in Model)
-                {
-                    <div class="card" style="width: 18rem;">
-                        <img class="card-img-top" src="~/imageUploads/NewsImg/@news.Image" alt="productImage">
-                        <div class="card-body">
-                            <h5 class="card-title"><u>Title</u> : @news.Title</h5> <span class="card-text">@news.Date .</span>
-                            <p><u>Details</u> : @news.Details</p>
-                            @Html.ActionLink("More Details", "NewsDetails", new { id = news.ID }, new { @class = "btn btn-primary" })
-                            @if (User.IsInRole("Admin"))
-                            {
-                                @Html.ActionLink("Edit", "EditNews", new { id = news.ID }, new { @class = "btn btn-warning" })
-                                @Html.ActionLink("Delete", "DeleteNews", new { id = news.ID }, new { @class = "btn btn-danger" })
-                            }
-
+                                        <div class="news-text"><p style="height:50px;overflow:hidden">@news.Details</p></div>
+                                        <a href="@Url.Action("NewsDetails", "News", new { id=news.ID})" class="more">Continue reading <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
+                                </div>
+                                <div class="m-1">
+                                    @Html.ActionLink("Edit", "EditNews", new { id = news.ID }, new { @class = "btn btn-warning" })
+                                    @Html.ActionLink("Delete", "DeleteNews", new { id = news.ID }, new { @class = "btn btn-danger" })
+                                </div>
+                            </div>
                         </div>
+                        <!--/ End Single Blog -->
                     </div>
-                }
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <!-- Pagination -->
+                        <div class="pagination-plugin">
+                            <ul class="pagination-list">
+                                <li class="prev"><a href="#">Prev</a></li>
+                                <li class="page-numbers"><a href="#">1</a></li>
+                                <li class="page-numbers current"><a href="#">2</a></li>
+                                <li class="page-numbers"><a href="#">3</a></li>
+                                <li class="next"><a href="#">Next</a></li>
+                            </ul>
+                        </div>
+                        <!--/ End Pagination -->
+                    </div>
+                </div>
             }
-        </div>
+        }
     </div>
+    </section>
+
