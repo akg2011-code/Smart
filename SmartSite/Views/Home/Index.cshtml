@@ -461,28 +461,31 @@
             <div class="col-12">
                 <div class="blog-latest blog-latest-slider">
                     @{
-                        foreach (var news in ViewBag.displayedNews)
+                        if (ViewBag.displayedNews != null)
                         {
-                            <div class="single-slider">
-                                <!-- Single Blog -->
-                                <div class="single-news ">
-                                    <div class="news-head overlay">
-                                        <span class="news-img" style="background-image:url('https://via.placeholder.com/700x530')"></span>
-                                        <a href="@Url.Action("NewsDetails","News",new { id= news.ID})" class="bizwheel-btn theme-2">Read more</a>
-                                    </div>
-                                    <div class="news-body">
-                                        <div class="news-content">
-                                            <h3 class="news-title"><a href="@Url.Action("NewsDetails","News",new { id= news.ID})">@news.Title</a></h3>
-                                            <div class="news-text"><p>@news.Details</p></div>
-                                            <ul class="news-meta">
-                                                <li class="date"><i class="fa fa-calendar"></i>@news.Date.ToString("yyyy-MM-dd")</li>
-                                                <li class="view"><i class="fa fa-comments"></i>0</li>
-                                            </ul>
+                            foreach (var news in ViewBag.displayedNews)
+                            {
+                                <div class="single-slider">
+                                    <!-- Single Blog -->
+                                    <div class="single-news ">
+                                        <div class="news-head overlay">
+                                            <span class="news-img" style="background-image:url('https://via.placeholder.com/700x530')"></span>
+                                            <a href="@Url.Action("NewsDetails","News",new { id= news.ID})" class="bizwheel-btn theme-2">Read more</a>
+                                        </div>
+                                        <div class="news-body">
+                                            <div class="news-content">
+                                                <h3 class="news-title"><a href="@Url.Action("NewsDetails","News",new { id= news.ID})">@news.Title</a></h3>
+                                                <div class="news-text"><p>@news.Details</p></div>
+                                                <ul class="news-meta">
+                                                    <li class="date"><i class="fa fa-calendar"></i>@news.Date.ToString("yyyy-MM-dd")</li>
+                                                    <li class="view"><i class="fa fa-comments"></i>0</li>
+                                                </ul>
+                                            </div>
                                         </div>
                                     </div>
+                                    <!--/ End Single Blog -->
                                 </div>
-                                <!--/ End Single Blog -->
-                            </div>
+                            }
                         }
                     }
 

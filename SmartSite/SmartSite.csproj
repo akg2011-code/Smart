@@ -199,6 +199,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\navbarVM.cs" />
+    <Compile Include="ViewModels\uploadedFilesVM.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -280,6 +281,7 @@
     <Content Include="Views\ProductType\CreatePT.cshtml" />
     <Content Include="Views\Shared\_navLayout.cshtml" />
     <Content Include="Views\Shared\_footerLayout.cshtml" />
+    <Content Include="Views\Shared\NotFound.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

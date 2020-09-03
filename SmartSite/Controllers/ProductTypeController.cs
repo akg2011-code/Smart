@@ -1,7 +1,9 @@
 ﻿using SmartSite.DAL_Functionality;
 using SmartSite.Models;
+using SmartSite.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Web;
@@ -67,37 +69,25 @@ namespace SmartSite.Controllers
             return View();
         }
 
+
         [Authorize(Roles = "Admin")]
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult CreateProductType(ProductType createdProductType, HttpPostedFileBase UploadImg)
+        public ActionResult CreateProductType(ProductType createdProductType, uploadedFilesVM file)
         {
             if (ModelState.IsValid)
             {
-                if (UploadImg != null && UploadImg.ContentLength > 0)
-                {
-                    // uploading image :
-                    string ImgPath = Path.Combine(Server.MapPath("~/imageUploads/TypeImg"), UploadImg.FileName);
-                    UploadImg.SaveAs(ImgPath);
-                    createdProductType.Image = UploadImg.FileName;
-                    context.ProductType.Add(createdProductType);
-                    context.SaveChanges();
+                string path = Path.Combine(HttpContext.Server.MapPath("~/imageUploaded/TypeImg"), file.file.FileName);
+                file.file.SaveAs(path);
+                createdProductType.Image = file.file.FileName;
+
+                bool successfullyCreatedProductType = DAL.CreateProductType(createdProductType);
+                if (successfullyCreatedProductType)
                     return RedirectToAction("AllProductTypes");
-
-                }
                 else
-                    ViewBag.Message = "You have not specified a file yet ...";
-
-                //bool successfullyCreatedProductType = DAL.CreateProductType(createdProductType);
-                //if (successfullyCreatedProductType)
-                //    return RedirectToAction("AllProductTypes");
-                //else
-                //return View(createdProductType);
+                    return View(createdProductType);
             }
 
-
-            //ViewData["Category"] = new SelectList(context.Category, "ID", "CategoryName");
-            ViewBag.CategoryID = new SelectList(context.Category, "ID", "CategoryName", createdProductType.CategoryID);
+            ViewBag.CategoryID = new SelectList(context.Category, "ID", "CategoryName");
             return View(createdProductType);
         }
 
@@ -115,27 +105,15 @@ namespace SmartSite.Controllers
 
         [Authorize(Roles = "Admin")]
         [HttpPost]
-        public ActionResult EditProductType(ProductType modifiedProductType, HttpPostedFileBase UploadImg)
+        public ActionResult EditProductType(ProductType modifiedProductType)
         {
             if (ModelState.IsValid)
             {
-                if (UploadImg != null && UploadImg.ContentLength > 0)
-                {
-                    // uploading image :
-                    string ImgPath = Path.Combine(Server.MapPath("~/imageUploads/TypeImg"), UploadImg.FileName);
-                    UploadImg.SaveAs(ImgPath);
-                    modifiedProductType.Image = UploadImg.FileName;
-
-
-                    bool successfullyModofiedProductType = DAL.EditProductType(modifiedProductType.ID, modifiedProductType);
-                    if (successfullyModofiedProductType)
-                        return RedirectToAction("AllProductTypes");
-                    else
-                        return View(modifiedProductType);
-
-                }
+                bool successfullyModofiedProductType = DAL.EditProductType(modifiedProductType.ID, modifiedProductType);
+                if (successfullyModofiedProductType)
+                    return RedirectToAction("AllProductTypes");
                 else
-                    ViewBag.Message = "You have not specified a file yet ...";
+                    return View(modifiedProductType);
 
             }
             return View(modifiedProductType);

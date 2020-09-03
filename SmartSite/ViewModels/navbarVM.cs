@@ -14,21 +14,22 @@ namespace SmartSite.ViewModels
             Context = new ApplicationDbContext();
         }
 
-        public IEnumerable<Category> GetCategories() => Context.Category.ToList();
+        public List<Category> GetCategories() => Context.Category.ToList();
 
         public IEnumerable<ProductType> GetProductTypesForSpecificCategory(int categoryID) => Context.ProductType.Where(t=>t.CategoryID==categoryID);
 
         IEnumerable<News> selectedNews() => Context.News.OrderByDescending(n => n.Date);
 
-        public List<News> GetLastNews()
+        public IEnumerable<News> GetLastNews()
         {
-            List<News> displayedNews = new List<News>()
+            if (this.selectedNews().Count() > 2)
             {
-                selectedNews().FirstOrDefault(),
-                selectedNews().Skip(1).FirstOrDefault()
-            };
-
-            return displayedNews;
+                return this.selectedNews().Take(2);
+            }
+            else
+            {
+                return this.selectedNews();
+            }
         }
 
 
