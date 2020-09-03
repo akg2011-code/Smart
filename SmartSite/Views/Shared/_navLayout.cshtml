@@ -1,0 +1,15 @@
+﻿<ul class="sub-menu">
+    <li>
+        @{
+            foreach (var category in ViewBag.layoutVM.GetCategories())
+            {
+                <a href="@Url.Action("FilterProductTypeByCategory", "ProductType", new { id = category.ID })">@category.CategoryName</a>
+                foreach (var type in ViewBag.layoutVM.GetProductTypesForSpecificCategory(category.ID))
+                {
+                    <ul class="sub-menu">
+                        <li><a href="@Url.Action("FilterProductsByType", "ProductType", new { id = type.ID })">@type.Type</a></li>
+                    </ul>
+                }
+            }
+        }
+</ul>

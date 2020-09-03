@@ -1,5 +1,6 @@
 ﻿using SmartSite.DAL_Functionality;
 using SmartSite.Models;
+using SmartSite.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,14 +20,34 @@ namespace SmartSite.Controllers
             Context = new ApplicationDbContext();
         }
 
+        public ActionResult navbarPartial()
+        {
+            ViewBag.layoutVM = new navbarVM();
+            return PartialView("_navLayout", ViewData["layoutVM"]);
+        }
+
+        public ActionResult footerPartial()
+        {
+            ViewBag.layoutVM = new navbarVM();
+            return PartialView("_footerLayout", ViewData["layoutVM"]);
+        }
+
         public ActionResult Index()
         {
             IEnumerable<Category> allCategories = DAL.GetAllCategories();
 
             IEnumerable<News> selectedNews = Context.News.OrderByDescending(n => n.Date);
+
             ViewBag.lastNews = selectedNews.FirstOrDefault();
             ViewBag.secondLastNews = selectedNews.Skip(1).FirstOrDefault();
+            ViewBag.thirdLastNews = selectedNews.Skip(2).FirstOrDefault();
 
+            ViewBag.displayedNews = new List<News>() 
+            {
+                ViewBag.lastNews,
+                ViewBag.secondLastNews,
+                ViewBag.thirdLastNews
+            };
 
             return View(allCategories);
         }
