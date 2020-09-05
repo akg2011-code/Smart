@@ -20,15 +20,16 @@ namespace SmartSite.ViewModels
 
         IEnumerable<News> selectedNews() => Context.News.OrderByDescending(n => n.Date);
 
-        public List<News> GetLastNews()
+        public IEnumerable<News> GetLastNews()
         {
-            List<News> displayedNews = new List<News>()
+            if(this.selectedNews().Count() > 2)
             {
-                selectedNews().FirstOrDefault(),
-                selectedNews().Skip(1).FirstOrDefault()
-            };
-
-            return displayedNews;
+                return this.selectedNews().Take(2);
+            }
+            else
+            {
+                return this.selectedNews();
+            }
         }
 
 

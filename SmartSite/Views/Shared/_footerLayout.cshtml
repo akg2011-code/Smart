@@ -1,19 +1,22 @@
 ﻿
 @{
-    foreach (var news in ViewBag.layoutVM.GetLastNews())
+    if (ViewBag.layoutVM.GetLastNews() != null)
     {
-        <div class="single-widget footer-news widget">
-            <h3 class="widget-title">News Page</h3>
-            <!-- Single News -->
-            <div class="single-f-news">
-                <div class="post-thumb"><a href=""><img src="~/imageUploads/NewsImg/@news.Image" alt="#"></a></div>
-                <div class="content">
-                    <p class="post-meta"><time class="post-date"><i class="fa fa-clock-o"></i>@news.Date</time></p>
-                    <h4 class="title"><a href="blog-sngle.html">@news.Details</a></h4>
+        foreach (var news in ViewBag.layoutVM.GetLastNews())
+        {
+            <div class="single-widget footer-news widget">
+                <h3 class="widget-title">News Page</h3>
+                <!-- Single News -->
+                <div class="single-f-news">
+                    <div class="post-thumb"><a href=""><img src="~/imageUploads/NewsImg/@news.Image" alt="#"></a></div>
+                    <div class="content">
+                        <p class="post-meta"><time class="post-date"><i class="fa fa-clock-o"></i>@news.Date</time></p>
+                        <h4 class="title"><a href="blog-sngle.html">@news.Details</a></h4>
+                    </div>
                 </div>
+                <!--/ End Single News -->
             </div>
-            <!--/ End Single News -->
-        </div>
+        }
     }
 }
 

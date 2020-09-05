@@ -18,7 +18,7 @@ namespace SmartSite.Models
         [MaxLength(50)]
         public string Type { get; set; }
 
-        [Required]
+        
         public string Image { get; set; }
 
         [ForeignKey("Category")]

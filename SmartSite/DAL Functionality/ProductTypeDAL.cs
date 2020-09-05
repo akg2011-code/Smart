@@ -21,7 +21,7 @@ namespace SmartSite.DAL_Functionality
 
         public IEnumerable<Product> filterProductsByType(int productTypeID) => Context.Product.Where(p => p.ProductTypeID == productTypeID);
 
-        public ProductType GetProductTypeByID(int productTypeID) => Context.ProductType.Find(productTypeID);
+        public ProductType GetProductTypeByID(int? productTypeID) => Context.ProductType.Find(productTypeID);
 
         public IEnumerable<ProductType> GetAllProductTypes() => Context.ProductType.ToList();
 
@@ -51,7 +51,7 @@ namespace SmartSite.DAL_Functionality
             return false;
         }
 
-        public bool DeleteProductType(int productTypeID)
+        public bool DeleteProductType(int? productTypeID)
         {
             ProductType deletedProductType = GetProductTypeByID(productTypeID);
             if (deletedProductType != null)
@@ -64,7 +64,7 @@ namespace SmartSite.DAL_Functionality
             return false;
         }
 
-        void deleteAllProductsForSpecificType(int productTypeID)
+        void deleteAllProductsForSpecificType(int? productTypeID)
         {
             if (GetProductTypeByID(productTypeID) != null)
             {
@@ -74,8 +74,8 @@ namespace SmartSite.DAL_Functionality
                     foreach (var product in productsForSpecificType)
                     {
                         Context.Product.Remove(product);
-                        SaveDBChanges();
                     }
+                    SaveDBChanges();
                 }
             }
         }

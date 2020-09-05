@@ -48,7 +48,7 @@
                         @*@Html.ActionLink("Add new product <i class=\"fas fa - plus - circle\"></i>","Create",null,new { @class = "bizwheel-btn theme-1 effect" })*@
                         @if (User.IsInRole("Admin"))
                         {
-                            <a href="Create" class="bizwheel-btn theme-1 effect">Add new product <i class="fas fa-plus-circle"></i></a>
+                            <a href="@Url.Action("Create", "Products")" class="bizwheel-btn theme-1 effect">Add new product <i class="fas fa-plus-circle"></i></a>
                         }
 
                     </div>

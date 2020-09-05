@@ -42,19 +42,22 @@
                     @Html.LabelFor(model => model.Image, htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
                         @*@Html.EditorFor(model => model.Image, new { htmlAttributes = new { @class = "form-control" } })*@
-                        <input type="file" name="UploadImg" />
-                        @Html.ValidationMessageFor(model => model.Image, "", new { @class = "text-danger" })
+                        <input type="file" name="UploadImg" accept="image/*" />
+                        <span class="text-danger">
+                            @ViewBag.Message
+                        </span>
                     </div>
                 </div>
-
             </div>
 
             <div class="col-lg-12 col-md-12 ">
                 <div class="form-group">
                     @Html.LabelFor(model => model.PdfFile, htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
-                        @Html.EditorFor(model => model.PdfFile, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.PdfFile, "", new { @class = "text-danger" })
+                        <input type="file" name="UploadPdf" accept="application/pdf" />
+                        <span class="text-danger">
+                            @ViewBag.Message
+                        </span>
                     </div>
                 </div>
             </div>

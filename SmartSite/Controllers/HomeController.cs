@@ -29,25 +29,16 @@ namespace SmartSite.Controllers
         public ActionResult footerPartial()
         {
             ViewBag.layoutVM = new navbarVM();
-            return PartialView("_footerLayout", ViewData["layoutVM"]);
+            return PartialView("_footerLayout", ViewBag.layoutVM.GetLastNews());
         }
 
         public ActionResult Index()
         {
             IEnumerable<Category> allCategories = DAL.GetAllCategories();
 
-            IEnumerable<News> selectedNews = Context.News.OrderByDescending(n => n.Date);
 
-            ViewBag.lastNews = selectedNews.FirstOrDefault();
-            ViewBag.secondLastNews = selectedNews.Skip(1).FirstOrDefault();
-            ViewBag.thirdLastNews = selectedNews.Skip(2).FirstOrDefault();
-
-            ViewBag.displayedNews = new List<News>() 
-            {
-                ViewBag.lastNews,
-                ViewBag.secondLastNews,
-                ViewBag.thirdLastNews
-            };
+            navbarVM vm = new navbarVM();
+            ViewBag.displayedNews = vm.GetLastNews();
 
             return View(allCategories);
         }

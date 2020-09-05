@@ -3,24 +3,43 @@
     ViewBag.Title = "EditProductType";
 }
 
-    <div class="container">
-        <h2><u>Edit Product Type [@Model.Type]</u></h2>
-        <hr />
-        @using (Html.BeginForm("EditProductType", "ProductType", FormMethod.Post))
+        @using (Html.BeginForm("EditProductType", "ProductType", FormMethod.Post, new { enctype = "multipart/form-data" }))
         {
-            @Html.HiddenFor(m=>m.ID)
-            <div class="form-group">
-                @Html.LabelFor(m => m.Type)
-                @Html.TextBoxFor(m => m.Type, new { @class = "form-control", placeholder = "Type Name" })
-                @Html.ValidationMessageFor(m => m.Type, "", new { @class = "text-danger" })
+    <div class="contact-form-area m-top-30 d-flex justify-content-center" style="width:50%;margin-left:25%">
+        <div class="row d-flex justify-content-center">
+
+            @Html.HiddenFor(m => m.ID)
+
+            <div class="col-lg-12 col-md-12 ">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Type)
+                    @Html.TextBoxFor(m => m.Type, new { @class = "form-control", placeholder = "Type Name" })
+                    @Html.ValidationMessageFor(m => m.Type, "", new { @class = "text-danger" })
+                </div>
             </div>
-            <div class="form-group">
-                @Html.LabelFor(m => m.CategoryID)
-                @Html.DropDownListFor(s => s.CategoryID, ViewData["Category"] as IEnumerable<SelectListItem>, new { @class = "browser-default custom-select" })
-                @Html.ValidationMessageFor(m => m.CategoryID, "", new { @class = "text-danger" })
+
+            <div class="col-lg-12 col-md-12 ">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.CategoryID)
+                    @Html.DropDownListFor(s => s.CategoryID, ViewData["Category"] as IEnumerable<SelectListItem>, new { @class = "browser-default custom-select" })
+                    @Html.ValidationMessageFor(m => m.CategoryID, "", new { @class = "text-danger" })
+                </div>
             </div>
-            <div class="form-group">
-                <button type="submit" class="btn btn-primary">Save</button>
+
+            <div class="col-lg-12 col-md-12 ">
+                <div class="form-group">
+                    @Html.LabelFor(t => t.Image)
+                    <input class="form-control" type="file" name="file">
+                </div>
             </div>
-        }
+
+            <div class="col-lg-12 col-md-12 ">
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </div>
+            </div>
+
+        </div>
     </div>
+                    }
+                

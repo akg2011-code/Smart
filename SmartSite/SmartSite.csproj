@@ -184,9 +184,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202009031210279_newClone.cs" />
-    <Compile Include="Migrations\202009031210279_newClone.Designer.cs">
-      <DependentUpon>202009031210279_newClone.cs</DependentUpon>
+    <Compile Include="Migrations\202009050921340_akg.cs" />
+    <Compile Include="Migrations\202009050921340_akg.Designer.cs">
+      <DependentUpon>202009050921340_akg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202009051010095_img.cs" />
+    <Compile Include="Migrations\202009051010095_img.Designer.cs">
+      <DependentUpon>202009051010095_img.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -277,9 +281,9 @@
     <Content Include="Views\Category\DeleteCategory.cshtml" />
     <Content Include="Views\ProductType\FilterProductTypeByCategory.cshtml" />
     <Content Include="Views\ProductType\FilterProductsByType.cshtml" />
-    <Content Include="Views\ProductType\CreatePT.cshtml" />
     <Content Include="Views\Shared\_navLayout.cshtml" />
     <Content Include="Views\Shared\_footerLayout.cshtml" />
+    <Content Include="Views\Shared\NotFound.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -302,8 +306,11 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202009031210279_newClone.resx">
-      <DependentUpon>202009031210279_newClone.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202009050921340_akg.resx">
+      <DependentUpon>202009050921340_akg.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009051010095_img.resx">
+      <DependentUpon>202009051010095_img.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

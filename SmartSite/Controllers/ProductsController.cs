@@ -59,7 +59,7 @@ namespace SmartSite.Controllers
             if (products != null && products.Count() > 0)
                 return View("Index", products);
             else
-                return View("~/View/Shared/Error.cshtml");
+                return View("~/View/Shared/NotFound.cshtml");
         }
 
 
