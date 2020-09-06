@@ -24,8 +24,8 @@
                                 <div class="news-content">
                                     <h3 class="news-title"><a href="@Url.Action("NewsDetails", "News", new { id=news.ID})">@news.Title</a></h3>
 
-                                        <div class="news-text"><p style="height:50px;overflow:hidden">@news.Details</p></div>
-                                        <a href="@Url.Action("NewsDetails", "News", new { id=news.ID})" class="more">Continue reading <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
+                                    <div class="news-text"><p style="height:50px;overflow:hidden">@news.Details</p></div>
+                                    <a href="@Url.Action("NewsDetails", "News", new { id=news.ID})" class="more">Continue reading <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
                                 </div>
                                 <div class="m-1">
                                     @Html.ActionLink("Edit", "EditNews", new { id = news.ID }, new { @class = "btn btn-warning" })
@@ -36,6 +36,7 @@
                         <!--/ End Single Blog -->
                     </div>
                 </div>
+                @*
                 <div class="row">
                     <div class="col-12">
                         <!-- Pagination -->
@@ -51,6 +52,7 @@
                         <!--/ End Pagination -->
                     </div>
                 </div>
+                *@
             }
         }
     </div>

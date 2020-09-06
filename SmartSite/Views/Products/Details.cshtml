@@ -12,9 +12,10 @@
                     <!-- Bread Menu -->
                     <div class="bread-menu">
                         <ul>
-                            <li><a href="index">Home  -</a></li>
-                            <li><a href="">@ViewData["category"]  -</a></li>
-                            <li><a href="index">@Html.DisplayFor(model => model.ProductType.Type)</a></li>
+                            <li><a href="@Url.Action("Index","Home")">Home  -</a></li>
+                            <li><a href="@Url.Action("FilterProductsByType","ProductType",new { id=Model.ProductTypeID})">@Model.ProductType.Type -</a></li>
+                            <li><a href="@Url.Action("FilterProductTypeByCategory","ProductType",new { id=ViewBag.category.ID})">@ViewBag.category.CategoryName</a></li>
+
                         </ul>
                     </div>
                     <!-- Bread Title -->
@@ -68,7 +69,7 @@
                                 </div>
                                 <h4>PRODUCT SPECIFICATION:</h4>
                                 <p>
-                                    @Html.Raw(HttpUtility.HtmlDecode(@Model.Description));
+                                    @Html.Raw(HttpUtility.HtmlDecode(@Model.Description))
                                 </p>
                             </div>
                         </div>

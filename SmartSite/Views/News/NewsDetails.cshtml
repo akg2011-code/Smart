@@ -21,14 +21,18 @@
                                         <img class="card-img-top" src="~/imageUploads/NewsImg/@Model.Image" alt="Card image cap">
                                     </div>
                                     <div class="col-lg-6">
-                                        <p>@Model.Details</p>
+                                        <h3><u>Details</u></h3>
+                                        <div style="border:outset">
+                                            <p>@Model.Details</p>
+                                        </div>
+                                        
                                     </div>
                                 </div>
                                 <div>
                                 </div>
                             </div>
                             <div class="more ">
-                                @Html.ActionLink("Return to all news", "GetAllNews", null, new { @class = "btn btn-info form-control col-4 " })
+                                @Html.ActionLink("News Page", "GetAllNews", null, new { @class = "btn btn-info form-control col-4 " })
                             </div>
 
                         </div>

@@ -3,52 +3,55 @@
     ViewBag.Title = "AllProductTypes";
 }
 
-<h2><u>Product Types</u></h2>
+    <div class="container">
+        <h3 style="text-align:center;"><u>Product Types</u></h3>
+        @Html.ActionLink("Create new Product Type", "CreateProductType", new { @class = "btn btn-info" })
+        <hr />
 
-<div class="container">
-    @Html.ActionLink("Create new Product Type", "CreateProductType", new { @class = "btn btn-light" })
-    <hr />
+        @using (Html.BeginForm("FilterProductTypeByCategory", "ProductType", FormMethod.Get))
+        {
+            <div class="form-group">
+                @Html.Label("cat", "Search product types by category")
+                @Html.DropDownList("id", ViewData["Category"] as IEnumerable<SelectListItem>, new { id = "cat", @class = "form-control browser-default custom-select" })
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Search" class="btn btn-info" />
+            </div>
+        }
+        <hr />
+        <table>
+            <thead>
+                <tr>
+                    <th>Type Name</th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
 
-    @using (Html.BeginForm("FilterProductTypeByCategory", "ProductType", FormMethod.Get))
-    {
-        @Html.Label("cat", "Search product types by category")
-        @Html.DropDownList("id", ViewData["Category"] as IEnumerable<SelectListItem>, new { id = "cat", @class = "browser-default custom-select" })
-        <input type="submit" value="Search" />
-    }
-    <hr />
-    <table>
-        <thead>
-            <tr>
-                <th>Type Name</th>
-                <th></th>
-                <th></th>
-                <th></th>
-            </tr>
-        </thead>
-
-        <tbody>
-            @{
-                foreach (var type in Model)
-                {
-                    <tr>
-                        <td>@type.Type</td>
-                        <td><img  src="@type.Image"/></td>
-                        <td>
-                            @Html.ActionLink("Details", "ProductTypeDetails", new { id = type.ID }, new { @class = "btn btn-info" })
-                        </td>
-                        @if (User.IsInRole("Admin"))
-                        {
+            <tbody>
+                @{
+                    foreach (var type in Model)
+                    {
+                        <tr>
+                            <td>@type.Type</td>
+                            <td><img src="~/imageUploads/@type.Image" /></td>
                             <td>
-                                @Html.ActionLink("Edit", "EditProductType", new { id = type.ID }, new { @class = "btn btn-warning" })
+                                @Html.ActionLink("Details", "ProductTypeDetails", new { id = type.ID }, new { @class = "btn btn-info" })
                             </td>
-                            <td>
-                                @Html.ActionLink("Delete", "DeleteProductType", new { id = type.ID }, new { @class = "btn btn-danger" })
-                            </td>
-                        }
+                            @if (User.IsInRole("Admin"))
+                            {
+                                <td>
+                                    @Html.ActionLink("Edit", "EditProductType", new { id = type.ID }, new { @class = "btn btn-warning" })
+                                </td>
+                                <td>
+                                    @Html.ActionLink("Delete", "DeleteProductType", new { id = type.ID }, new { @class = "btn btn-danger" })
+                                </td>
+                            }
 
-                    </tr>
+                        </tr>
+                    }
                 }
-            }
-        </tbody>
-    </table>
-</div>
+            </tbody>
+        </table>
+    </div>

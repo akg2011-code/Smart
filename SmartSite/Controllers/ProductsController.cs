@@ -78,7 +78,7 @@ namespace SmartSite.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (UploadImg != null || UploadPdf != null || UploadImg.ContentLength > 0 || UploadPdf.ContentLength > 0)
+                if ( (UploadImg != null && UploadPdf != null) && (UploadImg.ContentLength > 0 && UploadPdf.ContentLength > 0) )
                 {
                     // uploading image :
                     string ImgPath = Path.Combine(Server.MapPath("~/imageUploads"), UploadImg.FileName);

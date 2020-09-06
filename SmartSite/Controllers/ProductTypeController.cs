@@ -58,6 +58,7 @@ namespace SmartSite.Controllers
         {
             if (id == null)
                 return View("~/Views/Shared/Error.cshtml");
+            ViewBag.category = context.Category.Find(id);
             IEnumerable<ProductType> filteredTypes = DAL.FilterProductTypeByCategory(id);
             return View(filteredTypes);
         }
@@ -83,7 +84,7 @@ namespace SmartSite.Controllers
 
                 bool successfullyCreatedProductType = DAL.CreateProductType(createdProductType);
                 if (successfullyCreatedProductType)
-                    return RedirectToAction("AllProductTypes");
+                    return RedirectToAction("FilterProductTypeByCategory", new { id = createdProductType.CategoryID });
                 else
                     return View(createdProductType);
             }
@@ -116,7 +117,7 @@ namespace SmartSite.Controllers
 
                 bool successfullyModofiedProductType = DAL.EditProductType(modifiedProductType.ID, modifiedProductType);
                 if (successfullyModofiedProductType)
-                    return RedirectToAction("AllProductTypes");
+                    return RedirectToAction("FilterProductTypeByCategory",new { id=modifiedProductType.CategoryID});
                 else
                     return View(modifiedProductType);
 
@@ -144,9 +145,10 @@ namespace SmartSite.Controllers
         [HttpPost]
         public ActionResult DeleteProductType(ProductType DeletedProductType)
         {
+            int deletedTypeCategoryID = DeletedProductType.CategoryID;
             bool successfullyDeletingType = DAL.DeleteProductType(DeletedProductType.ID);
             if (successfullyDeletingType)
-                return RedirectToAction("AllProductTypes");
+                return RedirectToAction("Index","Home");
             else
                 return View(DeletedProductType);
         }

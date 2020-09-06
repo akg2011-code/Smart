@@ -205,9 +205,6 @@
                                     <li><a href="#"><i class="fab fa-linkedin"></i></a></li>
                                     <li><a href="#"><i class="fab fa-dribbble"></i></a></li>
                                 </ul>
-                                <div class="button">
-                                    <a href="contact.html" class="bizwheel-btn">Get a Quote</a>
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -242,10 +239,10 @@
                                                         <div class="menu-home-menu-container">
                                                             <!-- Naviagiton -->
                                                             <ul id="nav" class="nav main-menu menu navbar-nav">
-                                                                <li><a href="Home/Index">Home</a></li>
-                                                                <li><a href="Home/About">About Us</a></li>
+                                                                <li><a href="@Url.Action("Index","Home")">Home</a></li>
+                                                                <li><a href="@Url.Action("About","Home")">About Us</a></li>
                                                                 <li class="icon-active">
-                                                                    <a href="#">
+                                                                    <a href="@Url.Action("Index","Products")">
                                                                         Products
                                                                         <i class="fas fa-angle-down"></i>
                                                                     </a>
@@ -254,9 +251,9 @@
                                                                     @Html.Action("navbarPartial", "Home")
 
                                                                 </li>
-                                                                <li><a href="contact.html">Contact Us</a></li>
+                                                                <li><a href="@Url.Action("Contact","Home")">Contact Us</a></li>
                                                                 <li class="icon-active">
-                                                                    <a href="#">
+                                                                    <a href="@Url.Action("GetAllNews","News")">
                                                                         News
                                                                     </a>
                                                                 </li>
@@ -282,10 +279,7 @@
                                                         @Html.TextBox("productName",null, new { placeholder = "Search here" })
                                                         <button type="submit" id="searchsubmit"><i class="fa fa-search"></i></button>
                                                     }
-                                                    @*<form action="#" class="search-form" method="get">
-                                                        <input type="text" name="s" value="" placeholder="Search here" />
-                                                        <button type="submit" id="searchsubmit"><i class="fa fa-search"></i></button>
-                                                    </form>*@
+                                                    
                                                 </div>
                                                 <!--/ End Search Form -->
                                             </div>
@@ -302,28 +296,24 @@
             <!-- Sidebar Popup -->
             <div class="sidebar-popup">
                 <div class="cross">
-                    <a class="btn"><i class="fa fa-close"></i></a>
+                    <a class="btn"><i class="fas fa-window-close"></i></a>
                 </div>
                 <div class="single-content">
                     <h4>About Bizwheel</h4>
                     <p>The main component of a healthy environment for self esteem is that it needs be nurturing. It should provide unconditional warmth.</p>
                     <!-- Social Icons -->
                     <ul class="social">
-                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                        <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                        <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+                        <li><a href="https://facebook.com/Smart-for-Electrical-Engineering-See-264244121080658/"><i class="fab fa-facebook-f"></i></a></li>
+                        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                        <li><a href="#"><i class="fab fa-linkedin"></i></a></li>
                     </ul>
                 </div>
                 <div class="single-content">
-                    <h4>Important Links</h4>
+                    <h4>Our Services</h4>
                     <ul class="links">
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Our Services</a></li>
-                        <li><a href="#">Portfolio</a></li>
-                        <li><a href="#">Pricing Plan</a></li>
-                        <li><a href="#">Blog & News</a></li>
-                        <li><a href="#">Contact us</a></li>
+                        <li><a href="@Url.Action("About","Home")">About Us</a></li>
+                        <li><a href="@Url.Action("GetAllNews","News")">Blog & News</a></li>
+                        <li><a href="@Url.Action("Contact","Home")">Contact us</a></li>
                     </ul>
                     @Html.Partial("_LoginPartial")
                 </div>
@@ -345,7 +335,7 @@
                                 <div class="single-widget footer-about widget">
                                     <div class="logo">
                                         <div class="img-logo">
-                                            <a class="logo" href="index.html">
+                                            <a class="logo" href="@Url.Action("Index","Home")">
                                                 <img class="img-responsive" src="~/img/logo2.png" alt="logo">
                                             </a>
                                         </div>
@@ -359,11 +349,10 @@
                                             <li><a class="facebook" href="#" target="_blank"><i class="fab fa-facebook"></i></a></li>
                                             <li><a class="twitter" href="#" target="_blank"><i class="fab fa-twitter"></i></a></li>
                                             <li><a class="linkedin" href="#" target="_blank"><i class="fab fa-linkedin"></i></a></li>
-                                            <li><a class="pinterest" href="#" target="_blank"><i class="fab fa-pinterest-p"></i></a></li>
                                             <li><a class="instagram" href="#" target="_blank"><i class="fab fa-instagram"></i></a></li>
                                         </ul>
                                     </div>
-                                    <div class="button"><a href="about" class="bizwheel-btn">About Us</a></div>
+                                    <div class="button"><a href="@Url.Action("About","Home")" class="bizwheel-btn">About Us</a></div>
                                 </div>
                                 <!--/ End Footer About -->
                             </div>
@@ -372,11 +361,9 @@
                                 <div class="single-widget f-link widget">
                                     <h3 class="widget-title">Company</h3>
                                     <ul>
-                                        <li><a href="#">About Us</a></li>
-                                        <li><a href="#">Our Services</a></li>
-                                        <li><a href="#">Portfolio</a></li>
-                                        <li><a href="#">Pricing Plan</a></li>
-                                        <li><a href="#">Contact us</a></li>
+                                        <li><a href="@Url.Action("About","Home")">About Us</a></li>
+                                        <li><a href="@Url.Action("GetAllNews","News")">Blog & News</a></li>
+                                        <li><a href="@Url.Action("Contact","Home")">Contact us</a></li>
                                     </ul>
                                 </div>
                                 <!--/ End Footer Links -->
@@ -402,18 +389,7 @@
                                 <!--/ End Footer Contact -->
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-lg-6 offset-lg-3 col-md-8 offset-md-2 col-12">
-                                <!-- Footer Newsletter -->
-                                <div class="footer-newsletter">
-                                    <form action="#" method="post" class="newsletter-area">
-                                        <input type="email" placeholder="Your email address">
-                                        <button type="submit">Sign Up</button>
-                                    </form>
-                                </div>
-                                <!--/ End Footer Newsletter -->
-                            </div>
-                        </div>
+                        
                     </div>
                 </div>
                 <!-- Copyright -->
