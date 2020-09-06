@@ -13,19 +13,17 @@
                             <div class="blog-detail">
                                 <!-- News meta -->
                                 <div class="news-meta">
-                                    <h4><i class="fa fa-pencil"></i> @Model.Date</h4>
+                                    <h4><i class="fas fa-clock"></i> @Model.Date</h4>
                                 </div>
                                 <h2 class="blog-title">@Model.Title</h2>
                                 <div class="row blog-space">
                                     <div class="col-lg-6">
-                                        <img class="card-img-top" src="~/imageUploads/NewsImg/@Model.Image" alt="Card image cap">
+                                        <img class="card-img-top" style="height:250px" src="~/imageUploads/NewsImg/@Model.Image" alt="Card image cap">
                                     </div>
                                     <div class="col-lg-6">
-                                        <h3><u>Details</u></h3>
-                                        <div style="border:outset">
-                                            <p>@Model.Details</p>
+                                        <div >
+                                            <p style="line-height:35px;font-size:large"><i class="far fa-newspaper"></i>  @Model.Details</p>
                                         </div>
-                                        
                                     </div>
                                 </div>
                                 <div>

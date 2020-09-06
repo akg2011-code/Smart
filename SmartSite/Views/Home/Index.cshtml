@@ -6,7 +6,7 @@
 <section class="hero-slider style1">
     <div class="home-slider">
         <!-- Single Slider -->
-        <div class="single-slider" style="background-image: url('../../img/1.jpg');">
+        <div class="single-slider" style="background-image: url('../../img/1.2.jpg');">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-7 col-md-8 col-12">
@@ -14,18 +14,15 @@
                             <div class="hero-text">
                                 <h4>We are always ready to help you</h4>
                                 <h1>Smart for Electrical Engineering</h1>
-                                @*<div class="p-text">
-                                    <p>Nunc tincidunt venenatis elit. Etiam venenatis quam vel maximus bibendum Pellentesque elementum dapibus diam tristique</p>
-                                </div>*@
-                            <div class="button">
-                                @{
-                                    foreach (var category in Model)
-                                    {
-                                        <a href="@Url.Action("FilterProductTypeByCategory", "ProductType", new { id = category.ID })" class="bizwheel-btn theme-@category.ID effect">@category.CategoryName</a>
+                                <div class="button">
+                                    @{
+                                        foreach (var category in Model)
+                                        {
+                                            <a href="@Url.Action("FilterProductTypeByCategory", "ProductType", new { id = category.ID })" class="bizwheel-btn theme-@category.ID effect">@category.CategoryName</a>
+                                        }
                                     }
-                                }
 
-                            </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -34,19 +31,16 @@
         </div>
         <!--/ End Single Slider -->
         <!-- Single Slider -->
-        <div class="single-slider" style="background-image:url('https://via.placeholder.com/1700x800.png')">
+        <div class="single-slider" style="background-image:url('../../img/1.1.jpg')">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-7 col-md-8 col-12">
                         <div class="welcome-text">
                             <div class="hero-text">
                                 <h4>Your time is so important for us</h4>
-                                <h1>Build Your WorldClass Brand with Bizwheel</h1>
-                                <div class="p-text">
-                                    <p>Nunc tincidunt venenatis elit. Etiam venenatis quam vel maximus bibendum Pellentesque elementum dapibus diam tristique</p>
-                                </div>
+                                <h1>Some general safety prouducts for working with</h1>
                                 <div class="button">
-                                    <a href="blog.html" class="bizwheel-btn theme-1 effect">Read our blog</a>
+                                    <a href="@Url.Action("FilterProductTypeByCategory", "ProductType", new { id =  "2"})" class="bizwheel-btn theme-1 effect">Safety</a>
                                 </div>
                             </div>
                         </div>
@@ -56,19 +50,18 @@
         </div>
         <!--/ End Single Slider -->
         <!-- Single Slider -->
-        <div class="single-slider" style="background-image:url('https://via.placeholder.com/1700x800.png')">
+        <div class="single-slider" style="background-image:url('../../img/1.jpg')">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-7 col-md-8 col-12">
                         <div class="welcome-text">
                             <div class="hero-text">
                                 <h4>Our experties are waiting for you</h4>
-                                <h1>Best Way to Represent your Next Business </h1>
+                                <h1>BE SMART, LIVE BETTER</h1>
                                 <div class="p-text">
-                                    <p>Nunc tincidunt venenatis elit. Etiam venenatis quam vel maximus bibendum Pellentesque elementum dapibus diam tristique</p>
                                 </div>
                                 <div class="button">
-                                    <a href="team.html" class="bizwheel-btn theme-2 effect">Our Leaders</a>
+                                    <a href="@Url.Action("About", "Home")" class="bizwheel-btn theme-2 effect">About us</a>
                                 </div>
                             </div>
                         </div>
@@ -88,9 +81,7 @@
                 <!-- Single Feature -->
                 <div class="single-feature">
                     <div class="icon-head"><i class="fa fa-podcast"></i></div>
-                    <h4><a href="service-single.html">Creative Design</a></h4>
-                    <p>Aenean aliquet rutrum enimn scelerisque. Nam dictumanpo, antequis laoreet ullamcorper, velitsd odio scelerisque tod</p>
-                    
+                    <h4><a href="#">High-quality service</a></h4>
                 </div>
                 <!--/ End Single Feature -->
             </div>
@@ -98,9 +89,7 @@
                 <!-- Single Feature -->
                 <div class="single-feature">
                     <div class="icon-head"><i class="fa fa-podcast"></i></div>
-                    <h4><a href="service-single.html">Quality Service</a></h4>
-                    <p>Aenean aliquet rutrum enimn scelerisque. Nam dictumanpo, antequis laoreet ullamcorper, velitsd odio scelerisque tod</p>
-                    
+                    <h4><a href="#">Quality Products</a></h4>
                 </div>
                 <!--/ End Single Feature -->
             </div>
@@ -108,9 +97,8 @@
                 <!-- Single Feature -->
                 <div class="single-feature active">
                     <div class="icon-head"><i class="fa fa-podcast"></i></div>
-                    <h4><a href="service-single.html">On-time Delivery</a></h4>
-                    <p>Aenean aliquet rutrum enimn scelerisque. Nam dictumanpo, antequis laoreet ullamcorper, velitsd odio scelerisque tod</p>
-                    
+                    <h4><a href="#">continuous support</a></h4>
+
                 </div>
                 <!--/ End Single Feature -->
             </div>
@@ -118,9 +106,7 @@
                 <!-- Single Feature -->
                 <div class="single-feature">
                     <div class="icon-head"><i class="fa fa-podcast"></i></div>
-                    <h4><a href="service-single.html">24/7 Live support</a></h4>
-                    <p>Aenean aliquet rutrum enimn scelerisque. Nam dictumanpo, antequis laoreet ullamcorper, velitsd odio scelerisque tod</p>
-                    
+                    <h4><a href="#">latest news</a></h4>
                 </div>
                 <!--/ End Single Feature -->
             </div>
@@ -134,11 +120,11 @@
         <div class="row">
             <div class="col-lg-9 col-12">
                 <div class="call-inner">
-                    <h2>Brand Products &amp; Creativity is our Fashion</h2>
-                    <p>ehicula maximus velit. Morbi non tincidunt purus, a hendrerit nisi. Vivamus elementum</p>
+                    <h2>BE SMART, LIVE BETTER</h2>
+                    <p>our promise to our customers who have adopted continuous, high-quality service and products.</p>
                 </div>
             </div>
-            
+
         </div>
     </div>
 </section>
@@ -150,11 +136,10 @@
             <div class="col-12">
                 <div class="section-title style2 text-center">
                     <div class="section-top">
-                        <h1><span>Creative</span><b>Products We Provide</b></h1><h4>Last Products of us </h4>
+                        <h1><span>Last Product</span><b>Products We Provide</b></h1>
                     </div>
                     <div class="section-bottom">
                         <div class="text-style-two">
-                            <p>Aliquam Sodales Justo Sit Amet Urna Auctor Scelerisquinterdum Leo Anet Tempus Enim Esent Egetis Hendrerit Vel Nibh Vitae Ornar Sem Velit Aliquam</p>
                         </div>
                     </div>
                 </div>
@@ -173,11 +158,11 @@
                             <div class="single-service">
                                 <div class="service-head">
                                     <img src="~/imageUploads/@product.Image" alt="#">
-                                    <a href="@Url.Action("Details","Products",new { id=product.ID})"><div class="icon-bg"><i class="fa fa-handshake-o"></i></div></a>
+                                    <a href="@Url.Action("Details","Products",new { id=product.ID})"><div class="icon-bg"><i class="fas fa-arrow-right"></i></div></a>
                                 </div>
                                 <div class="service-content">
-                                    <h4><a href="service-business.html">@product.Name</a></h4>
-                                    <a class="btn" href="@Url.Action("Details","Products",new { id=product.ID})"><i class="fa fa-arrow-circle-o-right"></i>More Details</a>
+                                    <h4><a href="#">@product.Name</a></h4>
+                                    <a class="btn" href="@Url.Action("Details","Products",new { id=product.ID})"><i class="fas fa-arrow-circle-right"></i>More Details</a>
                                 </div>
                             </div>
                         </div>
@@ -192,8 +177,6 @@
     </div>
 </section>
 <!--/ End Services -->
-
-
 <!-- Latest Blog -->
 <section class="latest-blog section-space">
     <div class="container">
@@ -201,11 +184,10 @@
             <div class="col-lg-6 offset-lg-3 col-md-8 offset-md-2 col-12">
                 <div class="section-title default text-center">
                     <div class="section-top">
-                        <h1><span>Latest News</span><b> Published</b></h1>
+                        <h1><span>Published</span><b>Latest News</b></h1>
                     </div>
                     <div class="section-bottom">
                         <div class="text">
-                            <p>Lorem Ipsum Dolor Sit Amet, Conse Ctetur Adipiscing Elit, Sed Do Eiusmod Tempor Ares Incididunt Utlabore. Dolore Magna Ones Baliqua</p>
                         </div>
                     </div>
                 </div>
@@ -219,37 +201,123 @@
                         {
                             foreach (var news in ViewBag.displayedNews)
                             {
-                                <div class="single-slider">
-                                    <!-- Single Blog -->
-                                    <div class="single-news ">
-                                        <div class="news-head overlay">
-                                            <span class="news-img" style="background-image:url('../../imageUploads/NewsImg/@news.Image')"></span>
-                                            <a href="@Url.Action("NewsDetails","News",new { id= news.ID})" class="bizwheel-btn theme-2">Read more</a>
-                                        </div>
-                                        <div class="news-body">
-                                            <div class="news-content">
-                                                <h3 class="news-title"><a href="@Url.Action("NewsDetails","News",new { id= news.ID})">@news.Title</a></h3>
-                                                <div class="news-text"><p>@news.Details</p></div>
-                                                <ul class="news-meta">
-                                                    <li class="date"><i class="fa fa-calendar"></i>@news.Date.ToString("yyyy-MM-dd")</li>
-                                                    <li class="view"><i class="fa fa-comments"></i>0</li>
-                                                </ul>
+                                <!-- Single Blog -->
+                                <div class="single-news ">
+                                    <div class="news-head overlay">
+                                        <span class="news-img" style="background-image:url('../../imageUploads/NewsImg/@news.Image');height:200px"></span>
+                                        <a href="@Url.Action("NewsDetails","News",new { id= news.ID})" class="bizwheel-btn theme-2">Read more</a>
+                                    </div>
+                                    <div class="news-body">
+                                        <div class="news-content">
+                                            <h3 class="news-title"><a href="@Url.Action("NewsDetails","News",new { id= news.ID})">@news.Title</a></h3>
+                                            <div class="news-text">
+                                                <p style="height:50px;overflow:hidden">@news.Details</p>
                                             </div>
+                                            <ul class="news-meta">
+                                                <li class="date"><i class="fa fa-calendar"></i>@news.Date.ToString("yyyy-MM-dd")</li>
+                                            </ul>
                                         </div>
                                     </div>
-                                    <!--/ End Single Blog -->
                                 </div>
+                                <!--/ End Single Blog -->
+
                             }
                         }
                     }
 
-                    <div class="single-slider">
-                        <!-- Single Blog -->
-                        <!--/ End Single Blog -->
-                    </div>
                 </div>
             </div>
         </div>
     </div>
 </section>
 <!--/ End Latest Blog -->
+<!-- Client Area -->
+<div class="clients section-bg">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="partner-slider">
+                    <!-- Single client -->
+                    <div class="single-slider">
+                        <div class="single-client">
+                            <a href="#" target="_blank"><img src="~/img/client/client-1.png" alt="#"></a>
+                        </div>
+                    </div>
+                    <!--/ End Single client -->
+                    <!-- Single client -->
+                    <div class="single-slider">
+                        <div class="single-client">
+                            <a href="#" target="_blank"><img src="~/img/client/client-2.png" alt="#"></a>
+                        </div>
+                    </div>
+                    <!--/ End Single client -->
+                    <!-- Single client -->
+                    <div class="single-slider">
+                        <div class="single-client">
+                            <a href="#" target="_blank"><img src="~/img/client/client-3.png" alt="#"></a>
+                        </div>
+                    </div>
+                    <!--/ End Single client -->
+                    <!-- Single client -->
+                    <div class="single-slider">
+                        <div class="single-client">
+                            <a href="#" target="_blank"><img src="~/img/client/client-4.png" alt="#"></a>
+                        </div>
+                    </div>
+                    <!--/ End Single client -->
+                    <!-- Single client -->
+                    <div class="single-slider">
+                        <div class="single-client">
+                            <a href="#" target="_blank"><img src="~/img/client/client-5.png" alt="#"></a>
+                        </div>
+                    </div>
+                    <!--/ End Single client -->
+                    <!-- Single client -->
+                    <div class="single-slider">
+                        <div class="single-client">
+                            <a href="#" target="_blank"><img src="~/img/client/client-6.png" alt="#"></a>
+                        </div>
+                    </div>
+                    <!--/ End Single client -->
+                    <!-- Single client -->
+                    <div class="single-slider">
+                        <div class="single-client">
+                            <a href="#" target="_blank"><img src="~/img/client/client-7.png" alt="#"></a>
+                        </div>
+                    </div>
+                    <!--/ End Single client -->
+                    <!-- Single client -->
+                    <div class="single-slider">
+                        <div class="single-client">
+                            <a href="#" target="_blank"><img src="~/img/client/client-8.png" alt="#"></a>
+                        </div>
+                    </div>
+                    <!--/ End Single client -->
+                    <!-- Single client -->
+                    <div class="single-slider">
+                        <div class="single-client">
+                            <a href="#" target="_blank"><img src="~/img/client/client-9.png" alt="#"></a>
+                        </div>
+                    </div>
+                    <!--/ End Single client -->
+                    <!-- Single client -->
+                    <div class="single-slider">
+                        <div class="single-client">
+                            <a href="#" target="_blank"><img src="~/img/client/client-10.png" alt="#"></a>
+                        </div>
+                    </div>
+                    <!--/ End Single client -->
+                    <!-- Single client -->
+                    <div class="single-slider">
+                        <div class="single-client">
+                            <a href="#" target="_blank"><img src="~/img/client/client-11.png" alt="#"></a>
+                        </div>
+                    </div>
+                    <!--/ End Single client -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--/ End Client Area -->

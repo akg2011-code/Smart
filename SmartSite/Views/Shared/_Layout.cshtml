@@ -199,11 +199,7 @@
                             <div class="topbar-right">
                                 <!-- Social Icons -->
                                 <ul class="social-icons">
-                                    <li><a href="#"><i class="fab fa-facebook"></i></a></li>
-
-                                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-linkedin"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-dribbble"></i></a></li>
+                                        @Html.Partial("_LoginPartial")
                                 </ul>
                             </div>
                         </div>
@@ -223,7 +219,7 @@
                                         <div class="logo">
                                             <!-- Image Logo -->
                                             <div class="img-logo">
-                                                <a href="index.html">
+                                                <a href="@Url.Action("Index", "Home")">
                                                     <img src="~/img/logo.png" alt="#">
                                                 </a>
                                             </div>
@@ -296,7 +292,7 @@
             <!-- Sidebar Popup -->
             <div class="sidebar-popup">
                 <div class="cross">
-                    <a class="btn"><i class="fas fa-window-close"></i></a>
+                    <a class="btn"><i class="fas fa-times"></i></a>
                 </div>
                 <div class="single-content">
                     <h4>About Bizwheel</h4>
@@ -323,7 +319,6 @@
         <!--/ End Header -->
         <div class=" body-content">
             @RenderBody()
-            <hr />
             <!-- Footer -->
             <footer class="footer" style="background-image:url('~/img/map.png')">
                 <!-- Footer Top -->
@@ -352,7 +347,6 @@
                                             <li><a class="instagram" href="#" target="_blank"><i class="fab fa-instagram"></i></a></li>
                                         </ul>
                                     </div>
-                                    <div class="button"><a href="@Url.Action("About","Home")" class="bizwheel-btn">About Us</a></div>
                                 </div>
                                 <!--/ End Footer About -->
                             </div>
