@@ -125,16 +125,13 @@ namespace SmartSite.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (UploadImg != null || UploadPdf != null || UploadImg.ContentLength > 0 || UploadPdf.ContentLength > 0)
+                if (UploadImg != null && UploadPdf != null && UploadImg.ContentLength > 0 && UploadPdf.ContentLength > 0)
                 {
-                    //string fullPath = Request.MapPath("~/imageUploads" + product.Image);
-                    //if (System.IO.File.Exists(fullPath))
-                    //{
-                    //    System.IO.File.Delete(fullPath);
-                    //}
-                    // delete file using your filepath (path + filename)
-                    var filepath = UploadImg.FileName;
-                    System.IO.File.Delete(filepath);
+                    // delete image from editing path :
+                    System.IO.File.Delete(Path.Combine(Server.MapPath("~/imageUploads"), UploadImg.FileName));
+
+                    // delete pdf from editing path :
+                    System.IO.File.Delete(Path.Combine(Server.MapPath("~/pdfUploads"), UploadPdf.FileName));
 
                     // uploading image :
                     string ImgPath = Path.Combine(Server.MapPath("~/imageUploads"), UploadImg.FileName);
@@ -205,8 +202,13 @@ namespace SmartSite.Controllers
         [Authorize(Roles = "Admin")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult DeleteConfirmed(int id, HttpPostedFileBase UploadImg, HttpPostedFileBase UploadPdf)
         {
+            // delete image from deleting path :
+            System.IO.File.Delete(Path.Combine(Server.MapPath("~/imageUploads"), UploadImg.FileName));
+
+            // delete pdf from deleting path :
+            System.IO.File.Delete(Path.Combine(Server.MapPath("~/pdfUploads"), UploadPdf.FileName));
             Product product = db.Product.Find(id);
             db.Product.Remove(product);
             db.SaveChanges();
