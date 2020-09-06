@@ -39,6 +39,7 @@ namespace SmartSite.Controllers
         // ------------------ filter products by type -------
         public ActionResult FilterProductsByType(int id) // id = type ID
         {
+            ViewData["category"] = context.ProductType.Find(id).Type;
             IEnumerable<Product> filtereProducts = DAL.filterProductsByType(id);
             return View(filtereProducts);
         }
@@ -111,10 +112,15 @@ namespace SmartSite.Controllers
         {
             if (ModelState.IsValid)
             {
-                string path = Path.Combine(HttpContext.Server.MapPath("~/imageUploads"), file.FileName);
-                file.SaveAs(path);
-                modifiedProductType.Image = file.FileName;
+                if (file != null)
+                {
+                    System.IO.File.Delete(Path.Combine(Server.MapPath("~/imageUploads"), file.FileName));
 
+                    string path = Path.Combine(HttpContext.Server.MapPath("~/imageUploads"), file.FileName);
+                    file.SaveAs(path);
+                    modifiedProductType.Image = file.FileName;
+                }
+                
                 bool successfullyModofiedProductType = DAL.EditProductType(modifiedProductType.ID, modifiedProductType);
                 if (successfullyModofiedProductType)
                     return RedirectToAction("FilterProductTypeByCategory",new { id=modifiedProductType.CategoryID});
@@ -143,9 +149,13 @@ namespace SmartSite.Controllers
 
         [Authorize(Roles = "Admin")]
         [HttpPost]
-        public ActionResult DeleteProductType(ProductType DeletedProductType)
+        public ActionResult DeleteProductType(ProductType DeletedProductType, HttpPostedFileBase file)
         {
-            int deletedTypeCategoryID = DeletedProductType.CategoryID;
+            if (file != null)
+            {
+                System.IO.File.Delete(Path.Combine(Server.MapPath("~/imageUploads"), file.FileName));
+            }
+
             bool successfullyDeletingType = DAL.DeleteProductType(DeletedProductType.ID);
             if (successfullyDeletingType)
                 return RedirectToAction("Index","Home");

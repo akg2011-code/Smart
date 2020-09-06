@@ -10,8 +10,16 @@
 {
     @Html.AntiForgeryToken()
 
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.ID)
+    // error uploading old image :
+    <div class="container">
+        <div class="alert alert-danger" id="errorDiv" style="display:none;">
+            <span id="viewError">
+
+            </span>
+        </div>
+    </div>
+
+    @Html.HiddenFor(model => model.ID)
 
     <!-- Contact Form -->
     <div class="contact-form-area m-top-30 d-flex justify-content-center" style="width:50%;margin-left:25%">
@@ -42,7 +50,7 @@
                     @Html.LabelFor(model => model.Image, htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
                         @*@Html.EditorFor(model => model.Image, new { htmlAttributes = new { @class = "form-control" } })*@
-                        <input type="file" name="UploadImg" accept="image/*" />
+                        <input type="file" name="UploadImg" accept="image/*" id="typeImg" />
                         <span class="text-danger">
                             @ViewBag.Message
                         </span>
@@ -105,5 +113,19 @@
 <script>
     CKEDITOR.replace('Description');
 </script>
+
+<script src="~/Scripts/jquery-3.4.1.js"></script>
+<script>
+    $(function () {
+        $("edit").click(function () {
+            if ($("#typeImg").val == "") {
+                $("#errorDiv").fadeIn();
+                $("#viewError").append("Upload image for that type");
+                return false;
+            }
+        })
+    })
+</script>
+
 
 

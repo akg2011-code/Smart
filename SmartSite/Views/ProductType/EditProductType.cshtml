@@ -5,6 +5,15 @@
 
         @using (Html.BeginForm("EditProductType", "ProductType", FormMethod.Post, new { enctype = "multipart/form-data" }))
         {
+            // error uploading old image :
+            <div class="container">
+                <div class="alert alert-danger" id="errorDiv" style="display:none;">
+                    <span id="viewError">
+
+                    </span>
+                </div>
+            </div>
+
     <div class="contact-form-area m-top-30 d-flex justify-content-center" style="width:50%;margin-left:25%">
         <div class="row d-flex justify-content-center">
 
@@ -29,17 +38,29 @@
             <div class="col-lg-12 col-md-12 ">
                 <div class="form-group">
                     @Html.LabelFor(t => t.Image)
-                    <input class="form-control" type="file" name="file">
+                    <input class="form-control" type="file" name="file" id="typeImg">
                 </div>
             </div>
 
             <div class="col-lg-12 col-md-12 ">
                 <div class="form-group">
-                    <button type="submit" class="btn btn-primary">Edit</button>
+                    <button type="submit" class="btn btn-primary" id="edit">Edit</button>
                 </div>
             </div>
 
         </div>
     </div>
-                    }
-                
+        }
+
+<script src="~/Scripts/jquery-3.4.1.js"></script>
+<script>
+    $(function () {
+        $("edit").click(function () {
+            if ($("#typeImg").val == "") {
+                $("#errorDiv").fadeIn();
+                $("#viewError").append("Upload image for that type");
+                return false;
+            }
+        })
+    })
+</script>
