@@ -39,7 +39,7 @@ namespace SmartSite.Controllers
         // ------------------ filter products by type -------
         public ActionResult FilterProductsByType(int id) // id = type ID
         {
-            ViewData["category"] = context.ProductType.Find(id).Type;
+            ViewData["ProductType"] = context.ProductType.Find(id).Type;
             IEnumerable<Product> filtereProducts = DAL.filterProductsByType(id);
             return View(filtereProducts);
         }
