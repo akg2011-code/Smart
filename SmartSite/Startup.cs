@@ -55,10 +55,10 @@ namespace SmartSite
 
             // applicationUser is a class inherit from IdentityUser and have all user info .
             var user = new ApplicationUser();
-
+            
             // enter main user info .
-            user.Email = "smartAdmin";
-            user.UserName = "admin@smartsite.com";
+            user.Email = "admin@smartsite.com";
+            user.UserName = "smartAdmin";
 
             // creating admin with his password .
             var createUserAdmin = usermanager.Create(user, "smart@ADMINs");

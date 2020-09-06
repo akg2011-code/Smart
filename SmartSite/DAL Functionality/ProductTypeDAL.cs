@@ -19,7 +19,7 @@ namespace SmartSite.DAL_Functionality
             Context.SaveChanges();
         }
 
-        public IEnumerable<Product> filterProductsByType(int productTypeID) => Context.Product.Where(p => p.ProductTypeID == productTypeID);
+        public IEnumerable<Product> filterProductsByType(int? productTypeID) => Context.Product.Where(p => p.ProductTypeID == productTypeID);
 
         public ProductType GetProductTypeByID(int? productTypeID) => Context.ProductType.Find(productTypeID);
 
@@ -38,7 +38,7 @@ namespace SmartSite.DAL_Functionality
             return false;
         }
 
-        public bool EditProductType(int productTypeID, ProductType ModifiedProductType)
+        public bool EditProductType(int? productTypeID, ProductType ModifiedProductType)
         {
             if (ModifiedProductType != null && productTypeID == ModifiedProductType.ID)
             {

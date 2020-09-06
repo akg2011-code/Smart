@@ -18,6 +18,9 @@
         {
             @Html.HiddenFor(m => m.ID)
             <div class="row d-flex justify-content-center">
+
+                <input value="@Session["oldImagePath"].ToString()" name="deletingImgPath" hidden />
+
                 <div class="col-sm-2">
                     <button type="submit" class="btn btn-danger form-control">Delete</button>
                 </div>

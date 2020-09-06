@@ -39,6 +39,9 @@ namespace SmartSite.Controllers
             }
 
             Product product = db.Product.Find(id);
+
+            ViewBag.foundProductPdf = (product.PdfFile != null) ? true : false;
+
             if (product == null)
             {
                 return HttpNotFound();
@@ -78,24 +81,31 @@ namespace SmartSite.Controllers
         {
             if (ModelState.IsValid)
             {
-                if ( (UploadImg != null && UploadPdf != null) && (UploadImg.ContentLength > 0 && UploadPdf.ContentLength > 0) )
+                if ( UploadImg != null && UploadImg.ContentLength > 0)
                 {
                     // uploading image :
-                    string ImgPath = Path.Combine(Server.MapPath("~/imageUploads"), UploadImg.FileName);
+                    string ImgPath = Path.Combine(Server.MapPath("~/imageUploads/ProductImg"), UploadImg.FileName);
                     UploadImg.SaveAs(ImgPath);
                     product.Image = UploadImg.FileName;
 
                     // uploading PDF :
-                    string pdfPath = Path.Combine(Server.MapPath("~/pdfUploads"), UploadPdf.FileName);
-                    UploadPdf.SaveAs(pdfPath);
-                    product.PdfFile = UploadPdf.FileName;
+                    if (UploadPdf != null && UploadPdf.ContentLength > 0)
+                    {
+                        string pdfPath = Path.Combine(Server.MapPath("~/pdfUploads"), UploadPdf.FileName);
+                        UploadPdf.SaveAs(pdfPath);
+                        product.PdfFile = UploadPdf.FileName;
+                    }
+                    else
+                    {
+                        ViewBag.pdfErrorMessage = "You have not specified a file yet ...";
+                    }
 
                     db.Product.Add(product);
                     db.SaveChanges();
                     return RedirectToAction("Index");
                 }
                 else
-                    ViewBag.Message = "You have not specified a file yet ...";
+                    ViewBag.imageErrorMessage = "You have not specified an image yet ...";
             }
 
             ViewBag.ProductTypeID = new SelectList(db.ProductType, "ID", "Type", product.ProductTypeID);
@@ -114,6 +124,10 @@ namespace SmartSite.Controllers
             {
                 return HttpNotFound();
             }
+
+            Session["oldImagePath"] = (Server.MapPath(Path.Combine("~/imageUploads/ProductImg" , product.Image))).ToString();
+            Session["oldPdfPath"] = (Server.MapPath(Path.Combine("~/pdfUploads", product.PdfFile))).ToString();
+
             ViewBag.ProductTypeID = new SelectList(db.ProductType, "ID", "Type", product.ProductTypeID);
             return View(product);
         }
@@ -121,33 +135,49 @@ namespace SmartSite.Controllers
         [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(Product product, HttpPostedFileBase UploadImg , HttpPostedFileBase UploadPdf)
+        public ActionResult Edit(Product product, HttpPostedFileBase UploadImg, string deletingImgPath,string deletingPdfPath, HttpPostedFileBase UploadPdf)
         {
             if (ModelState.IsValid)
             {
-                if (UploadImg != null && UploadPdf != null && UploadImg.ContentLength > 0 && UploadPdf.ContentLength > 0)
+                if ( UploadImg != null && UploadImg.ContentLength > 0)
                 {
-                    // delete image from editing path :
-                    System.IO.File.Delete(Path.Combine(Server.MapPath("~/imageUploads"), UploadImg.FileName));
+                    // deleting old image from its path :
+                    if (System.IO.File.Exists(deletingImgPath))
+                    {
+                        System.IO.File.Delete(deletingImgPath);
+                    }
 
-                    // delete pdf from editing path :
-                    System.IO.File.Delete(Path.Combine(Server.MapPath("~/pdfUploads"), UploadPdf.FileName));
+                    // deleting old Pdf from its path :
+                    if (System.IO.File.Exists(deletingPdfPath))
+                    {
+                        System.IO.File.Delete(deletingPdfPath);
+                    }
 
                     // uploading image :
-                    string ImgPath = Path.Combine(Server.MapPath("~/imageUploads"), UploadImg.FileName);
+                    string ImgPath = Path.Combine(Server.MapPath("~/imageUploads/ProductImg"), UploadImg.FileName);
                     UploadImg.SaveAs(ImgPath);
                     product.Image = UploadImg.FileName;
 
                     // uploading PDF :
-                    string pdfPath = Path.Combine(Server.MapPath("~/pdfUploads"), UploadPdf.FileName);
-                    UploadPdf.SaveAs(pdfPath);
-                    product.PdfFile = UploadPdf.FileName;
+                    if (UploadPdf != null && UploadPdf.ContentLength > 0)
+                    {
+                        string pdfPath = Path.Combine(Server.MapPath("~/pdfUploads"), UploadPdf.FileName);
+                        UploadPdf.SaveAs(pdfPath);
+                        product.PdfFile = UploadPdf.FileName;
+                    }
+                    else
+                    {
+                        ViewBag.pdfErrorMessage = "You have not specified a file yet ...";
+                    }
 
                     db.Entry(product).State = EntityState.Modified;
                     db.SaveChanges();
                     return RedirectToAction("Index");
                 }
+                else
+                    ViewBag.imageErrorMessage = "You have not specified an image yet ...";
             }
+
             ViewBag.ProductTypeID = new SelectList(db.ProductType, "ID", "Type", product.ProductTypeID);
             return View(product);
         }
@@ -192,6 +222,10 @@ namespace SmartSite.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Product product = db.Product.Find(id);
+
+            Session["oldImagePath"] = (Server.MapPath(Path.Combine("~/imageUploads/ProductImg", product.Image))).ToString();
+            Session["oldPdfPath"] = (Server.MapPath(Path.Combine("~/pdfUploads", product.PdfFile))).ToString();
+
             if (product == null)
             {
                 return HttpNotFound();
@@ -202,13 +236,21 @@ namespace SmartSite.Controllers
         [Authorize(Roles = "Admin")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id, HttpPostedFileBase UploadImg, HttpPostedFileBase UploadPdf)
+        public ActionResult DeleteConfirmed(int id , string deletingImgPath , string deletingPdfPath, HttpPostedFileBase UploadImg, HttpPostedFileBase UploadPdf)
         {
-            // delete image from deleting path :
-            System.IO.File.Delete(Path.Combine(Server.MapPath("~/imageUploads"), UploadImg.FileName));
+            // deleting old image from its path :
+            if (System.IO.File.Exists(deletingImgPath))
+            {
+                System.IO.File.Delete(deletingImgPath);
+            }
 
-            // delete pdf from deleting path :
-            System.IO.File.Delete(Path.Combine(Server.MapPath("~/pdfUploads"), UploadPdf.FileName));
+            // deleting old Pdf from its path :
+            if (System.IO.File.Exists(deletingPdfPath))
+            {
+                System.IO.File.Delete(deletingPdfPath);
+            }
+
+
             Product product = db.Product.Find(id);
             db.Product.Remove(product);
             db.SaveChanges();

@@ -21,7 +21,7 @@ namespace SmartSite.DAL_Functionality
 
         public IEnumerable<News> GetAllNews() => Context.News.ToList();
 
-        public News GetNewsByID(int newsID) => Context.News.Find(newsID);
+        public News GetNewsByID(int? newsID) => Context.News.Find(newsID);
 
         public bool CreateNews(News newNews)
         {
@@ -34,7 +34,7 @@ namespace SmartSite.DAL_Functionality
             return false;
         }
 
-        public bool EditExistedNews(int newsID, News modifiedNews)
+        public bool EditExistedNews(int? newsID, News modifiedNews)
         {
             News updatedNews = GetNewsByID(newsID);
             if (updatedNews != null && newsID == modifiedNews.ID)
@@ -50,7 +50,7 @@ namespace SmartSite.DAL_Functionality
             return false;
         }
 
-        public bool DeleteNews(int newsID)
+        public bool DeleteNews(int? newsID)
         {
             News DeletedNews = GetNewsByID(newsID);
             if (DeletedNews != null)

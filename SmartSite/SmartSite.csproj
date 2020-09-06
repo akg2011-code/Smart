@@ -287,8 +287,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="DatabaseModels\" />
     <Folder Include="imageUploads\NewsImg\" />
+    <Folder Include="imageUploads\ProductImg\" />
     <Folder Include="imageUploads\TypeImg\" />
     <Folder Include="pdfUploads\" />
   </ItemGroup>

@@ -12,12 +12,9 @@
                     <!-- Bread Menu -->
                     <div class="bread-menu">
                         <ul>
-                            <li><a href="index.html">Home  -</a></li>
-                            <li><a href="portfolio.html">@ViewData["category"] </a></li>
+                            <li><a href="@Url.Action("Index","Home")">Home  -</a></li>
                         </ul>
                     </div>
-                    <!-- Bread Title -->
-                    <div class="bread-title"><h2>CableTie</h2></div>
                 </div>
             </div>
         </div>
@@ -69,7 +66,7 @@
                             <!-- Single Portfolio -->
                             <div class="single-portfolio">
                                 <div class="portfolio-head overlay">
-                                    <img src="~/imageUploads/@item.Image" />
+                                    <img src="~/imageUploads/ProductImg/@item.Image" />
                                     <a class="more" href=" @Url.Action("Details", "Products", new { id = item.ID })"><i class="fas fa-long-arrow-alt-right"></i></a>
                                 </div>
                                 <div class="portfolio-content">

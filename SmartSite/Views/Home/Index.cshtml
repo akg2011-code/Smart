@@ -164,15 +164,14 @@
 
             <!-- Single Service -->
             @{
-                List<SmartSite.Models.Product> randomProducts = ViewBag.randomProduct;
-                if (randomProducts != null)
+                if (ViewBag.shownProducts != null)
                 {
-                    foreach (var product in randomProducts)
+                    foreach (var product in ViewBag.shownProducts)
                     {
                         <div class="col-lg-4 col-md-4 col-12">
                             <div class="single-service">
                                 <div class="service-head">
-                                    <img src="~/imageUploads/@product.Image" alt="#">
+                                    <img src="~/imageUploads/ProductImg/@product.Image" alt="#">
                                     <a href="@Url.Action("Details","Products",new { id=product.ID})"><div class="icon-bg"><i class="fa fa-handshake-o"></i></div></a>
                                 </div>
                                 <div class="service-content">
