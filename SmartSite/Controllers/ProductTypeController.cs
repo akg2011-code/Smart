@@ -3,6 +3,7 @@ using SmartSite.Models;
 using SmartSite.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -23,8 +24,12 @@ namespace SmartSite.Controllers
         }
 
         //------------------- type details -------------------
-        public ActionResult ProductTypeDetails(int id)
+        public ActionResult ProductTypeDetails(int? id)
         {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
 
             ViewData["product"] = DAL.filterProductsByType(id);
 
@@ -37,8 +42,13 @@ namespace SmartSite.Controllers
 
         //[Authorize(Roles = "User")]
         // ------------------ filter products by type -------
-        public ActionResult FilterProductsByType(int id) // id = type ID
+        public ActionResult FilterProductsByType(int? id) // id = type ID
         {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
             ViewData["ProductType"] = context.ProductType.Find(id).Type;
             IEnumerable<Product> filtereProducts = DAL.filterProductsByType(id);
             return View(filtereProducts);
@@ -58,7 +68,10 @@ namespace SmartSite.Controllers
         public ActionResult FilterProductTypeByCategory(int? id) // id = category ID
         {
             if (id == null)
-                return View("~/Views/Shared/Error.cshtml");
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
             ViewBag.category = context.Category.Find(id);
             IEnumerable<ProductType> filteredTypes = DAL.FilterProductTypeByCategory(id);
             return View(filteredTypes);
@@ -79,15 +92,23 @@ namespace SmartSite.Controllers
         {
             if (ModelState.IsValid)
             {
-                string path = Path.Combine(HttpContext.Server.MapPath("~/imageUploads"), file.FileName);
-                file.SaveAs(path);
-                createdProductType.Image = file.FileName;
+                if (file != null && file.ContentLength > 0)
+                {
+                    string path = Path.Combine(HttpContext.Server.MapPath("~/imageUploads/TypeImg"), file.FileName);
+                    file.SaveAs(path);
+                    createdProductType.Image = file.FileName;
 
-                bool successfullyCreatedProductType = DAL.CreateProductType(createdProductType);
-                if (successfullyCreatedProductType)
-                    return RedirectToAction("FilterProductTypeByCategory", new { id = createdProductType.CategoryID });
+                    bool successfullyCreatedProductType = DAL.CreateProductType(createdProductType);
+                    if (successfullyCreatedProductType)
+                        return RedirectToAction("FilterProductTypeByCategory", new { id = createdProductType.CategoryID });
+                    else
+                        return View(createdProductType);
+                }
                 else
-                    return View(createdProductType);
+                {
+                    ViewBag.Message = "You have not specified a file yet ...";
+                }
+                
             }
 
             ViewBag.CategoryID = new SelectList(context.Category, "ID", "CategoryName");
@@ -96,10 +117,19 @@ namespace SmartSite.Controllers
 
         [Authorize(Roles = "Admin")]
         // --------------------- edit type ----------------------
-        public ActionResult EditProductType(int id)
+        public ActionResult EditProductType(int? id)
         {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
             ViewData["Category"] = new SelectList(context.Category, "ID", "CategoryName");
+
             ProductType updatedProductType = DAL.GetProductTypeByID(id);
+
+            Session["oldImagePath"] = (Server.MapPath(Path.Combine("~/imageUploads/TypeImg", updatedProductType.Image))).ToString();
+
             if (updatedProductType != null)
                 return View(updatedProductType);
             else
@@ -108,26 +138,40 @@ namespace SmartSite.Controllers
 
         [Authorize(Roles = "Admin")]
         [HttpPost]
-        public ActionResult EditProductType(ProductType modifiedProductType, HttpPostedFileBase file)
+        public ActionResult EditProductType(ProductType modifiedProductType, string deletingImgPath, HttpPostedFileBase file)
         {
             if (ModelState.IsValid)
             {
-                if (file != null)
+                if (file != null && file.ContentLength > 0)
                 {
-                    System.IO.File.Delete(Path.Combine(Server.MapPath("~/imageUploads"), file.FileName));
+                    // deleting old image from its path :
+                    if (System.IO.File.Exists(deletingImgPath))
+                    {
+                        System.IO.File.Delete(deletingImgPath);
+                    }
 
-                    string path = Path.Combine(HttpContext.Server.MapPath("~/imageUploads"), file.FileName);
+                    string path = Path.Combine(Server.MapPath("~/imageUploads/TypeImg"), file.FileName);
                     file.SaveAs(path);
                     modifiedProductType.Image = file.FileName;
+
+                    context.Entry(modifiedProductType).State = EntityState.Modified;
+                    context.SaveChanges();
+                    return RedirectToAction("FilterProductTypeByCategory", new { id = modifiedProductType.CategoryID });
+
+                    //bool successfullyModofiedProductType = DAL.EditProductType(modifiedProductType.ID, modifiedProductType);
+                    //if (successfullyModofiedProductType)
+                    //    return RedirectToAction("FilterProductTypeByCategory", new { id = modifiedProductType.CategoryID });
+                    //else
+                    //    return View(modifiedProductType);
                 }
-                
-                bool successfullyModofiedProductType = DAL.EditProductType(modifiedProductType.ID, modifiedProductType);
-                if (successfullyModofiedProductType)
-                    return RedirectToAction("FilterProductTypeByCategory",new { id=modifiedProductType.CategoryID});
                 else
-                    return View(modifiedProductType);
+                {
+                    ViewBag.Message = "You have not specified a file yet ...";
+                }
 
             }
+
+            ViewData["Category"] = new SelectList(context.Category, "ID", "CategoryName");
             return View(modifiedProductType);
         }
 
@@ -141,6 +185,9 @@ namespace SmartSite.Controllers
             }
 
             ProductType deletedProductType = DAL.GetProductTypeByID(id);
+
+            Session["oldImagePath"] = (Server.MapPath(Path.Combine("~/imageUploads/NewsImg", deletedProductType.Image))).ToString();
+
             if (deletedProductType != null)
                 return View(deletedProductType);
             else
@@ -149,11 +196,12 @@ namespace SmartSite.Controllers
 
         [Authorize(Roles = "Admin")]
         [HttpPost]
-        public ActionResult DeleteProductType(ProductType DeletedProductType, HttpPostedFileBase file)
+        public ActionResult DeleteProductType(ProductType DeletedProductType, string deletingImgPath)
         {
-            if (file != null)
+            // deleting old image from its path :
+            if (System.IO.File.Exists(deletingImgPath))
             {
-                System.IO.File.Delete(Path.Combine(Server.MapPath("~/imageUploads"), file.FileName));
+                System.IO.File.Delete(deletingImgPath);
             }
 
             bool successfullyDeletingType = DAL.DeleteProductType(DeletedProductType.ID);

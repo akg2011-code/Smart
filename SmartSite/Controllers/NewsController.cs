@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Net;
 
 namespace SmartSite.Controllers
 {
@@ -22,8 +23,13 @@ namespace SmartSite.Controllers
             return View(allNews);
         }
 
-        public ActionResult NewsDetails(int id) // id = news ID
+        public ActionResult NewsDetails(int? id) // id = news ID
         {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
             News news = DAL.GetNewsByID(id);
             if(news != null)
                 return View(news);
@@ -43,24 +49,44 @@ namespace SmartSite.Controllers
         {
             if (ModelState.IsValid)
             {
-                string ImgPath = Path.Combine(Server.MapPath("~/imageUploads/NewsImg"), UploadImg.FileName);
-                UploadImg.SaveAs(ImgPath);
-                createdNews.Image = UploadImg.FileName;
+                if (UploadImg != null && UploadImg.ContentLength > 0)
+                {
+                    string ImgPath = Path.Combine(Server.MapPath("~/imageUploads/NewsImg"), UploadImg.FileName);
+                    UploadImg.SaveAs(ImgPath);
+                    createdNews.Image = UploadImg.FileName;
 
-                bool successfullyCreatingNews = DAL.CreateNews(createdNews);
-                if(successfullyCreatingNews)
-                    return RedirectToAction("GetAllNews");
+                    bool successfullyCreatingNews = DAL.CreateNews(createdNews);
+                    if (successfullyCreatingNews)
+                        return RedirectToAction("GetAllNews");
+                    else
+                        return View(createdNews);
+                }
                 else
-                    return View(createdNews);
-
+                {
+                    ViewBag.Message = "You have not specified a file yet ...";
+                }
             }
             return View(createdNews);
         }
 
         [Authorize(Roles = "Admin")]
-        public ActionResult EditNews(int id) // id = news ID
+        public ActionResult EditNews(int? id) // id = news ID
         {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            if (DAL.GetNewsByID(id) == null)
+            {
+                return HttpNotFound();
+            }
+
+
             News modifiedNews = DAL.GetNewsByID(id);
+
+            Session["oldImagePath"] = (Server.MapPath(Path.Combine("~/imageUploads/NewsImg", modifiedNews.Image))).ToString();
+
             if (modifiedNews != null)
                 return View(modifiedNews);
             else
@@ -69,32 +95,56 @@ namespace SmartSite.Controllers
 
         [Authorize(Roles = "Admin")]
         [HttpPost]
-        public ActionResult EditNews(News EditedNews, HttpPostedFileBase UploadImg)
+        public ActionResult EditNews(News EditedNews, HttpPostedFileBase UploadImg , string deletingImgPath)
         {
             if (ModelState.IsValid)
             {
-                var filepath = UploadImg.FileName;
-                System.IO.File.Delete(filepath);
+                if (UploadImg != null && UploadImg.ContentLength > 0)
+                {
+                    // deleting old image from its path :
+                    if (System.IO.File.Exists(deletingImgPath))
+                    {
+                        System.IO.File.Delete(deletingImgPath);
+                    }
 
-                string ImgPath = Path.Combine(Server.MapPath("~/imageUploads/NewsImg"), UploadImg.FileName);
-                UploadImg.SaveAs(ImgPath);
-                EditedNews.Image = UploadImg.FileName;
+                    string ImgPath = Path.Combine(Server.MapPath("~/imageUploads/NewsImg"), UploadImg.FileName);
+                    UploadImg.SaveAs(ImgPath);
 
-                bool successfullyEditingNews = DAL.EditExistedNews(EditedNews.ID, EditedNews);
-                if (successfullyEditingNews)
-                    return RedirectToAction("GetAllNews");
+                    //delete old image :
+                    string oldImg = Request.MapPath(Session["imagePath"].ToString());
+                    if (System.IO.File.Exists(oldImg))
+                    {
+                        System.IO.File.Delete(oldImg);
+                    }
+
+                    EditedNews.Image = UploadImg.FileName;
+
+                    bool successfullyEditingNews = DAL.EditExistedNews(EditedNews.ID, EditedNews);
+                    if (successfullyEditingNews)
+                        return RedirectToAction("GetAllNews");
+                    else
+                        return View(EditedNews);
+                }
                 else
-                    return View(EditedNews);
+                    ViewBag.Message = "You have not specified a file yet ...";
 
             }
             return View(EditedNews);
         }
 
         [Authorize(Roles = "Admin")]
-        public ActionResult DeleteNews(int id) // id = news ID
+        public ActionResult DeleteNews(int? id) // id = news ID
         {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
             News deletedNews = DAL.GetNewsByID(id);
-            if(deletedNews != null)
+
+            Session["oldImagePath"] = (Server.MapPath(Path.Combine("~/imageUploads/NewsImg", deletedNews.Image))).ToString();
+
+            if (deletedNews != null)
                 return View(deletedNews);
             else
                 return View("~/Views/Shared/Error.cshtml");
@@ -102,8 +152,15 @@ namespace SmartSite.Controllers
 
         [Authorize(Roles = "Admin")]
         [HttpPost]
-        public ActionResult DeleteNews(News deletedNews)
+        public ActionResult DeleteNews(News deletedNews, string deletingImgPath)
         {
+            // deleting old image from its path :
+            if (System.IO.File.Exists(deletingImgPath))
+            {
+                System.IO.File.Delete(deletingImgPath);
+            }
+
+
             bool successfullyDeletingNew = DAL.DeleteNews(deletedNews.ID);
             if (successfullyDeletingNew)
                 return RedirectToAction("GetAllNews");

@@ -37,7 +37,7 @@ namespace SmartSite.Controllers
             IEnumerable<Category> allCategories = DAL.GetAllCategories();
 
             // random product :
-            ViewData["randomProduct"] = Get3Products();
+            ViewBag.shownProducts = Get3Products();
 
             navbarVM vm = new navbarVM();
             ViewBag.displayedNews = vm.GetLastNews();
@@ -70,6 +70,6 @@ namespace SmartSite.Controllers
                 return Context.Product.ToList();
             }
         }
-
+ 
     }
 }

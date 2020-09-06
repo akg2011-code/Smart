@@ -20,11 +20,11 @@
                     <!-- Single Portfolio -->
                     <div class="single-portfolio">
                         <div class="portfolio-head overlay">
-                            <img src="~/imageUploads/@Model.Image" style="width:350px;height:300px" />
-                            <a class="more" href="Details/@Model.ID"><i class="fas fa-long-arrow-alt-right"></i></a>
+                            <img src="~/imageUploads/ProductImg/@Model.Image" style="width:350px;height:300px" />
+                            <a class="more" href="@Url.Action("Details","Products",new { id=Model.ID})"><i class="fas fa-long-arrow-alt-right"></i></a>
                         </div>
                         <div class="portfolio-content">
-                            <h4><a href="Details/@Model.ID">@Html.DisplayFor(model => model.Name)</a></h4>
+                            <h4><a href="@Url.Action("Details","Products",new { id=Model.ID})">@Html.DisplayFor(model => model.Name)</a></h4>
                             <br />
                             <p>
                                 @Html.DisplayFor(model => model.ProductType.Type)
@@ -36,18 +36,18 @@
                     {
                         @Html.AntiForgeryToken()
 
-                        @*<div class="form-actions no-color">
-                            <input type="submit" value="Delete" class="btn btn-danger form-control" />
-                            @Html.ActionLink("Cancle", "Index", null, new { @class = "btn btn-info form-control" })
-                        </div>*@
-                        <div class="row d-flex justify-content-center">
-                            <div class="col-sm-4">
-                                <button type="submit" class="btn btn-danger form-control">Delete</button>
-                            </div>
-                            <div class="col-sm-4">
-                                @Html.ActionLink("Cancel", "Index", null, new { @class = "btn btn-info form-control" })
-                            </div>
-                        </div>
+                <div class="row d-flex justify-content-center">
+                    @* ----- hidden fields ----- *@
+                    <input value="@Session["oldImagePath"].ToString()" name="deletingImgPath" hidden />
+                    <input value="@Session["oldPdfPath"].ToString()" name="deletingPdfPath" hidden />
+
+                    <div class="col-sm-4">
+                        <button type="submit" class="btn btn-danger form-control">Delete</button>
+                    </div>
+                    <div class="col-sm-4">
+                        @Html.ActionLink("Cancel", "Index", null, new { @class = "btn btn-info form-control" })
+                    </div>
+                </div>
 
                     }
                 </div>
