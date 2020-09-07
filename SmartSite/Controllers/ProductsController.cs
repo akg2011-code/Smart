@@ -102,7 +102,7 @@ namespace SmartSite.Controllers
 
                     db.Product.Add(product);
                     db.SaveChanges();
-                    return RedirectToAction("Index");
+                    return RedirectToAction("FilterProductsByType", "ProductType",new { id=product.ProductTypeID});
                 }
                 else
                     ViewBag.imageErrorMessage = "You have not specified an image yet ...";
@@ -172,7 +172,7 @@ namespace SmartSite.Controllers
 
                     db.Entry(product).State = EntityState.Modified;
                     db.SaveChanges();
-                    return RedirectToAction("Index");
+                    return RedirectToAction("FilterProductsByType", "ProductType", new { id = product.ProductTypeID });
                 }
                 else
                     ViewBag.imageErrorMessage = "You have not specified an image yet ...";

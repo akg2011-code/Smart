@@ -327,9 +327,7 @@ C:\Users\Engineer Ahmad\Desktop\Smart\SmartSite\obj\Debug\SmartSite.csproj.CoreC
 C:\Users\Engineer Ahmad\Desktop\Smart\SmartSite\obj\Debug\SmartSite.csproj.CopyComplete
 C:\Users\Engineer Ahmad\Desktop\Smart\SmartSite\obj\Debug\SmartSite.dll
 C:\Users\Engineer Ahmad\Desktop\Smart\SmartSite\obj\Debug\SmartSite.pdb
-C:\Users\Engineer Ahmad\Desktop\Smart\SmartSite\obj\Debug\SmartSite.Migrations.rebuildModels.resources
 C:\Users\Engineer Ahmad\Desktop\Smart\SmartSite\obj\Debug\SmartSite.csproj.GenerateResource.cache
-C:\Users\Engineer Ahmad\Desktop\Smart\SmartSite\obj\Debug\SmartSite.Migrations.editProductTypeAddImage.resources
 F:\IQ 2 life\Smart website\New folder\Smart\SmartSite\bin\SmartSite.dll.config
 F:\IQ 2 life\Smart website\New folder\Smart\SmartSite\bin\SmartSite.dll
 F:\IQ 2 life\Smart website\New folder\Smart\SmartSite\bin\SmartSite.pdb
@@ -444,3 +442,5 @@ F:\IQ 2 life\Smart website\New folder\Smart\SmartSite\obj\Debug\SmartSite.csproj
 C:\Users\akg20\Desktop\Smart\SmartSite\obj\Debug\SmartSite.Migrations.akg.resources
 C:\Users\akg20\Desktop\Smart\SmartSite\obj\Debug\SmartSite.csproj.GenerateResource.cache
 C:\Users\akg20\Desktop\Smart\SmartSite\obj\Debug\SmartSite.Migrations.img.resources
+C:\Users\Engineer Ahmad\Desktop\Smart\SmartSite\obj\Debug\SmartSite.Migrations.akg.resources
+C:\Users\Engineer Ahmad\Desktop\Smart\SmartSite\obj\Debug\SmartSite.Migrations.img.resources

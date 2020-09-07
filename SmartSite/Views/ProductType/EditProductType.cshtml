@@ -15,7 +15,7 @@
                 <div class="form-group">
                     @Html.LabelFor(m => m.Type)
                     @Html.TextBoxFor(m => m.Type, new { @class = "form-control", placeholder = "Type Name" })
-                    @Html.ValidationMessageFor(m => m.Type, "", new { @class = "text-danger" })
+                    @Html.ValidationMessageFor(m => m.Type, "Must Upload Type Image", new { @class = "text-danger" })
                 </div>
             </div>
 

@@ -23,6 +23,7 @@ namespace SmartSite.Controllers
             context = new ApplicationDbContext();
         }
 
+
         //------------------- type details -------------------
         public ActionResult ProductTypeDetails(int? id)
         {
@@ -40,7 +41,6 @@ namespace SmartSite.Controllers
                 return View("~/Views/Shared/Error.cshtml");
         }
 
-        //[Authorize(Roles = "User")]
         // ------------------ filter products by type -------
         public ActionResult FilterProductsByType(int? id) // id = type ID
         {
@@ -48,7 +48,6 @@ namespace SmartSite.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-
             ViewData["ProductType"] = context.ProductType.Find(id).Type;
             IEnumerable<Product> filtereProducts = DAL.filterProductsByType(id);
             return View(filtereProducts);
@@ -64,7 +63,6 @@ namespace SmartSite.Controllers
         }
 
         // ------------------ filter product type by category -----------
-        //[Authorize(Roles = "User")]
         public ActionResult FilterProductTypeByCategory(int? id) // id = category ID
         {
             if (id == null)

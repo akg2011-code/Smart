@@ -5,26 +5,32 @@
     {
         @Html.AntiForgeryToken()
 
-        <li>
-            <a href="@Url.Action("Index", "Manage")">
-                <i class="far fa-user"></i>
-                @User.Identity.GetUserName()
-            </a>
-            @*@Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })*@
-        </li>
-        <li><a href="javascript:document.getElementById('logoutForm').submit()"><i class="fas fa-sign-out-alt"></i> Log off</a></li>
+    <li style="list-style-type:none;">
+        @{
+            if (User.IsInRole("User"))
+            {
+                <a href="@Url.Action("Index", "Manage")">
+                    <i class="far fa-user"></i>
+                    @User.Identity.GetUserName()
+                </a>
+            }
+        }
+
+        @*@Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })*@
+    </li>
+        <li style="list-style-type:none;"><a href="javascript:document.getElementById('logoutForm').submit()"><i class="fas fa-sign-out-alt"></i> Log off</a></li>
     }
 }
 else
 {
-    <li>
+    <li style="list-style-type:none;">
         <a href="@Url.Action("Register", "Account", new { id = "registerLink" })">
             <i class="fas fa-user-plus"></i>
             Register
         </a> 
     </li>
 
-    <li>
+    <li style="list-style-type:none;">
         <a href="@Url.Action("Login", "Account", new { id = "loginLink" })">
             <i class="fas fa-sign-in-alt"></i>
             Log in

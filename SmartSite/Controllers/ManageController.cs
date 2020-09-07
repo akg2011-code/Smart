@@ -50,7 +50,7 @@ namespace SmartSite.Controllers
             }
         }
 
-        //
+        [Authorize(Roles ="User")]
         // GET: /Manage/Index
         public async Task<ActionResult> Index(ManageMessageId? message)
         {

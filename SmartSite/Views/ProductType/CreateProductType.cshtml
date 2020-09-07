@@ -27,6 +27,7 @@
                 <div class="form-group">
                     @Html.LabelFor(t => t.Image)
                     <input class="form-control" type="file" name="file">
+                    @Html.ValidationMessageFor(t => t.Image, "Must Upload Type Image", new { @class = "text-danger" })
                 </div>
             </div>
 

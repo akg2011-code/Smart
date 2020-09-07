@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
+using System.Runtime.Remoting.Services;
 using System.Web;
 using System.Web.Mvc;
 
@@ -15,11 +16,11 @@ namespace SmartSite.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ID { get; set; }
 
-        [Required]
+        [Required(ErrorMessage ="Must Enter Product Name")]
         [MaxLength(50)]
         public string Name { get; set; }
 
-        [Required]
+        [Required(ErrorMessage ="Enter a Description")]
         [AllowHtml]
         public string Description { get; set; }
 

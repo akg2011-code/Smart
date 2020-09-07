@@ -5,7 +5,13 @@
 
     <div class="container">
         <h3 style="text-align:center;"><u>Product Types</u></h3>
-        @Html.ActionLink("Create new Product Type", "CreateProductType", new { @class = "btn btn-info" })
+        @{
+            if (User.IsInRole("Admin"))
+            {
+                @Html.ActionLink("Create new Product Type", "CreateProductType", new { @class = "btn btn-info" })
+            }
+        }
+
         <hr />
 
         @using (Html.BeginForm("FilterProductTypeByCategory", "ProductType", FormMethod.Get))
