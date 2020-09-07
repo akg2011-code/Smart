@@ -14,7 +14,7 @@ namespace SmartSite.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ID { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Must Enter Type Name")]
         [MaxLength(50)]
         public string Type { get; set; }
 

@@ -86,6 +86,7 @@ namespace SmartSite.Controllers
             News modifiedNews = DAL.GetNewsByID(id);
 
             Session["oldImagePath"] = (Server.MapPath(Path.Combine("~/imageUploads/NewsImg", modifiedNews.Image))).ToString();
+            Session["Image"] = modifiedNews.Image;
 
             if (modifiedNews != null)
                 return View(modifiedNews);
@@ -110,13 +111,7 @@ namespace SmartSite.Controllers
                     string ImgPath = Path.Combine(Server.MapPath("~/imageUploads/NewsImg"), UploadImg.FileName);
                     UploadImg.SaveAs(ImgPath);
 
-                    //delete old image :
-                    string oldImg = Request.MapPath(Session["imagePath"].ToString());
-                    if (System.IO.File.Exists(oldImg))
-                    {
-                        System.IO.File.Delete(oldImg);
-                    }
-
+                    
                     EditedNews.Image = UploadImg.FileName;
 
                     bool successfullyEditingNews = DAL.EditExistedNews(EditedNews.ID, EditedNews);

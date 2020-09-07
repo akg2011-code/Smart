@@ -14,11 +14,11 @@ namespace SmartSite.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ID { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Must Enter News Title")]
         [MaxLength(50)]
         public string Title { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Enter News Details")]
         public string Details { get; set; }
 
         public string Image { get; set; }

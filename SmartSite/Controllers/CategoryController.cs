@@ -16,6 +16,7 @@ namespace SmartSite.Controllers
             DAL = new CategoryDAL();
         }
 
+        [Authorize(Roles = "Admin")]
         public ActionResult GetAllCategories()
         {
             List<Category> allCategories = DAL.GetAllCategories().ToList();

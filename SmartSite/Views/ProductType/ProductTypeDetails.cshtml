@@ -33,7 +33,8 @@
                             <td>@product.ProductType.Type</td>
                             <td>@product.ProductType.Category.CategoryName</td>
                             <td>
-                                @Html.ActionLink("Details", "Details", new { id = product.ID }) |
+                                @Html.ActionLink("Details", "Details", new { id = product.ID })
+
                                 @if (User.IsInRole("Admin"))
                                 {
                                     @Html.ActionLink("Edit", "Edit", new { id = product.ID })
