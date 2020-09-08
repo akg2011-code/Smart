@@ -93,7 +93,7 @@ p{
     line-height: 50px;
 }
 .hero-slider, .hero-slider .single-slider {
-    height: 550px !important;
+    /*height: 550px !important;*/
 }
 .hero-slider .welcome-text {
     margin: 109px 0 0;
@@ -602,12 +602,13 @@ p{
 	font-size: 25px;
 	line-height: 32px;
 }
-.hero-slider, .hero-slider .single-slider {
-	height: 450px !important;
-}
-.hero-slider .single-slider {
-	background: #fff !important;
-}
+	.hero-slider, .hero-slider .single-slider {
+		height: 450px !important;
+	}
+
+		.hero-slider .single-slider {
+			/*background: #fff !important;*/
+		}
 .hero-slider .hero-text .p-text {
 	max-width: 100%;
 }

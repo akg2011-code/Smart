@@ -245,6 +245,13 @@
                                                                     @Html.Action("navbarPartial", "Home")
 
                                                                 </li>
+                                                                @{
+                                                                    if (User.IsInRole("Admin"))
+                                                                    {
+                                                                        <li><a href="@Url.Action("GetAllCategories","Category")">Categories</a></li>
+                                                                    }
+                                                                }
+
                                                                 <li><a href="@Url.Action("Contact","Home")">Contact Us</a></li>
                                                                 <li class="icon-active">
                                                                     <a href="@Url.Action("GetAllNews","News")">

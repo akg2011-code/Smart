@@ -2453,21 +2453,6 @@ p.has-large-font-size {
             padding: 8px 20px;
             font-size: 16px;
         }
-@media (min-width: 360px) {
-
-
-    .hero-slider .single-slider {
-        /*background-attachment: initial !important;*/
-        background: url('../../img/1.2.jpg') no-repeat center !important;
-        /*background-size: auto 100%;*/
-    }
-
-    .hero-slider .welcome-text {
-        margin: 10px 0 0;
-    }
-
-}
-
             .hero-slider .hero-text h4:before {
                 content: "";
                 position: absolute;
@@ -4885,8 +4870,8 @@ p.has-large-font-size {
     padding: 40px;
     box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.18);
     border-top: 2px solid #78E08F;
-    width: 75% !important;
-    margin-left: 15% !important;
+    width: 50% ;
+    margin-left: 20% ;
 }
 
     .contact-form-area h4 {
@@ -5039,13 +5024,6 @@ p.has-large-font-size {
             height: 120px;
         }
 
-
-@media (min-width: 360px) {
-
-    contact-form-area {
-        width: 90% !important;
-        margin-left: 4% !important;
-    }
 
 
     /*======================================
@@ -5467,6 +5445,29 @@ p.has-large-font-size {
             text-shadow: 2px 2px 2px;
         }
     }
+
+
+
+
+    @media (min-width: 360px) {
+
+
+        .hero-slider .single-slider {
+            /*background-attachment: initial !important;*/
+            background:  no-repeat center ;
+            background-size: auto 100%;
+        }
+
+        .hero-slider .welcome-text {
+            margin: 50px 0 0;
+        }
+        contact-form-area {
+            width: 90% !important;
+            margin-left: 4% !important;
+        }
+
+    }
+
     /*======================================
 	End facebook chat box
 ========================================*/

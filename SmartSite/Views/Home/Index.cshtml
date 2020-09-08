@@ -39,9 +39,15 @@
                             <div class="hero-text">
                                 <h4>Your time is so important for us</h4>
                                 <h1>Some general safety prouducts for working with</h1>
-                                <div class="button">
-                                    <a href="@Url.Action("FilterProductTypeByCategory", "ProductType", new { id =  "2"})" class="bizwheel-btn theme-1 effect">Safety</a>
-                                </div>
+                                @{
+                                    if (ViewBag.safetyCatID != null)
+                                    {
+                                        <div class="button">
+                                            <a href="@Url.Action("FilterProductTypeByCategory", "ProductType", new { id =  ViewBag.safetyCatID})" class="bizwheel-btn theme-1 effect">Safety</a>
+                                        </div>
+                                    }
+                                }
+
                             </div>
                         </div>
                     </div>
