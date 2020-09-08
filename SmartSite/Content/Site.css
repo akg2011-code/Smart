@@ -2014,6 +2014,8 @@ blockquote {
 
 @media only screen and (min-width: 991px) and (max-width: 1900px) {
     /* Header Sticky */
+
+	
     .header.sticky .middle-header {
         position: fixed;
         top: 0;
@@ -2059,6 +2061,10 @@ blockquote {
 
     .header.sticky .search-top {
         top: 69px;
+    }
+
+    section {
+        background-attachment: initial;
     }
 }
 
@@ -2411,13 +2417,16 @@ p.has-large-font-size {
 
     .hero-slider,
     .hero-slider .single-slider {
-        height: 680px;
+        height: 107vh;
     }
 
         .hero-slider .single-slider {
-            background-size: cover;
+            /*background-size: cover;*/
             background-position: center;
             position: relative;
+            /*background-size: auto 100%;*/
+            /*background-repeat: no-repeat;*/
+            /*background-attachment: fixed;*/
         }
 
             .hero-slider .single-slider .slide-overlay {
@@ -2429,6 +2438,7 @@ p.has-large-font-size {
                 background: #000;
                 opacity: 0.65;
             }
+
 
         .hero-slider .welcome-text {
             margin: 146px 0 0;
@@ -2443,6 +2453,20 @@ p.has-large-font-size {
             padding: 8px 20px;
             font-size: 16px;
         }
+@media (min-width: 360px) {
+
+
+    .hero-slider .single-slider {
+        /*background-attachment: initial !important;*/
+        background: url('../../img/1.2.jpg') no-repeat center !important;
+        /*background-size: auto 100%;*/
+    }
+
+    .hero-slider .welcome-text {
+        margin: 10px 0 0;
+    }
+
+}
 
             .hero-slider .hero-text h4:before {
                 content: "";
@@ -4861,6 +4885,8 @@ p.has-large-font-size {
     padding: 40px;
     box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.18);
     border-top: 2px solid #78E08F;
+    width: 75% !important;
+    margin-left: 15% !important;
 }
 
     .contact-form-area h4 {
@@ -5012,428 +5038,442 @@ p.has-large-font-size {
         .contact-form-area.service .form-group textarea {
             height: 120px;
         }
-/*======================================
+
+
+@media (min-width: 360px) {
+
+    contact-form-area {
+        width: 90% !important;
+        margin-left: 4% !important;
+    }
+
+
+    /*======================================
 	End contact Form CSS
 ========================================*/
 
-/*======================================
+    /*======================================
 	Image Feature CSS
 ========================================*/
-.video-feature {
-    background: #2e2751;
-    padding: 100px 0;
-    overflow: hidden;
-}
+    .video-feature {
+        background: #2e2751;
+        padding: 100px 0;
+        overflow: hidden;
+    }
 
-.img-feature {
-    position: relative;
-    display: inline-block;
-}
-
-    .img-feature img {
-        z-index: 2;
+    .img-feature {
         position: relative;
+        display: inline-block;
     }
 
-    .img-feature .video-play {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        z-index: 3;
-        margin-left: -45px;
-        margin-top: -45px;
-    }
-
-        .img-feature .video-play a {
-            color: #78E08F;
-            font-size: 30px;
-            text-align: center;
-            border-radius: 100%;
-            margin: 0;
-            background: #fff;
-            padding: 0;
-            display: inline-block;
-            width: 90px;
-            height: 90px;
-            line-height: 90px;
-            z-index: 33;
+        .img-feature img {
+            z-index: 2;
             position: relative;
         }
 
-        .img-feature .video-play:hover a {
-            background: #78E08F;
-            color: #fff;
+        .img-feature .video-play {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            z-index: 3;
+            margin-left: -45px;
+            margin-top: -45px;
         }
 
-    .img-feature .waves-block .waves {
-        position: absolute;
-        width: 250px;
-        height: 250px;
-        background: rgba(255, 255, 255, 0.3);
-        opacity: 0;
-        -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
-        border-radius: 100%;
-        -webkit-animation: waves 3s ease-in-out infinite;
-        animation: waves 3s ease-in-out infinite;
-        left: 50%;
-        margin-left: -125px;
-        top: 50%;
-        margin-top: -125px;
-    }
+            .img-feature .video-play a {
+                color: #78E08F;
+                font-size: 30px;
+                text-align: center;
+                border-radius: 100%;
+                margin: 0;
+                background: #fff;
+                padding: 0;
+                display: inline-block;
+                width: 90px;
+                height: 90px;
+                line-height: 90px;
+                z-index: 33;
+                position: relative;
+            }
 
-    .img-feature .waves-block .wave-1 {
-        -webkit-animation-delay: 0s;
-        animation-delay: 0s;
-    }
+            .img-feature .video-play:hover a {
+                background: #78E08F;
+                color: #fff;
+            }
 
-    .img-feature .waves-block .wave-2 {
-        -webkit-animation-delay: 1s;
-        animation-delay: 1s;
-    }
-
-    .img-feature .waves-block .wave-3 {
-        -webkit-animation-delay: 2s;
-        animation-delay: 2s;
-    }
-
-@-webkit-keyframes waves {
-    0% {
-        -webkit-transform: scale(0.2, 0.2);
-        transform: scale(0.2, 0.2);
-        opacity: 0;
-        -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
-    }
-
-    50% {
-        opacity: 0.9;
-        -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=90)";
-    }
-
-    100% {
-        -webkit-transform: scale(0.9, 0.9);
-        transform: scale(0.9, 0.9);
-        opacity: 0;
-        -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
-    }
-}
-
-@keyframes waves {
-    0% {
-        -webkit-transform: scale(0.2, 0.2);
-        transform: scale(0.2, 0.2);
-        opacity: 0;
-        -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
-    }
-
-    50% {
-        opacity: 0.9;
-        -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=90)";
-    }
-
-    100% {
-        -webkit-transform: scale(0.9, 0.9);
-        transform: scale(0.9, 0.9);
-        opacity: 0;
-        -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
-    }
-}
-
-.img-feature span {
-    display: block;
-    text-align: left;
-    padding: 10px 30px;
-    opacity: 1;
-    position: absolute;
-    z-index: 333;
-    font-size: 16px;
-    background: #F4F9FC;
-    color: #2E2751;
-    left: -14px;
-    transform: inherit;
-    font-weight: 500;
-    top: 50%;
-    margin-top: -22px;
-}
-
-    .img-feature span:before {
-        content: "";
-        position: absolute;
-        left: 0px;
-        top: -25px;
-        border-left: 14px solid transparent;
-        border-top: 12px solid transparent;
-        border-bottom: 13px solid #F4F9FC;
-    }
-
-.img-feature .experience img {
-    height: 100%;
-    width: 100%;
-    border-radius: 8px;
-    box-shadow: 0px 5px 35px #0000001f;
-}
-
-.img-feature .experience {
-    position: absolute;
-    left: -50px;
-    bottom: -50px;
-    padding: 0;
-    background: #78E08F;
-    width: 225px;
-    z-index: 2;
-    border-radius: 100%;
-    text-align: left;
-    height: 225px;
-    border: 8px solid #fff;
-    box-shadow: 0px 0px 10px #0000002b;
-    padding: 50px 25px;
-}
-
-    .img-feature .experience h2 {
-        color: #fff;
-        font-weight: 900;
-        font-size: 50px;
-        line-height: 45px;
-    }
-
-        .img-feature .experience h2 span {
-            color: #fff;
-            font-weight: 800;
-            font-size: 20px;
-            display: block;
-            text-transform: capitalize;
-            line-height: 25px;
-            margin-top: 10px;
+        .img-feature .waves-block .waves {
+            position: absolute;
+            width: 250px;
+            height: 250px;
+            background: rgba(255, 255, 255, 0.3);
+            opacity: 0;
+            -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+            border-radius: 100%;
+            -webkit-animation: waves 3s ease-in-out infinite;
+            animation: waves 3s ease-in-out infinite;
+            left: 50%;
+            margin-left: -125px;
+            top: 50%;
+            margin-top: -125px;
         }
 
-.img-feature .small-icon {
-    position: absolute;
-    background: #fff;
-    color: #78E08F;
-    display: block;
-    width: 70px;
-    line-height: 70px;
-    font-size: 25px;
-    text-align: center;
-    right: 15px;
-    border-radius: 50px;
-    transition: all 0.3s ease;
-    -webkit-transition: all 0.3s ease;
-    -moz-transition: all 0.3s ease;
-    opacity: 0.5;
-    height: 70px;
-    top: 42%;
-    margin-top: -35px;
-}
+        .img-feature .waves-block .wave-1 {
+            -webkit-animation-delay: 0s;
+            animation-delay: 0s;
+        }
 
-.img-feature .experience:hover .small-icon {
-    opacity: 1;
-    visibility:;
-    color: #78E08F;
-}
+        .img-feature .waves-block .wave-2 {
+            -webkit-animation-delay: 1s;
+            animation-delay: 1s;
+        }
 
-/* Modern Image features */
-.modern-img-feature {
-    position: relative;
-    display: inline-block;
-    margin-bottom: 20px;
-}
+        .img-feature .waves-block .wave-3 {
+            -webkit-animation-delay: 2s;
+            animation-delay: 2s;
+        }
 
-    .modern-img-feature:before {
-        content: "";
-        position: absolute;
-        left: -20px;
-        top: 20px;
-        width: 100%;
-        height: 100%;
-        background: #78E08F;
+    @-webkit-keyframes waves {
+        0% {
+            -webkit-transform: scale(0.2, 0.2);
+            transform: scale(0.2, 0.2);
+            opacity: 0;
+            -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+        }
+
+        50% {
+            opacity: 0.9;
+            -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=90)";
+        }
+
+        100% {
+            -webkit-transform: scale(0.9, 0.9);
+            transform: scale(0.9, 0.9);
+            opacity: 0;
+            -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+        }
     }
 
-    .modern-img-feature img {
-        z-index: 400;
-        position: relative;
+    @keyframes waves {
+        0% {
+            -webkit-transform: scale(0.2, 0.2);
+            transform: scale(0.2, 0.2);
+            opacity: 0;
+            -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+        }
+
+        50% {
+            opacity: 0.9;
+            -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=90)";
+        }
+
+        100% {
+            -webkit-transform: scale(0.9, 0.9);
+            transform: scale(0.9, 0.9);
+            opacity: 0;
+            -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+        }
     }
 
-    .modern-img-feature .video-play a {
+    .img-feature span {
+        display: block;
+        text-align: left;
+        padding: 10px 30px;
+        opacity: 1;
         position: absolute;
-        top: 50%;
-        left: 50%;
-        width: 80px;
         z-index: 333;
-        height: 80px;
-        color: #6A89CC;
-        font-size: 30px;
-        text-align: center;
-        line-height: 80px;
-        background: #fff;
-        margin: -40px 0 0 -40px;
-        z-index: 2500;
+        font-size: 16px;
+        background: #F4F9FC;
+        color: #2E2751;
+        left: -14px;
+        transform: inherit;
+        font-weight: 500;
+        top: 50%;
+        margin-top: -22px;
+    }
+
+        .img-feature span:before {
+            content: "";
+            position: absolute;
+            left: 0px;
+            top: -25px;
+            border-left: 14px solid transparent;
+            border-top: 12px solid transparent;
+            border-bottom: 13px solid #F4F9FC;
+        }
+
+    .img-feature .experience img {
+        height: 100%;
+        width: 100%;
+        border-radius: 8px;
+        box-shadow: 0px 5px 35px #0000001f;
+    }
+
+    .img-feature .experience {
+        position: absolute;
+        left: -50px;
+        bottom: -50px;
+        padding: 0;
+        background: #78E08F;
+        width: 225px;
+        z-index: 2;
         border-radius: 100%;
+        text-align: left;
+        height: 225px;
+        border: 8px solid #fff;
+        box-shadow: 0px 0px 10px #0000002b;
+        padding: 50px 25px;
     }
 
-    .modern-img-feature .video-play:hover a {
-        background: #6A89CC;
-        color: #fff;
+        .img-feature .experience h2 {
+            color: #fff;
+            font-weight: 900;
+            font-size: 50px;
+            line-height: 45px;
+        }
+
+            .img-feature .experience h2 span {
+                color: #fff;
+                font-weight: 800;
+                font-size: 20px;
+                display: block;
+                text-transform: capitalize;
+                line-height: 25px;
+                margin-top: 10px;
+            }
+
+    .img-feature .small-icon {
+        position: absolute;
+        background: #fff;
+        color: #78E08F;
+        display: block;
+        width: 70px;
+        line-height: 70px;
+        font-size: 25px;
+        text-align: center;
+        right: 15px;
+        border-radius: 50px;
+        transition: all 0.3s ease;
+        -webkit-transition: all 0.3s ease;
+        -moz-transition: all 0.3s ease;
+        opacity: 0.5;
+        height: 70px;
+        top: 42%;
+        margin-top: -35px;
     }
 
-.side.overlay:before {
-    width: 80%;
-    background: #78E08F;
-    transform: rotate(74deg);
-    left: -403px;
-    z-index: 0;
-    opacity: 1;
-}
-/*======================================
+    .img-feature .experience:hover .small-icon {
+        opacity: 1;
+        visibility:;
+        color: #78E08F;
+    }
+
+    /* Modern Image features */
+    .modern-img-feature {
+        position: relative;
+        display: inline-block;
+        margin-bottom: 20px;
+    }
+
+        .modern-img-feature:before {
+            content: "";
+            position: absolute;
+            left: -20px;
+            top: 20px;
+            width: 100%;
+            height: 100%;
+            background: #78E08F;
+        }
+
+        .modern-img-feature img {
+            z-index: 400;
+            position: relative;
+        }
+
+        .modern-img-feature .video-play a {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 80px;
+            z-index: 333;
+            height: 80px;
+            color: #6A89CC;
+            font-size: 30px;
+            text-align: center;
+            line-height: 80px;
+            background: #fff;
+            margin: -40px 0 0 -40px;
+            z-index: 2500;
+            border-radius: 100%;
+        }
+
+        .modern-img-feature .video-play:hover a {
+            background: #6A89CC;
+            color: #fff;
+        }
+
+    .side.overlay:before {
+        width: 80%;
+        background: #78E08F;
+        transform: rotate(74deg);
+        left: -403px;
+        z-index: 0;
+        opacity: 1;
+    }
+    /*======================================
 	End Image Feature CSS
 ========================================*/
 
-/*======================================
+    /*======================================
 	Theme Others CSS
 ========================================*/
-.small-list-feature h3 {
-    font-size: 20px;
-    line-height: 30px;
-    margin-bottom: 10px;
-}
-
-.small-list-feature ul {
-    margin-top: 20px;
-}
-
-    .small-list-feature ul li {
-        line-height: 35px;
-    }
-
-        .small-list-feature ul li i {
-            color: #6A89CC;
-            margin-right: 10px;
-            border: 1px solid;
-            width: 25px;
-            height: 25px;
-            line-height: 25px;
-            text-align: center;
-            -webkit-transition: all 0.3s ease;
-            -moz-transition: all 0.3s ease;
-            transition: all 0.3s ease;
-        }
-
-        .small-list-feature ul li:hover i {
-            border-radius: 100%;
-            background: #6A89CC;
-            color: #fff;
-            border-color: transparent;
-        }
-/* Portfolio Pagination */
-.pagination-plugin {
-    margin-top: 35px;
-    text-align: left;
-}
-
-    .pagination-plugin li {
-        display: inline-block;
-    }
-
-    .pagination-plugin span,
-    .pagination-plugin a,
-    .pagination-plugin a:focus {
-        background: #2E2751;
-        width: 44px;
-        height: 40px;
-        color: #fff;
-        line-height: 40px;
-        text-align: center;
-        position: relative;
-        -webkit-transition: all 0.3s ease;
-        -moz-transition: all 0.3s ease;
-        transition: all 0.3s ease;
-        display: inline-block;
-    }
-
-    .pagination-plugin li.current a,
-    .pagination-plugin li:hover a {
-        background: #78E08F;
-        color: #fff;
-        -webkit-box-shadow: 0px 10px 15px rgba(88, 85, 85, 0.15);
-        -moz-box-shadow: 0px 10px 15px rgba(88, 85, 85, 0.15);
-        box-shadow: 0px 10px 15px rgba(88, 85, 85, 0.15);
-    }
-
-    .pagination-plugin li.prev a,
-    .pagination-plugin li.next a {
-        box-shadow: none;
-        color: #fff;
-        width: auto;
-        padding: 0 20px;
-    }
-/* Mail Success CSS */
-.success .mail {
-}
-
-    .success .mail h2 {
-        font-size: 30px;
+    .small-list-feature h3 {
+        font-size: 20px;
+        line-height: 30px;
         margin-bottom: 10px;
     }
 
-        .success .mail h2 span {
-            color: #6A89CC;
-        }
-
-    .success .mail .bizwheel-btn {
+    .small-list-feature ul {
         margin-top: 20px;
     }
 
-        .success .mail .bizwheel-btn i {
-            margin-right: 10px;
+        .small-list-feature ul li {
+            line-height: 35px;
         }
-/*=======================
-  End Mail Success CSS
-=========================*/
-/*======================================
-        Delete pages
-  ========================================*/
-.deletePage {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 3%;
-}
-.icon-delete i {
-    font-size: 100px;
-    color: tomato;
-    padding: 3%;
-}
-.deletePage p {
-    color: #e84f4f;
-    padding: 3%;
-    opacity: 1;
-    text-shadow: 0.5px 0.5px 0.5px;
-    animation-name: alertText;
-    animation-duration: 1s;
-    animation-iteration-count: infinite;
-}
-.page-part {
-    padding: 10px;
-    border: 1px solid #aac3ea82;
-    box-shadow: 2px 2px 2px #636663;
-}
-@keyframes alertText {
-    from {
-        /*opacity:1;*/
-        text-shadow: 0.5px 0.5px 0.5px;
+
+            .small-list-feature ul li i {
+                color: #6A89CC;
+                margin-right: 10px;
+                border: 1px solid;
+                width: 25px;
+                height: 25px;
+                line-height: 25px;
+                text-align: center;
+                -webkit-transition: all 0.3s ease;
+                -moz-transition: all 0.3s ease;
+                transition: all 0.3s ease;
+            }
+
+            .small-list-feature ul li:hover i {
+                border-radius: 100%;
+                background: #6A89CC;
+                color: #fff;
+                border-color: transparent;
+            }
+    /* Portfolio Pagination */
+    .pagination-plugin {
+        margin-top: 35px;
+        text-align: left;
     }
 
-    to {
-        /*opacity: 0.3;*/
-        text-shadow: 2px 2px 2px;
+        .pagination-plugin li {
+            display: inline-block;
+        }
+
+        .pagination-plugin span,
+        .pagination-plugin a,
+        .pagination-plugin a:focus {
+            background: #2E2751;
+            width: 44px;
+            height: 40px;
+            color: #fff;
+            line-height: 40px;
+            text-align: center;
+            position: relative;
+            -webkit-transition: all 0.3s ease;
+            -moz-transition: all 0.3s ease;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .pagination-plugin li.current a,
+        .pagination-plugin li:hover a {
+            background: #78E08F;
+            color: #fff;
+            -webkit-box-shadow: 0px 10px 15px rgba(88, 85, 85, 0.15);
+            -moz-box-shadow: 0px 10px 15px rgba(88, 85, 85, 0.15);
+            box-shadow: 0px 10px 15px rgba(88, 85, 85, 0.15);
+        }
+
+        .pagination-plugin li.prev a,
+        .pagination-plugin li.next a {
+            box-shadow: none;
+            color: #fff;
+            width: auto;
+            padding: 0 20px;
+        }
+    /* Mail Success CSS */
+    .success .mail {
     }
-}
-/*======================================
+
+        .success .mail h2 {
+            font-size: 30px;
+            margin-bottom: 10px;
+        }
+
+            .success .mail h2 span {
+                color: #6A89CC;
+            }
+
+        .success .mail .bizwheel-btn {
+            margin-top: 20px;
+        }
+
+            .success .mail .bizwheel-btn i {
+                margin-right: 10px;
+            }
+    /*=======================
+  End Mail Success CSS
+=========================*/
+    /*======================================
+        Delete pages
+  ========================================*/
+    .deletePage {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 3%;
+    }
+
+    .icon-delete i {
+        font-size: 100px;
+        color: tomato;
+        padding: 3%;
+    }
+
+    .deletePage p {
+        color: #e84f4f;
+        padding: 3%;
+        opacity: 1;
+        text-shadow: 0.5px 0.5px 0.5px;
+        animation-name: alertText;
+        animation-duration: 1s;
+        animation-iteration-count: infinite;
+    }
+
+    .page-part {
+        padding: 10px;
+        border: 1px solid #aac3ea82;
+        box-shadow: 2px 2px 2px #636663;
+    }
+
+    @keyframes alertText {
+        from {
+            /*opacity:1;*/
+            text-shadow: 0.5px 0.5px 0.5px;
+        }
+
+        to {
+            /*opacity: 0.3;*/
+            text-shadow: 2px 2px 2px;
+        }
+    }
+    /*======================================
 	End facebook chat box
 ========================================*/
-/*======================================
+    /*======================================
 	Login register
 ========================================*/
 
-/*======================================
+    /*======================================
 	End Theme Others CSS
 ========================================*/

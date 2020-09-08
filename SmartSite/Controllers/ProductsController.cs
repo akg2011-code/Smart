@@ -7,6 +7,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.WebPages;
 using SmartSite.Models;
 
 namespace SmartSite.Controllers
@@ -53,16 +54,16 @@ namespace SmartSite.Controllers
         // ------------------------ search product bu Name ---------------------------
         public ActionResult SearchProductByName(string productName)
         {
-            if (productName==null)
+            if (productName==null || productName.IsEmpty())
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                return View("~/Views/Shared/NotFound.cshtml");
             }
 
             IEnumerable<Product> products = db.Product.Where(p => p.Name.Contains(productName));
             if (products != null && products.Count() > 0)
-                return View("Index", products);
+                return View(products);
             else
-                return View("~/View/Shared/NotFound.cshtml");
+                return View("~/Views/Shared/NotFound.cshtml");
         }
 
 
