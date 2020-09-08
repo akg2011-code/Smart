@@ -38,6 +38,7 @@ namespace SmartSite.Controllers
 
             // random product :
             ViewBag.shownProducts = Get3Products();
+            ViewBag.safetyCatID = Context.Category.FirstOrDefault(c => c.CategoryName == "Safety" || c.CategoryName=="safety").ID;
 
             navbarVM vm = new navbarVM();
             ViewBag.displayedNews = vm.GetLastNews();

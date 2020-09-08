@@ -25,7 +25,7 @@ namespace SmartSite.Controllers
 
 
         //------------------- type details -------------------
-        public ActionResult ProductTypeDetails(int? id)
+        public ActionResult ProductTypeDetails(int? id) // id = type id
         {
             if (id == null)
             {
