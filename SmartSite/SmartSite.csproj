@@ -212,6 +212,8 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="img\1.1.jpg" />
+    <Content Include="img\1.2.jpg" />
     <Content Include="img\1.jpg" />
     <Content Include="img\2.jpg" />
     <Content Include="img\3.jpg" />
@@ -220,6 +222,8 @@
     <Content Include="img\6.png" />
     <Content Include="img\7.jpg" />
     <Content Include="img\8.jpg" />
+    <Content Include="img\9.jpg" />
+    <Content Include="img\aaa.jpg" />
     <Content Include="img\about.mp4" />
     <Content Include="img\bg-1.png" />
     <Content Include="img\bg-2.png" />

@@ -1,0 +1,29 @@
+﻿@model SmartSite.Models.Category
+@{
+    ViewBag.Title = "DeleteCategory";
+}
+<div class="deletePage">
+    <div class="page-part">
+        <div class="row d-flex justify-content-center">
+            <div class="icon-delete col-12 d-flex justify-content-center">
+                <i class="far fa-times-circle"></i>
+            </div>
+            <div>
+                <h2>Are You Sure Delete Category <a>@Model.CategoryName</a> ?</h2>
+                <p>This will cause deleting all this category related types and products .</p>
+            </div>
+        </div>
+        @using (Html.BeginForm("DeleteCategory", "Category", FormMethod.Post))
+        {
+            @Html.HiddenFor(c => c.ID)
+            <div class="row d-flex justify-content-center">
+                <div class="col-sm-2">
+                    <button type="submit" class="btn btn-danger form-control">Delete</button>
+                </div>
+                <div class="col-sm-2">
+                    @Html.ActionLink("Cancel", "GetAllCategories", null, new { @class = "btn btn-info form-control" })
+                </div>
+            </div>
+        }
+    </div>
+</div>

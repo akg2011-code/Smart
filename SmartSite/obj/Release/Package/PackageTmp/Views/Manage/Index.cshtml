@@ -1,0 +1,30 @@
+﻿@model SmartSite.Models.IndexViewModel
+@{
+    ViewBag.Title = "Manage";
+}
+
+<!-- Contact Form -->
+<div class="contact-form-area m-top-30 d-flex justify-content-center" style="width:50%;margin-left:25%">
+    <div class="row d-flex justify-content-center">
+
+        <h4>Change your account settings</h4>
+
+
+        <div class="col-lg-12 col-md-12 ">
+            <div class="form-group text-center">
+                <i class="fas fa-unlock-alt"></i>
+                @if (Model.HasPassword)
+                {
+                    @Html.ActionLink("Change your password", "ChangePassword")
+                }
+                else
+                {
+                    @Html.ActionLink("Create", "SetPassword")
+                }
+
+            </div>
+        </div>
+
+    </div>
+
+</div>

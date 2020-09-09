@@ -1,0 +1,47 @@
+﻿@model SmartSite.Models.News
+@{
+    ViewBag.Title = "NewsDetails";
+}
+<!-- Blog Single -->
+<section class="news-area archive blog-single section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-10 offset-lg-1 col-md-10 offset-md-1 col-12">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="blog-single-main">
+                            <div class="blog-detail">
+                                <!-- News meta -->
+
+                                <div class="more ">
+                                    @Html.ActionLink("Go to All News", "GetAllNews", null, new { @class = "form-control col-2 " })
+                                </div>
+                                <hr />
+                                <div class="news-meta">
+                                    <h4><i class="fas fa-clock"></i> @Model.Date</h4>
+                                </div>
+                                <h2 class="blog-title">@Model.Title</h2>
+                                <div class="row blog-space">
+                                    <div class="col-lg-6">
+                                        <img class="card-img-top" style="height:250px" src="~/imageUploads/NewsImg/@Model.Image" alt="Card image cap">
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div>
+                                            <p style="line-height:35px;font-size:large"><i class="far fa-newspaper"></i>  @Model.Details</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                </div>
+                            </div>
+                            
+                            <hr />
+
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+        </div>
+</section>
+<!--/ End Services -->

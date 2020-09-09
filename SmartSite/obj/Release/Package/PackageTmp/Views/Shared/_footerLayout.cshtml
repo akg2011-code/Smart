@@ -1,0 +1,29 @@
+﻿
+@{
+    if (ViewBag.layoutVM.GetLastNews() != null)
+    {
+    <div class="single-widget footer-news widget">
+        <h3 class="widget-title">News </h3>
+
+        @foreach (var news in ViewBag.layoutVM.GetLastNews())
+        {
+            <!-- Single News -->
+            <div class="single-f-news">
+                <div class="post-thumb"><a href="@Url.Action("NewsDetails", "News", new { id = news.ID })"><img src="~/imageUploads/NewsImg/@news.Image" alt="#"></a></div>
+                <div class="content">
+                    <p class="post-meta" style="margin:0px"><time class="post-date"><i class="fas fa-clock"></i>@news.Date</time></p>
+                    <a href="@Url.Action("NewsDetails", "News", new { id = news.ID })">
+                        <p>@news.Title</p>
+                    </a>
+                    <div class="title">
+                        <p style="height:50px;overflow:hidden"><i class="far fa-newspaper"></i> @news.Details</p>
+                    </div>
+                </div>
+            </div>
+            <!--/ End Single News -->
+
+        }
+    </div>
+        }
+    }
+

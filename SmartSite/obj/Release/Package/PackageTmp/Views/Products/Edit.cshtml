@@ -1,0 +1,134 @@
+﻿@model SmartSite.Models.Product
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+
+
+@using (Html.BeginForm("Edit", "Products", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    // error uploading old image :
+    <div class="container">
+        <div class="alert alert-danger" id="errorDiv" style="display:none;">
+            <span id="viewError">
+
+            </span>
+        </div>
+    </div>
+
+    @Html.HiddenFor(model => model.ID)
+
+    <!-- Contact Form -->
+    <div class="contact-form-area m-top-30 d-flex justify-content-center" style="width:50%;margin-left:25%">
+        <div class="row d-flex justify-content-center">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.ID)
+            <div class="col-lg-12 col-md-12 ">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-12 col-md-12 ">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.TextAreaFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-12 col-md-12 ">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Image, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @*@Html.EditorFor(model => model.Image, new { htmlAttributes = new { @class = "form-control" } })*@
+                        <input type="file" name="UploadImg" accept="image/*" id="typeImg" />
+                        <span class="text-danger">
+                            @ViewBag.Message
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-12 col-md-12 ">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.PdfFile, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        <input type="file" name="UploadPdf" accept="application/pdf" />
+                        <span class="text-danger">
+                            @ViewBag.Message
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-12 col-md-12">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Brand, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Brand, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Brand, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-12 col-md-12">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ProductTypeID, "Type", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownList("ProductTypeID", null, htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.ProductTypeID, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            <input value="@Session["oldImagePath"].ToString()" name="deletingImgPath" hidden />
+            <input value="@Session["oldPdfPath"].ToString()" name="deletingPdfPath" hidden />
+
+            <div class="col-12">
+                <div class="form-group button">
+                    <button type="submit" class="bizwheel-btn theme-2 ">Edit</button>
+                </div>
+            </div>
+            <div class="form-group button">
+                @Html.ActionLink("Cancel", "Index", null, new { @class = "btn btn-info form-control" })
+            </div>
+        </div>
+    </div>
+    <!--/ End contact Form -->
+}
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+<!-- editor textarea -->
+<script src="https://cdn.ckeditor.com/4.14.1/basic/ckeditor.js"></script>
+
+<script>
+    CKEDITOR.replace('Description');
+</script>
+
+<script src="~/Scripts/jquery-3.4.1.js"></script>
+<script>
+    $(function () {
+        $("edit").click(function () {
+            if ($("#typeImg").val == "") {
+                $("#errorDiv").fadeIn();
+                $("#viewError").append("Upload image for that type");
+                return false;
+            }
+        })
+    })
+</script>
+
+
+

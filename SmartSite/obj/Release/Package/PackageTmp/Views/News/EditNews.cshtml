@@ -1,0 +1,82 @@
+﻿@model SmartSite.Models.News
+
+@{
+    ViewBag.Title = "EditNews";
+}
+
+@using (Html.BeginForm("EditNews", "News", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(Model => Model.ID)
+
+    <!-- Contact Form -->
+    <div class="contact-form-area m-top-30 d-flex justify-content-center" style="width:50%;margin-left:25%">
+
+        <div class="row d-flex justify-content-center">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="col-lg-12 col-md-12 ">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-12 col-md-12 ">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Details, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.TextAreaFor(model => model.Details, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Details, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-12 col-md-12 ">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Image, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="row">
+                        <div class="col-md-7">
+                            <input type="file" name="UploadImg" required accept="image/*" />
+                            @Html.ValidationMessageFor(model => model.Image, "Must Upload News Image", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-md-5">
+                            <img class="card-img-top" style="height:100px; width:100px" src="~/imageUploads/NewsImg/@Model.Image" alt="newsImage">
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-12 col-md-12 ">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Date, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        <input type="text" value="@Model.Date" name="Date" class="form-control" onfocus="this.type='date'"/>
+                        @Html.ValidationMessageFor(model => model.Date, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            <input value="@Session["oldImagePath"].ToString()" name="deletingImgPath" hidden />
+
+            <div class="col-12">
+                <div class="form-group button">
+                    <button type="submit" class="bizwheel-btn theme-2 ">Edit</button>
+                </div>
+            </div>
+
+
+            <div class="form-group button">
+                @Html.ActionLink("Cancel", "GetAllNews", null, new { @class = "btn btn-info form-control" })
+            </div>
+        </div>
+    </div>
+    <!--/ End contact Form -->
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
