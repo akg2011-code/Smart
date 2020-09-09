@@ -22,7 +22,7 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 
 /*======================================
 	CSS Theme Table of Contents
-========================================	
+========================================	7
 # Header CSS
 # Hero Area CSS
 # Features CSS
@@ -67,7 +67,7 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 .topbar .single-contact {
     display: inline-block;
     margin-right: 25px;
-    color: #6A89CC;
+    color: #fff !important;
     cursor: pointer;
 }
 
