@@ -1,0 +1,329 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+@model IEnumerable<SmartSite.Models.Category>
+<!-- Hero Slider -->
+<section class="hero-slider style1">
+    <div class="home-slider">
+        <!-- Single Slider -->
+        <div class="single-slider" style="background-image: url('../../img/1.2.jpg');">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-7 col-md-8 col-sm-12">
+                        <div class="welcome-text col-sm-12">
+                            <div class="hero-text">
+                                <h4>We are always ready to help you</h4>
+                                <h1>Smart for Electrical Engineering</h1>
+                                <div class="button">
+                                    @{
+                                        foreach (var category in Model)
+                                        {
+                                            <a href="@Url.Action("FilterProductTypeByCategory", "ProductType", new { id = category.ID })" class="bizwheel-btn theme-@category.ID effect">@category.CategoryName</a>
+                                        }
+                                    }
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--/ End Single Slider -->
+        <!-- Single Slider -->
+        <div class="single-slider" style="background-image:url('../../img/1.1.jpg')">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-7 col-md-8 col-sm-12">
+                        <div class="welcome-text">
+                            <div class="hero-text">
+                                <h4>Your time is so important for us</h4>
+                                <h1>Some general safety prouducts for working with</h1>
+                                @{
+                                    if (ViewBag.safetyCatID != null)
+                                    {
+                                        <div class="button">
+                                            <a href="@Url.Action("FilterProductTypeByCategory", "ProductType", new { id =  ViewBag.safetyCatID})" class="bizwheel-btn theme-1 effect">Safety</a>
+                                        </div>
+                                    }
+                                }
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--/ End Single Slider -->
+        <!-- Single Slider -->
+        <div class="single-slider" style="background-image:url('../../img/1.jpg')">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-7 col-md-8 col-sm-12">
+                        <div class="welcome-text">
+                            <div class="hero-text">
+                                <h4>Our experties are waiting for you</h4>
+                                <h1>BE SMART, LIVE BETTER</h1>
+                                <div class="p-text">
+                                </div>
+                                <div class="button">
+                                    <a href="@Url.Action("About", "Home")" class="bizwheel-btn theme-2 effect">About us</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--/ End Single Slider -->
+    </div>
+</section>
+<!--/ End Hero Slider -->
+<!-- Features Area -->
+<section class="features-area section-bg">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-6 col-sm-12">
+                <!-- Single Feature -->
+                <div class="single-feature">
+                    <div class="icon-head"><i class="fa fa-podcast"></i></div>
+                    <h4>High-quality service</h4>
+                </div>
+                <!--/ End Single Feature -->
+            </div>
+            <div class="col-lg-3 col-md-6 col-12">
+                <!-- Single Feature -->
+                <div class="single-feature">
+                    <div class="icon-head"><i class="fa fa-podcast"></i></div>
+                    <h4>Quality Products</h4>
+                </div>
+                <!--/ End Single Feature -->
+            </div>
+            <div class="col-lg-3 col-md-6 col-12">
+                <!-- Single Feature -->
+                <div class="single-feature active">
+                    <div class="icon-head"><i class="fa fa-podcast"></i></div>
+                    <h4>continuous support</h4>
+
+                </div>
+                <!--/ End Single Feature -->
+            </div>
+            <div class="col-lg-3 col-md-6 col-12">
+                <!-- Single Feature -->
+                <div class="single-feature">
+                    <div class="icon-head"><i class="fa fa-podcast"></i></div>
+                    <h4>latest news</h4>
+                </div>
+                <!--/ End Single Feature -->
+            </div>
+        </div>
+    </div>
+</section>
+<!--/ End Features Area -->
+<!-- Call To Action -->
+<section class="call-action overlay" style="background-image:url('')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-9 col-12">
+                <div class="call-inner">
+                    <h2>BE SMART, LIVE BETTER</h2>
+                    <p>our promise to our customers who have adopted continuous, high-quality service and products.</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+<!--/ End Call to action -->
+<!-- Services -->
+<section class="services section-bg section-space">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="section-title style2 text-center">
+                    <div class="section-top">
+                        <h1><span>Sample of our products</span><b>Products We Provide</b></h1>
+                    </div>
+                    <div class="section-bottom">
+                        <div class="text-style-two">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+
+            <!-- Single Service -->
+            @{
+                List<SmartSite.Models.Product> randomProducts = ViewBag.shownProducts;
+                if (randomProducts != null)
+                {
+                    foreach (var product in randomProducts)
+                    {
+                        <div class="col-lg-4 col-md-4 col-12">
+                            <div class="single-service">
+                                <div class="service-head">
+                                    <img src="~/imageUploads/ProductImg/@product.Image" alt="#">
+                                    <a href="@Url.Action("Details","Products",new { id=product.ID})"><div class="icon-bg"><i class="fas fa-arrow-right"></i></div></a>
+                                </div>
+                                <div class="service-content">
+                                    <h4><a href="@Url.Action("Details","Products",new { id=product.ID})">@product.Name</a></h4>
+                                    <a class="btn" href="@Url.Action("Details","Products",new { id=product.ID})"><i class="fas fa-arrow-circle-right"></i>More Details</a>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+            }
+
+
+            <!--/ End Single Service -->
+
+        </div>
+    </div>
+</section>
+<!--/ End Services -->
+<!-- Latest Blog -->
+<section class="latest-blog section-space">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 offset-lg-3 col-md-8 offset-md-2 col-12">
+                <div class="section-title default text-center">
+                    <div class="section-top">
+                        <h1><span>Published</span><b>Latest News</b></h1>
+                    </div>
+                    <div class="section-bottom">
+                        <div class="text">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="blog-latest blog-latest-slider">
+                    @{
+                        if (ViewBag.displayedNews != null)
+                        {
+                            foreach (var news in ViewBag.displayedNews)
+                            {
+                                <!-- Single Blog -->
+                                <div class="single-news ">
+                                    <div class="news-head overlay">
+                                        <span class="news-img" style="background-image:url('../../imageUploads/NewsImg/@news.Image');height:200px"></span>
+                                        <a href="@Url.Action("NewsDetails","News",new { id= news.ID})" class="bizwheel-btn theme-2">Read more</a>
+                                    </div>
+                                    <div class="news-body">
+                                        <div class="news-content">
+                                            <h3 class="news-title"><a href="@Url.Action("NewsDetails","News",new { id= news.ID})">@news.Title</a></h3>
+                                            <div class="news-text">
+                                                <p style="height:50px;overflow:hidden">@news.Details</p>
+                                            </div>
+                                            <ul class="news-meta">
+                                                <li class="date"><i class="fa fa-calendar"></i>@news.Date.ToString("yyyy-MM-dd")</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--/ End Single Blog -->
+
+                            }
+                        }
+                    }
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--/ End Latest Blog -->
+<!-- Client Area -->
+<div class="clients section-bg">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="partner-slider">
+                    <!-- Single client -->
+                    <div class="single-slider">
+                        <div class="single-client">
+                            <a href="#" target="_blank"><img src="~/img/client/client-1.png" alt="#"></a>
+                        </div>
+                    </div>
+                    <!--/ End Single client -->
+                    <!-- Single client -->
+                    <div class="single-slider">
+                        <div class="single-client">
+                            <a href="#" target="_blank"><img src="~/img/client/client-2.png" alt="#"></a>
+                        </div>
+                    </div>
+                    <!--/ End Single client -->
+                    <!-- Single client -->
+                    <div class="single-slider">
+                        <div class="single-client">
+                            <a href="#" target="_blank"><img src="~/img/client/client-3.png" alt="#"></a>
+                        </div>
+                    </div>
+                    <!--/ End Single client -->
+                    <!-- Single client -->
+                    <div class="single-slider">
+                        <div class="single-client">
+                            <a href="#" target="_blank"><img src="~/img/client/client-4.png" alt="#"></a>
+                        </div>
+                    </div>
+                    <!--/ End Single client -->
+                    <!-- Single client -->
+                    <div class="single-slider">
+                        <div class="single-client">
+                            <a href="#" target="_blank"><img src="~/img/client/client-5.png" alt="#"></a>
+                        </div>
+                    </div>
+                    <!--/ End Single client -->
+                    <!-- Single client -->
+                    <div class="single-slider">
+                        <div class="single-client">
+                            <a href="#" target="_blank"><img src="~/img/client/client-6.png" alt="#"></a>
+                        </div>
+                    </div>
+                    <!--/ End Single client -->
+                    <!-- Single client -->
+                    <div class="single-slider">
+                        <div class="single-client">
+                            <a href="#" target="_blank"><img src="~/img/client/client-7.png" alt="#"></a>
+                        </div>
+                    </div>
+                    <!--/ End Single client -->
+                    <!-- Single client -->
+                    <div class="single-slider">
+                        <div class="single-client">
+                            <a href="#" target="_blank"><img src="~/img/client/client-8.png" alt="#"></a>
+                        </div>
+                    </div>
+                    <!--/ End Single client -->
+                    <!-- Single client -->
+                    <div class="single-slider">
+                        <div class="single-client">
+                            <a href="#" target="_blank"><img src="~/img/client/client-9.png" alt="#"></a>
+                        </div>
+                    </div>
+                    <!--/ End Single client -->
+                    <!-- Single client -->
+                    <div class="single-slider">
+                        <div class="single-client">
+                            <a href="#" target="_blank"><img src="~/img/client/client-10.png" alt="#"></a>
+                        </div>
+                    </div>
+                    <!--/ End Single client -->
+                    <!-- Single client -->
+                    <div class="single-slider">
+                        <div class="single-client">
+                            <a href="#" target="_blank"><img src="~/img/client/client-11.png" alt="#"></a>
+                        </div>
+                    </div>
+                    <!--/ End Single client -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--/ End Client Area -->

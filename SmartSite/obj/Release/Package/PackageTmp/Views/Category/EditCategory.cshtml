@@ -1,0 +1,31 @@
+﻿@model SmartSite.Models.Category
+@{
+    ViewBag.Title = "EditCategory";
+}
+
+<h2>EditCategory</h2>
+
+@using (Html.BeginForm("EditCategory", "Category", FormMethod.Post))
+{
+    <!-- Contact Form -->
+    <div class="contact-form-area m-top-30">
+        <h4>Edit Category</h4>
+        <div class="row">
+            <div class="col-lg-12 col-md-12 " style="display:flex;justify-content:center;align-items:center">
+                @Html.HiddenFor(c => c.ID)
+                <div class="form-group">
+                    <label for="CategoryName">Category Name:</label>
+                    @Html.TextBoxFor(c => c.CategoryName, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(c => c.CategoryName, null, new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="form-group button">
+                    <button type="submit" class="bizwheel-btn theme-2">Edit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--/ End contact Form -->
+
+}

@@ -1,0 +1,55 @@
+﻿@model SmartSite.Models.ProductType
+@{
+    ViewBag.Title = "ProductTypeDetails";
+}
+
+<div class="container">
+    <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
+        <div class="card-header">Product Type Details</div>
+        <div class="card-body">
+            <h5 class="card-title">Type Name : <u>[ @Model.Type ]</u></h5>
+            <h5 class="card-title">Category : <u>[ @Model.Category.CategoryName ]</u></h5>
+        </div>
+    </div>
+    @Html.ActionLink("products", "FilterProductsByType", new { id = Model.ID }, new { @class = "btn btn-info" })
+    <hr />
+    <div>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Type</th>
+                    <th>Category</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    IEnumerable<SmartSite.Models.Product> products = ViewData["product"] as IEnumerable<SmartSite.Models.Product>;
+                    foreach (var product in products)
+                    {
+                        <tr>
+                            <td>@product.Name</td>
+                            <td>@product.ProductType.Type</td>
+                            <td>@product.ProductType.Category.CategoryName</td>
+                            <td>
+                                @Html.ActionLink("Details", "Details", new { id = product.ID })
+
+                                @if (User.IsInRole("Admin"))
+                                {
+                                    @Html.ActionLink("Edit", "Edit", new { id = product.ID })
+                                    @Html.ActionLink("Delete", "Delete", new { id = product.ID })
+                                }
+
+                            </td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+    <hr />
+    <div>
+        @Html.ActionLink("Return", "AllProductTypes", null, new { @class = "btn btn-info form-control" })
+    </div>
+</div>

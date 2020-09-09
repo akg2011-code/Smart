@@ -1,0 +1,82 @@
+﻿@model SmartSite.Models.Product
+
+@{
+    ViewBag.Title = "Details";
+}
+<!-- Breadcrumb -->
+<div class="breadcrumbs overlay" style="background-image:url('../../img/8.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="bread-inner">
+                    <!-- Bread Menu -->
+                    <div class="bread-menu">
+                        <ul>
+                            <li><a href="@Url.Action("Index","Home")">Home  -</a></li>
+                            <li><a href="@Url.Action("FilterProductsByType","ProductType",new { id=Model.ProductTypeID})">@Model.ProductType.Type -</a></li>
+                            <li><a href="@Url.Action("FilterProductTypeByCategory","ProductType",new { id=ViewBag.category.ID})">@ViewBag.category.CategoryName</a></li>
+
+                        </ul>
+                    </div>
+                    <!-- Bread Title -->
+                    <div class="bread-title"><h2>@Html.DisplayFor(model => model.Name)</h2></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Blog Single -->
+<section class="news-area archive blog-single section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-10 offset-lg-1 col-md-10 offset-md-1 col-12">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="blog-single-main">
+                            <div class="blog-detail">
+                                <!-- News meta -->
+                                <div class="row blog-space">
+                                    <div class="col-lg-4">
+                                        <img src="~/imageUploads/@Model.Image" alt="Image Product" />
+                                    </div>
+                                    <div class="col-lg-8">
+                                        <h2>
+                                            @Html.DisplayFor(model => model.Name)
+                                        </h2>
+                                        <br />
+                                        <p>
+                                            @Html.DisplayFor(model => model.Brand)
+                                        </p>
+                                        <br />
+                                        <h3>
+                                            <a href="@Url.Action("Download", "Products", new { fileName = Model.PdfFile })">
+                                                Download The Manual
+                                                @Html.DisplayFor(model => model.PdfFile)
+                                                <i class="fas fa-download"></i>
+                                                @*@Html.ActionLink("Download", "Download", new { fileName = Model.PdfFile })*@
+                                            </a>
+                                        </h3>
+
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4 teckData">
+                                        <h3>Technical Data</h3>
+                                    </div>
+                                    <div class="col-md-8 spec">
+                                        <h3>Specification Table.</h3>
+                                    </div>
+                                </div>
+                                <h4>PRODUCT SPECIFICATION:</h4>
+                                <p>
+                                    @Html.Raw(HttpUtility.HtmlDecode(@Model.Description))
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--/ End Services -->

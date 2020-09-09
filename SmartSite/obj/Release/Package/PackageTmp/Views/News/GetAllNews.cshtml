@@ -1,0 +1,57 @@
+﻿@model IEnumerable<SmartSite.Models.News>
+@{
+    ViewBag.Title = "GetAllNews";
+}
+
+<!-- Blog Layout -->
+<section class="blog-layout news-default section-space">
+    <div class="container">
+        @{
+            if (User.IsInRole("Admin"))
+            {
+                @Html.ActionLink("Create News", "CreateNews", "News", new { @class = "btn btn-info" })
+            }
+        }
+
+        @{
+            <div class="row ">
+
+                @foreach (var news in Model)
+                {
+                    <div class="col-lg-4 col-md-6 col-12">
+                        <!-- Single Blog -->
+                        <div class="single-news ">
+                            <div class="news-head overlay">
+                                <img class="card-img-top" style="height:300px" src="~/imageUploads/NewsImg/@news.Image" alt="productImage">
+                                <ul class="news-meta">
+                                    <li class="date"><i class="fa fa-calendar"></i>@news.Date</li>
+                                </ul>
+                            </div>
+                            <div class="news-body">
+                                <div class="news-content">
+                                    <h3 class="news-title"><a href="@Url.Action("NewsDetails", "News", new { id = news.ID })">@news.Title</a></h3>
+
+                                    <div class="news-text"><p style="height:50px;overflow:hidden">@news.Details</p></div>
+                                    <a href="@Url.Action("NewsDetails", "News", new { id = news.ID })" class="more">Continue reading <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
+                                </div>
+                                @{
+                                    if (User.IsInRole("Admin"))
+                                    {
+                                        <div class="m-1">
+                                            @Html.ActionLink("Edit", "EditNews", new { id = news.ID }, new { @class = "btn btn-warning" })
+                                            @Html.ActionLink("Delete", "DeleteNews", new { id = news.ID }, new { @class = "btn btn-danger" })
+                                        </div>
+                                    }
+                                }
+
+                            </div>
+                        </div>
+                        <!--/ End Single Blog -->
+                    </div>
+                }
+
+            </div>
+        }
+    </div>
+</section>
+
