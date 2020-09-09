@@ -217,10 +217,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/08/2020 14:56:19</publishTime>
     </File>
     <File Include="bin/SmartSite.dll">
-      <publishTime>09/08/2020 17:43:11</publishTime>
+      <publishTime>09/09/2020 12:58:32</publishTime>
     </File>
     <File Include="bin/SmartSite.pdb">
-      <publishTime>09/08/2020 17:43:11</publishTime>
+      <publishTime>09/09/2020 12:58:32</publishTime>
     </File>
     <File Include="bin/System.ComponentModel.Annotations.dll">
       <publishTime>09/08/2020 14:56:19</publishTime>
@@ -249,6 +249,33 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="bin/WebGrease.dll">
       <publishTime>09/08/2020 14:56:19</publishTime>
     </File>
+    <File Include="Content/animate.min.css">
+      <publishTime>09/08/2020 14:56:16</publishTime>
+    </File>
+    <File Include="Content/bootstrap-grid.css">
+      <publishTime>09/08/2020 14:56:16</publishTime>
+    </File>
+    <File Include="Content/bootstrap-grid.css.map">
+      <publishTime>09/08/2020 14:56:16</publishTime>
+    </File>
+    <File Include="Content/bootstrap-grid.min.css">
+      <publishTime>09/08/2020 14:56:16</publishTime>
+    </File>
+    <File Include="Content/bootstrap-grid.min.css.map">
+      <publishTime>09/08/2020 14:56:16</publishTime>
+    </File>
+    <File Include="Content/bootstrap-reboot.css">
+      <publishTime>09/08/2020 14:56:16</publishTime>
+    </File>
+    <File Include="Content/bootstrap-reboot.css.map">
+      <publishTime>09/08/2020 14:56:16</publishTime>
+    </File>
+    <File Include="Content/bootstrap-reboot.min.css">
+      <publishTime>09/08/2020 14:56:16</publishTime>
+    </File>
+    <File Include="Content/bootstrap-reboot.min.css.map">
+      <publishTime>09/08/2020 14:56:16</publishTime>
+    </File>
     <File Include="Content/bootstrap-theme.css">
       <publishTime>09/08/2020 14:56:16</publishTime>
     </File>
@@ -273,14 +300,71 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Content/bootstrap.min.css.map">
       <publishTime>09/08/2020 14:56:16</publishTime>
     </File>
+    <File Include="Content/cubeportfolio.min.css">
+      <publishTime>09/08/2020 14:56:16</publishTime>
+    </File>
+    <File Include="Content/font-awesome.css">
+      <publishTime>09/08/2020 14:56:16</publishTime>
+    </File>
+    <File Include="Content/fonts/fontawesome-webfont.eot">
+      <publishTime>09/08/2020 14:56:16</publishTime>
+    </File>
+    <File Include="Content/fonts/fontawesome-webfont.svg">
+      <publishTime>09/08/2020 14:56:16</publishTime>
+    </File>
+    <File Include="Content/fonts/fontawesome-webfont.ttf">
+      <publishTime>09/08/2020 14:56:16</publishTime>
+    </File>
+    <File Include="Content/fonts/fontawesome-webfont.woff">
+      <publishTime>09/08/2020 14:56:16</publishTime>
+    </File>
+    <File Include="Content/fonts/fontawesome-webfont.woff2">
+      <publishTime>09/08/2020 14:56:16</publishTime>
+    </File>
+    <File Include="Content/jquery.fancybox.min.css">
+      <publishTime>09/08/2020 14:56:16</publishTime>
+    </File>
+    <File Include="Content/magnific-popup.min.css">
+      <publishTime>09/08/2020 14:56:16</publishTime>
+    </File>
+    <File Include="Content/owl-carousel.min.css">
+      <publishTime>09/08/2020 14:56:16</publishTime>
+    </File>
+    <File Include="Content/reset.css">
+      <publishTime>09/08/2020 14:56:16</publishTime>
+    </File>
+    <File Include="Content/responsive.css">
+      <publishTime>09/08/2020 15:52:32</publishTime>
+    </File>
     <File Include="Content/Site.css">
       <publishTime>09/08/2020 16:07:15</publishTime>
+    </File>
+    <File Include="Content/skins/skin-1.css">
+      <publishTime>09/08/2020 14:56:16</publishTime>
+    </File>
+    <File Include="Content/skins/skin-2.css">
+      <publishTime>09/08/2020 14:56:16</publishTime>
+    </File>
+    <File Include="Content/skins/skin-3.css">
+      <publishTime>09/08/2020 14:56:16</publishTime>
+    </File>
+    <File Include="Content/skins/skin-4.css">
+      <publishTime>09/08/2020 14:56:16</publishTime>
+    </File>
+    <File Include="Content/slicknav.min.css">
+      <publishTime>09/08/2020 14:56:16</publishTime>
     </File>
     <File Include="favicon.ico">
       <publishTime>09/08/2020 14:56:17</publishTime>
     </File>
     <File Include="Global.asax">
       <publishTime>09/08/2020 14:56:16</publishTime>
+    </File>
+    <File Include="img/1.1.jpg">
+      <publishTime>09/09/2020 11:01:24</publishTime>
+    </File>
+    <File Include="img/1.2.jpg">
+      <publishTime>09/08/2020 14:56:17</publishTime>
     </File>
     <File Include="img/1.jpg">
       <publishTime>09/08/2020 14:56:17</publishTime>
@@ -304,6 +388,12 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/08/2020 14:56:17</publishTime>
     </File>
     <File Include="img/8.jpg">
+      <publishTime>09/08/2020 14:56:17</publishTime>
+    </File>
+    <File Include="img/9.jpg">
+      <publishTime>09/08/2020 14:56:17</publishTime>
+    </File>
+    <File Include="img/aaa.jpg">
       <publishTime>09/08/2020 14:56:17</publishTime>
     </File>
     <File Include="img/about.mp4">
@@ -384,10 +474,61 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="img/t3.jpeg">
       <publishTime>09/08/2020 14:56:17</publishTime>
     </File>
+    <File Include="Scripts/active.js">
+      <publishTime>09/08/2020 14:56:16</publishTime>
+    </File>
+    <File Include="Scripts/bootstrap.bundle.js">
+      <publishTime>09/08/2020 14:56:16</publishTime>
+    </File>
+    <File Include="Scripts/bootstrap.bundle.js.map">
+      <publishTime>09/08/2020 14:56:16</publishTime>
+    </File>
+    <File Include="Scripts/bootstrap.bundle.min.js">
+      <publishTime>09/08/2020 14:56:16</publishTime>
+    </File>
+    <File Include="Scripts/bootstrap.bundle.min.js.map">
+      <publishTime>09/08/2020 14:56:16</publishTime>
+    </File>
     <File Include="Scripts/bootstrap.js">
       <publishTime>09/08/2020 14:56:16</publishTime>
     </File>
+    <File Include="Scripts/bootstrap.js.map">
+      <publishTime>09/08/2020 14:56:16</publishTime>
+    </File>
     <File Include="Scripts/bootstrap.min.js">
+      <publishTime>09/08/2020 14:56:16</publishTime>
+    </File>
+    <File Include="Scripts/bootstrap.min.js.map">
+      <publishTime>09/08/2020 14:56:16</publishTime>
+    </File>
+    <File Include="Scripts/cubeportfolio.min.js">
+      <publishTime>09/08/2020 14:56:16</publishTime>
+    </File>
+    <File Include="Scripts/easing.js">
+      <publishTime>09/08/2020 14:56:16</publishTime>
+    </File>
+    <File Include="Scripts/esm/popper-utils.js">
+      <publishTime>09/08/2020 14:56:16</publishTime>
+    </File>
+    <File Include="Scripts/esm/popper-utils.js.map">
+      <publishTime>09/08/2020 14:56:16</publishTime>
+    </File>
+    <File Include="Scripts/esm/popper-utils.min.js">
+      <publishTime>09/08/2020 14:56:16</publishTime>
+    </File>
+    <File Include="Scripts/esm/popper-utils.min.js.map">
+      <publishTime>09/08/2020 14:56:16</publishTime>
+    </File>
+    <File Include="Scripts/esm/popper.js">
+      <publishTime>09/08/2020 14:56:16</publishTime>
+    </File>
+    <File Include="Scripts/esm/popper.js.map">
+      <publishTime>09/08/2020 14:56:16</publishTime>
+    </File>
+    <File Include="Scripts/esm/popper.min.js">
+      <publishTime>09/08/2020 14:56:16</publishTime>
+    </File>
+    <File Include="Scripts/esm/popper.min.js.map">
       <publishTime>09/08/2020 14:56:16</publishTime>
     </File>
     <File Include="Scripts/jquery-3.4.1.js">
@@ -408,6 +549,18 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Scripts/jquery-3.4.1.slim.min.map">
       <publishTime>09/08/2020 14:56:17</publishTime>
     </File>
+    <File Include="Scripts/jquery-fancybox.min.js">
+      <publishTime>09/08/2020 14:56:17</publishTime>
+    </File>
+    <File Include="Scripts/jquery-migrate-3.0.0.js">
+      <publishTime>09/08/2020 14:56:17</publishTime>
+    </File>
+    <File Include="Scripts/jquery.counterup.min.js">
+      <publishTime>09/08/2020 14:56:17</publishTime>
+    </File>
+    <File Include="Scripts/jquery.min.js">
+      <publishTime>09/08/2020 14:56:17</publishTime>
+    </File>
     <File Include="Scripts/jquery.validate.js">
       <publishTime>09/08/2020 14:56:17</publishTime>
     </File>
@@ -420,7 +573,76 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Scripts/jquery.validate.unobtrusive.min.js">
       <publishTime>09/08/2020 14:56:17</publishTime>
     </File>
+    <File Include="Scripts/magnific-popup.min.js">
+      <publishTime>09/08/2020 14:56:17</publishTime>
+    </File>
     <File Include="Scripts/modernizr-2.8.3.js">
+      <publishTime>09/08/2020 14:56:17</publishTime>
+    </File>
+    <File Include="Scripts/modernizr.min.js">
+      <publishTime>09/08/2020 14:56:17</publishTime>
+    </File>
+    <File Include="Scripts/owl-carousel.min.js">
+      <publishTime>09/08/2020 14:56:17</publishTime>
+    </File>
+    <File Include="Scripts/popper-utils.js">
+      <publishTime>09/08/2020 14:56:17</publishTime>
+    </File>
+    <File Include="Scripts/popper-utils.js.map">
+      <publishTime>09/08/2020 14:56:17</publishTime>
+    </File>
+    <File Include="Scripts/popper-utils.min.js">
+      <publishTime>09/08/2020 14:56:17</publishTime>
+    </File>
+    <File Include="Scripts/popper-utils.min.js.map">
+      <publishTime>09/08/2020 14:56:17</publishTime>
+    </File>
+    <File Include="Scripts/popper.js">
+      <publishTime>09/08/2020 14:56:17</publishTime>
+    </File>
+    <File Include="Scripts/popper.js.map">
+      <publishTime>09/08/2020 14:56:17</publishTime>
+    </File>
+    <File Include="Scripts/popper.min.js">
+      <publishTime>09/08/2020 14:56:17</publishTime>
+    </File>
+    <File Include="Scripts/popper.min.js.map">
+      <publishTime>09/08/2020 14:56:17</publishTime>
+    </File>
+    <File Include="Scripts/README.md">
+      <publishTime>09/08/2020 14:56:16</publishTime>
+    </File>
+    <File Include="Scripts/scrollup.js">
+      <publishTime>09/08/2020 14:56:17</publishTime>
+    </File>
+    <File Include="Scripts/slicknav.min.js">
+      <publishTime>09/08/2020 14:56:17</publishTime>
+    </File>
+    <File Include="Scripts/umd/popper-utils.js">
+      <publishTime>09/08/2020 14:56:17</publishTime>
+    </File>
+    <File Include="Scripts/umd/popper-utils.js.map">
+      <publishTime>09/08/2020 14:56:17</publishTime>
+    </File>
+    <File Include="Scripts/umd/popper-utils.min.js">
+      <publishTime>09/08/2020 14:56:17</publishTime>
+    </File>
+    <File Include="Scripts/umd/popper-utils.min.js.map">
+      <publishTime>09/08/2020 14:56:17</publishTime>
+    </File>
+    <File Include="Scripts/umd/popper.js">
+      <publishTime>09/08/2020 14:56:17</publishTime>
+    </File>
+    <File Include="Scripts/umd/popper.js.map">
+      <publishTime>09/08/2020 14:56:17</publishTime>
+    </File>
+    <File Include="Scripts/umd/popper.min.js">
+      <publishTime>09/08/2020 14:56:17</publishTime>
+    </File>
+    <File Include="Scripts/umd/popper.min.js.map">
+      <publishTime>09/08/2020 14:56:17</publishTime>
+    </File>
+    <File Include="Scripts/waypoints.min.js">
       <publishTime>09/08/2020 14:56:17</publishTime>
     </File>
     <File Include="Views/Account/ConfirmEmail.cshtml">
@@ -526,7 +748,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/08/2020 14:56:17</publishTime>
     </File>
     <File Include="Views/Products/Index.cshtml">
-      <publishTime>09/08/2020 14:56:17</publishTime>
+      <publishTime>09/09/2020 10:44:23</publishTime>
     </File>
     <File Include="Views/Products/SearchProductByName.cshtml">
       <publishTime>09/08/2020 14:56:17</publishTime>
@@ -580,7 +802,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/08/2020 14:56:17</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>09/08/2020 17:43:12</publishTime>
+      <publishTime>09/09/2020 12:13:16</publishTime>
     </File>
   </ItemGroup>
 </Project>

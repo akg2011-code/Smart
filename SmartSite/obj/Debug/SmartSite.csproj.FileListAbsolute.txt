@@ -548,7 +548,6 @@ F:\IQ 2 life\Smart website\SmartWS\Smart\SmartSite\bin\Microsoft.Owin.Security.T
 F:\IQ 2 life\Smart website\SmartWS\Smart\SmartSite\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 F:\IQ 2 life\Smart website\SmartWS\Smart\SmartSite\bin\Microsoft.Owin.Security.OAuth.xml
 F:\IQ 2 life\Smart website\SmartWS\Smart\SmartSite\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-F:\IQ 2 life\Smart website\SmartWS\Smart\SmartSite\obj\Debug\SmartSite.csprojAssemblyReference.cache
 F:\IQ 2 life\Smart website\SmartWS\Smart\SmartSite\obj\Debug\SmartSite.Migrations.akg.resources
 F:\IQ 2 life\Smart website\SmartWS\Smart\SmartSite\obj\Debug\SmartSite.Migrations.img.resources
 F:\IQ 2 life\Smart website\SmartWS\Smart\SmartSite\obj\Debug\SmartSite.csproj.GenerateResource.cache
@@ -556,3 +555,4 @@ F:\IQ 2 life\Smart website\SmartWS\Smart\SmartSite\obj\Debug\SmartSite.csproj.Co
 F:\IQ 2 life\Smart website\SmartWS\Smart\SmartSite\obj\Debug\SmartSite.csproj.CopyComplete
 F:\IQ 2 life\Smart website\SmartWS\Smart\SmartSite\obj\Debug\SmartSite.dll
 F:\IQ 2 life\Smart website\SmartWS\Smart\SmartSite\obj\Debug\SmartSite.pdb
+F:\IQ 2 life\Smart website\SmartWS\Smart\SmartSite\obj\Debug\SmartSite.csprojAssemblyReference.cache
