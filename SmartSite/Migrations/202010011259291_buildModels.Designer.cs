@@ -7,13 +7,13 @@ namespace SmartSite.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class akg : IMigrationMetadata
+    public sealed partial class buildModels : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(akg));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(buildModels));
         
         string IMigrationMetadata.Id
         {
-            get { return "202009050921340_akg"; }
+            get { return "202010011259291_buildModels"; }
         }
         
         string IMigrationMetadata.Source

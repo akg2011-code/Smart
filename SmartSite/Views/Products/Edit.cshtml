@@ -91,7 +91,10 @@
             </div>
 
             <input value="@Session["oldImagePath"].ToString()" name="deletingImgPath" hidden />
-            <input value="@Session["oldPdfPath"].ToString()" name="deletingPdfPath" hidden />
+            @if (Session["oldPdfPath"] != null)
+            {
+                <input value="@Session["oldPdfPath"].ToString()" name="deletingPdfPath" hidden />
+            }
 
             <div class="col-12">
                 <div class="form-group button">

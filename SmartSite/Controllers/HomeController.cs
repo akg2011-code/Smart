@@ -34,16 +34,19 @@ namespace SmartSite.Controllers
 
         public ActionResult Index()
         {
-            IEnumerable<Category> allCategories = DAL.GetAllCategories();
+            //IEnumerable<Category> allCategories = DAL.GetAllCategories();
 
             // random product :
             ViewBag.shownProducts = Get3Products();
-            ViewBag.safetyCatID = Context.Category.FirstOrDefault(c => c.CategoryName == "Safety" || c.CategoryName=="safety").ID;
+
+            HomeViewModel viewModel = new HomeViewModel();
+            
+            
 
             navbarVM vm = new navbarVM();
             ViewBag.displayedNews = vm.GetLastNews();
 
-            return View(allCategories);
+            return View(viewModel);
         }
 
         public ActionResult About()

@@ -37,7 +37,7 @@
                                 <!-- News meta -->
                                 <div class="row blog-space">
                                     <div class="col-lg-4">
-                                        <img src="~/imageUploads/@Model.Image" alt="Image Product" />
+                                        <img src="~/imageUploads/ProductImg/@Model.Image" alt="Image Product" />
                                     </div>
                                     <div class="col-lg-8">
                                         <h2>
@@ -49,12 +49,14 @@
                                         </p>
                                         <br />
                                         <h3>
-                                            <a href="@Url.Action("Download", "Products", new { fileName = Model.PdfFile })">
-                                                Download The Manual
-                                                @Html.DisplayFor(model => model.PdfFile)
-                                                <i class="fas fa-download"></i>
-                                                @*@Html.ActionLink("Download", "Download", new { fileName = Model.PdfFile })*@
-                                            </a>
+                                            @if (Model.PdfFile != null)
+                                            {
+                                                <a href="@Url.Action("Download", "Products", new { fileName = Model.PdfFile })">
+                                                    @Html.DisplayFor(model => model.PdfFile)
+                                                    Download The Manual
+                                                    <i class="fas fa-download"></i>
+                                                </a>
+                                            }
                                         </h3>
 
                                     </div>

@@ -184,7 +184,7 @@ namespace SmartSite.Controllers
 
             ProductType deletedProductType = DAL.GetProductTypeByID(id);
 
-            Session["oldImagePath"] = (Server.MapPath(Path.Combine("~/imageUploads/NewsImg", deletedProductType.Image))).ToString();
+            Session["oldImagePath"] = (Server.MapPath(Path.Combine("~/imageUploads/TypeImg", deletedProductType.Image))).ToString();
 
             if (deletedProductType != null)
                 return View(deletedProductType);

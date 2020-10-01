@@ -1,7 +1,8 @@
 ﻿@{
     ViewBag.Title = "Home Page";
 }
-@model IEnumerable<SmartSite.Models.Category>
+@*@model IEnumerable<SmartSite.Models.Category>*@
+@model SmartSite.ViewModels.HomeViewModel
 <!-- Hero Slider -->
 <section class="hero-slider style1">
     <div class="home-slider">
@@ -16,7 +17,7 @@
                                 <h1>Smart for Electrical Engineering</h1>
                                 <div class="button">
                                     @{
-                                        foreach (var category in Model)
+                                        foreach (var category in Model.GetCategories())
                                         {
                                             <a href="@Url.Action("FilterProductTypeByCategory", "ProductType", new { id = category.ID })" class="bizwheel-btn theme-@category.ID effect">@category.CategoryName</a>
                                         }
@@ -39,13 +40,11 @@
                             <div class="hero-text">
                                 <h4>Your time is so important for us</h4>
                                 <h1>Some general safety prouducts for working with</h1>
-                                @{
-                                    if (ViewBag.safetyCatID != null)
-                                    {
-                                        <div class="button">
-                                            <a href="@Url.Action("FilterProductTypeByCategory", "ProductType", new { id =  ViewBag.safetyCatID})" class="bizwheel-btn theme-1 effect">Safety</a>
-                                        </div>
-                                    }
+                                @if (Model.GetSafetyCategory() !=null)
+                                {
+                                    <div class="button">
+                                        <a href="@Url.Action("FilterProductTypeByCategory", "ProductType", new { id =  Model.GetSafetyCategory().ID})" class="bizwheel-btn theme-1 effect">Safety</a>
+                                    </div>
                                 }
 
                             </div>
@@ -306,7 +305,7 @@
                         </div>
                     </div>
                     <!--/ End Single client -->
-                    
+
 
                 </div>
             </div>

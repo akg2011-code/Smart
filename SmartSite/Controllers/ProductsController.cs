@@ -127,7 +127,12 @@ namespace SmartSite.Controllers
             }
 
             Session["oldImagePath"] = (Server.MapPath(Path.Combine("~/imageUploads/ProductImg" , product.Image))).ToString();
-            Session["oldPdfPath"] = (Server.MapPath(Path.Combine("~/pdfUploads", product.PdfFile))).ToString();
+            if (product.PdfFile != null)
+            {
+                Session["oldPdfPath"] = (Server.MapPath(Path.Combine("~/pdfUploads", product.PdfFile))).ToString();
+            }
+            else
+                Session["oldPdfPath"] =null ;
 
             ViewBag.ProductTypeID = new SelectList(db.ProductType, "ID", "Type", product.ProductTypeID);
             return View(product);
